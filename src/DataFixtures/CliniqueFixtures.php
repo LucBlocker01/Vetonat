@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\AnimalFactory;
+use App\Factory\CliniqueFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -9,9 +11,8 @@ class CliniqueFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
+        CliniqueFactory::createOne();
         $manager->flush();
+
     }
 }

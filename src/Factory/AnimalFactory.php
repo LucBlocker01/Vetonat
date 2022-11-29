@@ -50,6 +50,8 @@ final class AnimalFactory extends ModelFactory
             'nomAnimal' => self::faker()->name,
             'EspeceAnimal' => $lstEspece[array_rand($lstEspece)],
             'Stereliser' => self::faker()->boolean(),
+            'poidsAnimal' => self::faker()->numberBetween(1, 50),
+            'descriptionAnimal' => self::faker()->paragraph(),
         ];
     }
 
