@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CliniqueRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CliniqueRepository::class)]
@@ -27,6 +29,14 @@ class Clinique
 
     #[ORM\Column(length: 255)]
     private ?string $nomClinique = null;
+
+    #[ORM\OneToMany(mappedBy: 'clinique', targetEntity: Veterinaire::class)]
+    private Collection $veterinaire;
+
+    public function __construct()
+    {
+        $this->veterinaire = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +99,36 @@ class Clinique
     public function setNomClinique(string $nomClinique): self
     {
         $this->nomClinique = $nomClinique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Veterinaire>
+     */
+    public function getVeterinaire(): Collection
+    {
+        return $this->veterinaire;
+    }
+
+    public function addVeterinaire(Veterinaire $veterinaire): self
+    {
+        if (!$this->veterinaire->contains($veterinaire)) {
+            $this->veterinaire->add($veterinaire);
+            $veterinaire->setClinique($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVeterinaire(Veterinaire $veterinaire): self
+    {
+        if ($this->veterinaire->removeElement($veterinaire)) {
+            // set the owning side to null (unless already changed)
+            if ($veterinaire->getClinique() === $this) {
+                $veterinaire->setClinique(null);
+            }
+        }
 
         return $this;
     }

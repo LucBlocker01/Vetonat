@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Clinique;
+use App\Entity\Client;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Clinique>
+ * @extends ServiceEntityRepository<Client>
  *
- * @method Clinique|null find($id, $lockMode = null, $lockVersion = null)
- * @method Clinique|null findOneBy(array $criteria, array $orderBy = null)
- * @method Clinique[]    findAll()
- * @method Clinique[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Client|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Client|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Client[]    findAll()
+ * @method Client[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CliniqueRepository extends ServiceEntityRepository
+class ClientRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Clinique::class);
+        parent::__construct($registry, Client::class);
     }
 
-    public function save(Clinique $entity, bool $flush = false): void
+    public function save(Client $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CliniqueRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Clinique $entity, bool $flush = false): void
+    public function remove(Client $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CliniqueRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return CliniqueFixtures[] Returns an array of CliniqueFixtures objects
+//     * @return Client[] Returns an array of Client objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CliniqueRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?CliniqueFixtures
+//    public function findOneBySomeField($value): ?Client
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
