@@ -42,7 +42,7 @@ final class AnimalFactory extends ModelFactory
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'nomAnimal' => self::faker()->text(),
             'EspeceAnimal' => self::faker()->text(),
-            'St�ereliser' => self::faker()->boolean(),
+            'Stereliser' => self::faker()->boolean(),
         ];
     }
 
