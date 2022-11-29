@@ -40,6 +40,9 @@ final class TraitementFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
+            'descTraitement' => self::faker()->sentence,
+            'medicament' => self::faker()->word,
+            'alimentation' => self::faker()->word(5),
         ];
     }
 
