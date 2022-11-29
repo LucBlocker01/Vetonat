@@ -48,7 +48,7 @@ final class CliniqueFactory extends ModelFactory
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
         return $this
-            // ->afterInstantiate(function(Clinique $clinique): void {})
+            // ->afterInstantiate(function(CliniqueFixtures $clinique): void {})
         ;
     }
 

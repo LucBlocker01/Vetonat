@@ -40,7 +40,7 @@ class CliniqueRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Clinique[] Returns an array of Clinique objects
+//     * @return CliniqueFixtures[] Returns an array of CliniqueFixtures objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CliniqueRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Clinique
+//    public function findOneBySomeField($value): ?CliniqueFixtures
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
