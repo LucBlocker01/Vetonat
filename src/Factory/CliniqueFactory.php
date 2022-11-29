@@ -4,28 +4,28 @@ namespace App\Factory;
 
 use App\Entity\Clinique;
 use App\Repository\CliniqueRepository;
-use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use Zenstruck\Foundry\RepositoryProxy;
 
 /**
  * @extends ModelFactory<Clinique>
  *
- * @method static Clinique|Proxy createOne(array $attributes = [])
- * @method static Clinique[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Clinique[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Clinique|Proxy find(object|array|mixed $criteria)
- * @method static Clinique|Proxy findOrCreate(array $attributes)
- * @method static Clinique|Proxy first(string $sortedField = 'id')
- * @method static Clinique|Proxy last(string $sortedField = 'id')
- * @method static Clinique|Proxy random(array $attributes = [])
- * @method static Clinique|Proxy randomOrCreate(array $attributes = [])
- * @method static Clinique[]|Proxy[] all()
- * @method static Clinique[]|Proxy[] findBy(array $attributes)
- * @method static Clinique[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Clinique[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static Clinique|Proxy                     createOne(array $attributes = [])
+ * @method static Clinique[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Clinique[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Clinique|Proxy                     find(object|array|mixed $criteria)
+ * @method static Clinique|Proxy                     findOrCreate(array $attributes)
+ * @method static Clinique|Proxy                     first(string $sortedField = 'id')
+ * @method static Clinique|Proxy                     last(string $sortedField = 'id')
+ * @method static Clinique|Proxy                     random(array $attributes = [])
+ * @method static Clinique|Proxy                     randomOrCreate(array $attributes = [])
+ * @method static Clinique[]|Proxy[]                 all()
+ * @method static Clinique[]|Proxy[]                 findBy(array $attributes)
+ * @method static Clinique[]|Proxy[]                 randomSet(int $number, array $attributes = [])
+ * @method static Clinique[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static CliniqueRepository|RepositoryProxy repository()
- * @method Clinique|Proxy create(array|callable $attributes = [])
+ * @method        Clinique|Proxy                     create(array|callable $attributes = [])
  */
 final class CliniqueFactory extends ModelFactory
 {
@@ -40,7 +40,11 @@ final class CliniqueFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'nomClinique' => self::faker()->text(),
+            'nomClinique' => self::faker()->word(1),
+            'CPClinique' => self::faker()->postcode(),
+            'villeClinique' => self::faker()->city(),
+            'telClinique' => self::faker()->phoneNumber(),
+            'adrClinique' => self::faker()->streetAddress(),
         ];
     }
 
