@@ -18,7 +18,7 @@ class Consultation
     private ?string $consultationDesc = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateConsultation = null;
+    private ?\DateTime $dateConsultation = null;
 
     #[ORM\Column(length: 255)]
     private ?string $motifConsultation = null;
@@ -46,12 +46,12 @@ class Consultation
         return $this;
     }
 
-    public function getDateConsultation(): ?\DateTimeInterface
+    public function getDateConsultation(): ?\DateTime
     {
         return $this->dateConsultation;
     }
 
-    public function setDateConsultation(\DateTimeInterface $dateConsultation): self
+    public function setDateConsultation(\DateTime $dateConsultation): self
     {
         $this->dateConsultation = $dateConsultation;
 
