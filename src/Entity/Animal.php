@@ -22,7 +22,7 @@ class Animal
     private ?string $EspeceAnimal = null;
 
     #[ORM\Column]
-    private ?bool $St�ereliser = null;
+    private ?bool $Stereliser = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $ageAnimal = null;
@@ -79,7 +79,7 @@ class Animal
         return $this->Stereliser;
     }
 
-    public function setStereliser(bool $Strereliser): self
+    public function setStereliser(bool $Stereliser): self
     {
         $this->Stereliser = $Stereliser;
 
