@@ -29,6 +29,15 @@ class Consultation
     #[ORM\Column]
     private ?bool $urgente = null;
 
+    #[ORM\ManyToOne(inversedBy: 'consultation')]
+    private ?Animal $animal = null;
+
+    #[ORM\ManyToOne(inversedBy: 'consultations')]
+    private ?Traitement $traitement = null;
+
+    #[ORM\ManyToOne(inversedBy: 'consultations')]
+    private ?Veterinaire $veterinaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +99,42 @@ class Consultation
     public function setUrgente(bool $urgente): self
     {
         $this->urgente = $urgente;
+
+        return $this;
+    }
+
+    public function getAnimal(): ?Animal
+    {
+        return $this->animal;
+    }
+
+    public function setAnimal(?Animal $animal): self
+    {
+        $this->animal = $animal;
+
+        return $this;
+    }
+
+    public function getTraitement(): ?Traitement
+    {
+        return $this->traitement;
+    }
+
+    public function setTraitement(?Traitement $traitement): self
+    {
+        $this->traitement = $traitement;
+
+        return $this;
+    }
+
+    public function getVeterinaire(): ?Veterinaire
+    {
+        return $this->veterinaire;
+    }
+
+    public function setVeterinaire(?Veterinaire $veterinaire): self
+    {
+        $this->veterinaire = $veterinaire;
 
         return $this;
     }

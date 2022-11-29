@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnimalRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AnimalRepository::class)]
@@ -30,6 +32,18 @@ class Animal
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $descriptionAnimal = null;
+
+    #[ORM\ManyToOne(inversedBy: 'animal')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Client $client = null;
+
+    #[ORM\OneToMany(mappedBy: 'animal', targetEntity: Consultation::class)]
+    private Collection $consultation;
+
+    public function __construct()
+    {
+        $this->consultation = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +118,48 @@ class Animal
     public function setDescriptionAnimal(?string $descriptionAnimal): self
     {
         $this->descriptionAnimal = $descriptionAnimal;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Consultation>
+     */
+    public function getConsultation(): Collection
+    {
+        return $this->consultation;
+    }
+
+    public function addConsultation(Consultation $consultation): self
+    {
+        if (!$this->consultation->contains($consultation)) {
+            $this->consultation->add($consultation);
+            $consultation->setAnimal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConsultation(Consultation $consultation): self
+    {
+        if ($this->consultation->removeElement($consultation)) {
+            // set the owning side to null (unless already changed)
+            if ($consultation->getAnimal() === $this) {
+                $consultation->setAnimal(null);
+            }
+        }
 
         return $this;
     }
