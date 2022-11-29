@@ -38,13 +38,15 @@ final class ConsultationFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $date = self::faker()->date().' '.self::faker()->time();
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'consultationDesc' => self::faker()->text(),
-            'dateConsultation' => self::faker()->dateTime(),
-            'motifConsultation' => self::faker()->text(),
+            'consultationDesc' => self::faker()->paragraph(),
+            'dateConsultation' => $date,
+            'motifConsultation' => self::faker()->sentence(15),
             'clinique' => self::faker()->boolean(),
             'urgente' => self::faker()->boolean(),
+
         ];
     }
 
