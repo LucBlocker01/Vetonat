@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+{% endblock%}
+
+{% block title %}Accueil Vetonat{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="logo">
+            <a href="{{ path('app_acceuil') }}"><img src="/img/general/veto_logo.png"></a>
+        <p>Vetonat Votre vétérinaire à porter de clic </p>
+        </div>
+        <div class="espace">
+            <a href="#">
+                <div class="veto">
+                    <p>Espace véterinaire</p>
+                    <img src="/img/general/veto.png">
+                </div>
+            </a>
+            <a href="#">
+                <div class="client">
+                    <p>Espace client</p>
+                    <img src="/img/general/client.png">
+                </div>
+            </a>
+        </div>
+    </header>
+    <div class="message">
+        <img src="/img/acceuil/chat_acceuil.png">
+        <h1 class="rdv">Prenez <a href="#" style="color: orange">rendez vous en ligne</a> chez votre vétérinaire </h1>
+    </div>
+
+    <footer>
+        <h2>Comment prendre rendez vous chez votre vétérinaire en ligne </h2>
+        <div class = "lst_inf">
+            <div class = "info">
+                <h3>Connecter vous à votre compte client</h3>
+                <p>Accéder a votre espace personel en vous connectant sur votre compte client afin de retrouver toutes les informations vous concernant.</p>
+            </div>
+
+            <div class = "info">
+                <h3>Choisissez un créneau</h3>
+                <p>Accéder au calendrier des vétérinaire en temps réel et choisissez la date et l’heure qui vous convinnent Remplissez ensuite les informations utiles et nécessaire à la consultation</p>
+            </div>
+
+            <div class = "info">
+                <h3>Votre rendez est confirmé !</h3>
+                <p>Le vétérinaire est informé et vous n’avez plus qu’a vous rendre chez votre vétérinaire. </p>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
