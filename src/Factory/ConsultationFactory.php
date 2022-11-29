@@ -46,6 +46,7 @@ final class ConsultationFactory extends ModelFactory
             'motifConsultation' => self::faker()->sentence(15),
             'clinique' => self::faker()->boolean(),
             'urgente' => self::faker()->boolean(),
+
         ];
     }
 
