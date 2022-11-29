@@ -40,14 +40,14 @@ final class PersonneFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'nomPers' => self::faker()->text(),
-            'pnomPers' => self::faker()->text(),
-            'villePers' => self::faker()->text(),
-            'CPPers' => self::faker()->text(),
-            'telPers' => self::faker()->text(),
-            'loginPers' => self::faker()->text(),
-            'mdpPers' => self::faker()->text(),
-            'adrPers' => self::faker()->text(),
+            'nomPers' => self::faker()->lastName(),
+            'pnomPers' => self::faker()->firstName(),
+            'villePers' => self::faker()->city(),
+            'CPPers' => self::faker()->postcode(),
+            'telPers' => self::faker()->phoneNumber(),
+            'loginPers' => mb_strtolower(self::faker()->unique()->numerify('user-###')),
+            'mdpPers' => 'test',
+            'adrPers' => self::faker()->address(),
         ];
     }
 
