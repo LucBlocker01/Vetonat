@@ -39,7 +39,14 @@ final class ClientFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
+            'nomPers' => self::faker()->lastName(),
+            'pnomPers' => self::faker()->firstName(),
+            'villePers' => self::faker()->city(),
+            'CPPers' => self::faker()->postcode(),
+            'telPers' => self::faker()->phoneNumber(),
+            'loginPers' => mb_strtolower(self::faker()->unique()->numerify('user-###')),
+            'mdpPers' => 'test',
+            'adrPers' => self::faker()->address(),
         ];
     }
 
