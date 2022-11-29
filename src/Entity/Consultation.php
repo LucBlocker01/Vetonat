@@ -26,6 +26,9 @@ class Consultation
     #[ORM\Column]
     private ?bool $clinique = null;
 
+    #[ORM\Column]
+    private ?bool $urgente = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Consultation
     public function setClinique(bool $clinique): self
     {
         $this->clinique = $clinique;
+
+        return $this;
+    }
+
+    public function isUrgente(): ?bool
+    {
+        return $this->urgente;
+    }
+
+    public function setUrgente(bool $urgente): self
+    {
+        $this->urgente = $urgente;
 
         return $this;
     }
