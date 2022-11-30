@@ -17,7 +17,7 @@ class Consultation
     #[ORM\Column(length: 255)]
     private ?string $consultationDesc = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTime $dateConsultation = null;
 
     #[ORM\Column(length: 255)]

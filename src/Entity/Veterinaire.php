@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VeterinaireRepository::class)]
-class Veterinaire extends Personne
+class Veterinaire
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,6 +21,10 @@ class Veterinaire extends Personne
     #[ORM\ManyToOne(inversedBy: 'veterinaire')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Clinique $clinique = null;
+
+    #[ORM\OneToOne(inversedBy: 'veterinaire', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Personne $personne = null;
 
     public function __construct()
     {
@@ -70,6 +74,18 @@ class Veterinaire extends Personne
     public function setClinique(?Clinique $clinique): self
     {
         $this->clinique = $clinique;
+
+        return $this;
+    }
+
+    public function getPersonne(): ?Personne
+    {
+        return $this->personne;
+    }
+
+    public function setPersonne(Personne $personne): self
+    {
+        $this->personne = $personne;
 
         return $this;
     }
