@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ConsultationController!{% endblock %}
+{% block title %}Liste des Consultations
+    <style>
+        .main {
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+    <h1> Liste des Consultations</h1>
     <ul>
-        <li>Your controller at <code><a href="{{ '/working/hure0006/sae-developpement-application/src/Controller/ConsultationController.php'|file_link(0) }}">src/Controller/ConsultationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/working/hure0006/sae-developpement-application/templates/consultation/index.html.twig'|file_link(0) }}">templates/consultation/index.html.twig</a></code></li>
+        {% for cons in consultations %}
+            <li><p class="main">Description : </p><p>{{ cons.consultationDesc }}</p> </li>
+            <li><p>Motif : </p><p> {{cons.motifConsultation}}</p></li>
+            <li><p>Date de rendez-vous : </p><p> en travaux</p></li>
+            <br>
+
+{% endfor %}
     </ul>
-</div>
 {% endblock %}
