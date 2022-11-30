@@ -37,6 +37,12 @@ class Personne
     #[ORM\Column(length: 255)]
     private ?string $adrPers = null;
 
+    #[ORM\OneToOne(mappedBy: 'personne', cascade: ['persist', 'remove'])]
+    private ?Client $client = null;
+
+    #[ORM\OneToOne(mappedBy: 'personne', cascade: ['persist', 'remove'])]
+    private ?Veterinaire $veterinaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +140,40 @@ class Personne
     public function setAdrPers(string $adrPers): self
     {
         $this->adrPers = $adrPers;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(Client $client): self
+    {
+        // set the owning side of the relation if necessary
+        if ($client->getPersonne() !== $this) {
+            $client->setPersonne($this);
+        }
+
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getVeterinaire(): ?Veterinaire
+    {
+        return $this->veterinaire;
+    }
+
+    public function setVeterinaire(Veterinaire $veterinaire): self
+    {
+        // set the owning side of the relation if necessary
+        if ($veterinaire->getPersonne() !== $this) {
+            $veterinaire->setPersonne($this);
+        }
+
+        $this->veterinaire = $veterinaire;
 
         return $this;
     }

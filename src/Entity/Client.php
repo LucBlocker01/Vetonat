@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
-class Client extends Personne
+class Client
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,6 +17,10 @@ class Client extends Personne
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Animal::class)]
     private Collection $animal;
+
+    #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Personne $personne = null;
 
     public function __construct()
     {
@@ -54,6 +58,18 @@ class Client extends Personne
                 $animal->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPersonne(): ?Personne
+    {
+        return $this->personne;
+    }
+
+    public function setPersonne(Personne $personne): self
+    {
+        $this->personne = $personne;
 
         return $this;
     }

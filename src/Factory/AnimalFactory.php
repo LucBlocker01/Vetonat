@@ -38,20 +38,17 @@ final class AnimalFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
-        $lstEspece = [];
-        $EspeceFile = file_get_contents('src/data/Espece.json');
+        $EspeceFile = file_get_contents('src/DataFixtures/data/Espece.json');
         $instance = json_decode($EspeceFile, true);
-        foreach ($instance as $element) {
-            $lstEspece[] = $element;
-        }
 
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'nomAnimal' => self::faker()->name,
-            'EspeceAnimal' => $lstEspece[array_rand($lstEspece)],
+            'nomAnimal' => self::faker()->firstName,
+            'EspeceAnimal' => self::faker()->randomElement($instance)['name'],
             'Stereliser' => self::faker()->boolean(),
+            'ageAnimal'=>self::faker()->numberBetween(1, 15),
             'poidsAnimal' => self::faker()->numberBetween(1, 50),
-            'descriptionAnimal' => self::faker()->paragraph(),
+            'descriptionAnimal' => self::faker()->sentence(5),
         ];
     }
 

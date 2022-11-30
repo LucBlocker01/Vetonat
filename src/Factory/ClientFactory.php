@@ -4,28 +4,28 @@ namespace App\Factory;
 
 use App\Entity\Client;
 use App\Repository\ClientRepository;
-use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use Zenstruck\Foundry\RepositoryProxy;
 
 /**
  * @extends ModelFactory<Client>
  *
- * @method static Client|Proxy createOne(array $attributes = [])
- * @method static Client[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Client[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Client|Proxy find(object|array|mixed $criteria)
- * @method static Client|Proxy findOrCreate(array $attributes)
- * @method static Client|Proxy first(string $sortedField = 'id')
- * @method static Client|Proxy last(string $sortedField = 'id')
- * @method static Client|Proxy random(array $attributes = [])
- * @method static Client|Proxy randomOrCreate(array $attributes = [])
- * @method static Client[]|Proxy[] all()
- * @method static Client[]|Proxy[] findBy(array $attributes)
- * @method static Client[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Client[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static Client|Proxy                     createOne(array $attributes = [])
+ * @method static Client[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Client[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Client|Proxy                     find(object|array|mixed $criteria)
+ * @method static Client|Proxy                     findOrCreate(array $attributes)
+ * @method static Client|Proxy                     first(string $sortedField = 'id')
+ * @method static Client|Proxy                     last(string $sortedField = 'id')
+ * @method static Client|Proxy                     random(array $attributes = [])
+ * @method static Client|Proxy                     randomOrCreate(array $attributes = [])
+ * @method static Client[]|Proxy[]                 all()
+ * @method static Client[]|Proxy[]                 findBy(array $attributes)
+ * @method static Client[]|Proxy[]                 randomSet(int $number, array $attributes = [])
+ * @method static Client[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static ClientRepository|RepositoryProxy repository()
- * @method Client|Proxy create(array|callable $attributes = [])
+ * @method        Client|Proxy                     create(array|callable $attributes = [])
  */
 final class ClientFactory extends ModelFactory
 {
@@ -39,14 +39,7 @@ final class ClientFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'nomPers' => self::faker()->lastName(),
-            'pnomPers' => self::faker()->firstName(),
-            'villePers' => self::faker()->city(),
-            'CPPers' => self::faker()->postcode(),
-            'telPers' => self::faker()->phoneNumber(),
-            'loginPers' => mb_strtolower(self::faker()->unique()->numerify('user-###')),
-            'mdpPers' => 'test',
-            'adrPers' => self::faker()->address(),
+            'personne' => PersonneFactory::createOne(),
         ];
     }
 
