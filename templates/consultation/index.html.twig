@@ -2,7 +2,7 @@
 
 {% block title %}Liste des Consultations
     <style>
-        .main {
+         {
             font-weight: bold;
         }
     </style>
@@ -12,9 +12,10 @@
     <h1> Liste des Consultations</h1>
     <ul>
         {% for cons in consultations %}
-            <li><p class="main">Description : </p><p>{{ cons.consultationDesc }}</p> </li>
-            <li><p>Motif : </p><p> {{cons.motifConsultation}}</p></li>
-            <li><p>Date de rendez-vous : </p><p> en travaux</p></li>
+            <li > <p class="main">Motif : {{cons.motifConsultation}}</p></li>
+                <p class="main">Description : </p><p>{{ cons.consultationDesc }}</p>
+
+            <p>Date de rendez-vous :  {{ cons.dateConsultation|date() }}</p>
             <br>
 
 {% endfor %}
