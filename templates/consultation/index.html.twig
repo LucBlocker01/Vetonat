@@ -1,21 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Liste des Consultations
-    <style>
-         {
-            font-weight: bold;
-        }
-    </style>
+
 {% endblock %}
 
+
 {% block body %}
+    <style>
+        .main {
+            color: red;
+        }
+        .desc {
+            font-weight: bold;
+            color: green;
+        }
+        .date {
+            color: blue;
+        }
+    </style>
     <h1> Liste des Consultations</h1>
     <ul>
         {% for cons in consultations %}
-            <li > <p class="main">Motif : {{cons.motifConsultation}}</p></li>
-                <p class="main">Description : </p><p>{{ cons.consultationDesc }}</p>
+            <li > <h3 class="main">Motif : {{cons.motifConsultation}}</h3></li>
+                <p class="desc">Description : {{ cons.consultationDesc }}</p>
 
-            <p>Date de rendez-vous :  {{ cons.dateConsultation|date() }}</p>
+            <p class="date">Date de rendez-vous :  {{ cons.dateConsultation|date() }}</p>
             <br>
 
 {% endfor %}
