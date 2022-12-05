@@ -17,11 +17,22 @@
         .date {
             color: blue;
         }
+        .urgente {
+            background-color : gray;
+            border-style: solid;
+            border-width: 2px;
+            width: 95px;
+            color: red;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+        border-radius: 10px;
+        }
     </style>
     <h1> Liste des Consultations</h1>
     <ul>
         {% for cons in consultations %}
-            <li > <h3 class="main">Motif : {{cons.motifConsultation}}</h3></li>
+            <li> <h3 class="main">Motif : {{cons.motifConsultation}}</h3> {% if cons.urgente??true %} <div class="urgente">URGENT!</div>{% endif %}</li>
                 <p class="desc">Description : {{ cons.consultationDesc }}</p>
 
             <p class="date">Date de rendez-vous :  {{ cons.dateConsultation|date() }}</p>
