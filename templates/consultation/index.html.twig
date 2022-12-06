@@ -36,6 +36,7 @@
                 <p class="desc">Description : {{ cons.consultationDesc }}</p>
 
             <p class="date">Date de rendez-vous :  {{ cons.dateConsultation|date() }}</p>
+            <button><a href="/client/{{ cons.animal.client.id }}/{{ cons.animal.id }}">Animal Concerné</a></button>
             <br>
 
 {% endfor %}
