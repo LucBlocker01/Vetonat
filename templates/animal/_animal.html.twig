@@ -1,0 +1,11 @@
+<ul class="contacts">
+    {% for animal in lstAnimal %}
+        <li>
+            <a href="/animal/{{ animal.id }}">
+                <span class="animal">
+                    <span class="nomAnimal">{{ animal.nomAnimal }} : </span>
+                    <span class="firstname">{{ animal.EspeceAnimal}}</span>
+                </span> </a>
+        </li>
+    {% endfor %}
+    <ul>
