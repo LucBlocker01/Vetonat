@@ -18,7 +18,7 @@ class Clinique
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adrClinique = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $CPClinique = null;
 
     #[ORM\Column(length: 255, nullable: true)]

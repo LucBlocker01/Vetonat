@@ -44,7 +44,7 @@ final class ConsultationFactory extends ModelFactory
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'consultationDesc' => self::faker()->sentence(15),
             'dateConsultation' => $date,
-            'motifConsultation' => self::faker()->sentence(15),
+            'motifConsultation' => self::faker()->sentence(3),
             'clinique' => self::faker()->boolean(),
             'urgente' => self::faker()->boolean(),
         ];
