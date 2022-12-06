@@ -39,6 +39,18 @@ class AnimalRepository extends ServiceEntityRepository
         }
     }
 
+    // @return Animal[]
+    public function search(int $cli_id): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->leftJoin('p.client', 'cli')
+            ->addSelect('cli as Client')
+            ->where('p.client = '.$cli_id)
+            ->addOrderBy('p.nomAnimal', 'ASC');
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
 //    /**
 //     * @return Animal[] Returns an array of Animal objects
 //     */
