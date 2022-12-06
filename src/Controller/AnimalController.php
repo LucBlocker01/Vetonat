@@ -25,4 +25,13 @@ class AnimalController extends AbstractController
             'lstAnimal' => $listAnimal,
         ]);
     }
+
+    #[Route('/client/{id}/{Ani_id}', name: 'app_animal_show')]
+    public function show(Animal $animal): Response
+    {
+        return $this->render('animal/show.html.twig', [
+            'animal' => $animal,
+            'lstConsult' => $animal->getConsultation(),
+        ]);
+    }
 }

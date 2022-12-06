@@ -1,7 +1,7 @@
 <ul class="contacts">
     {% for animal in lstAnimal %}
         <li>
-            <a href="/animal/{{ animal.id }}">
+            <a href="/client/{{ animal.client.id }}/{{ animal.id }}">
                 <span class="animal">
                     <span class="nomAnimal">{{ animal.nomAnimal }} : </span>
                     <span class="firstname">{{ animal.EspeceAnimal}}</span>
