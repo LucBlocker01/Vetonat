@@ -39,7 +39,7 @@ final class ClientFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'personne' => PersonneFactory::createOne(),
+            'personne' => PersonneFactory::createOne(['roles' => ['ROLE_USER']]),
         ];
     }
 
