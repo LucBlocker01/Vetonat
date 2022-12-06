@@ -1,0 +1,38 @@
+.tete {
+    height:auto;
+    position:relative;
+    background-color: #23ADA5;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.tete_nav li {
+    display: flex;
+    width:auto;
+    margin: 0 30px;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+
+.tete_nav{
+    display:flex;
+    flex-direction: row;
+}
+
+.global{
+    display: contents;
+}
+
+.contact{
+    height:auto;
+    position:relative;
+    background-color: #23ADA5;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    text-align: center;
+}
