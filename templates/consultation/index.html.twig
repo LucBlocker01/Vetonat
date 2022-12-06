@@ -1,20 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ConsultationController!{% endblock %}
+{% block title %}Liste des Consultations
+
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+    <style>
+        .main {
+            color: red;
+        }
+        .desc {
+            font-weight: bold;
+            color: green;
+        }
+        .date {
+            color: blue;
+        }
+        .urgente {
+            background-color : gray;
+            border-style: solid;
+            border-width: 2px;
+            width: 95px;
+            color: red;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+        border-radius: 10px;
+        }
+    </style>
+    <h1> Liste des Consultations</h1>
     <ul>
-        <li>Your controller at <code><a href="{{ '/working/hure0006/sae-developpement-application/src/Controller/ConsultationController.php'|file_link(0) }}">src/Controller/ConsultationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/working/hure0006/sae-developpement-application/templates/consultation/index.html.twig'|file_link(0) }}">templates/consultation/index.html.twig</a></code></li>
+        {% for cons in consultations %}
+            <li> <h3 class="main">Motif : {{cons.motifConsultation}}</h3> {% if cons.urgente??true %} <div class="urgente">URGENT!</div>{% endif %}</li>
+                <p class="desc">Description : {{ cons.consultationDesc }}</p>
+
+            <p class="date">Date de rendez-vous :  {{ cons.dateConsultation|date() }}</p>
+            <button><a href="/client/{{ cons.animal.client.id }}/{{ cons.animal.id }}">Animal Concerné</a></button>
+            <br>
+
+{% endfor %}
     </ul>
-</div>
 {% endblock %}

@@ -1,20 +1,25 @@
-{% extends 'base.html.twig' %}
+<div>
+    <span class="en-tete">
+        <p>Nom</p>
+        <p>Prénom</p>
+        <p>ville</p>
+        <p>code postal</p>
+        <form class="d-flex" role="search" method="get" action="">
+            <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </span>
+    <ul class="Personne">
+        {% for  Personne in lstContact %}
+            <li><span class="contact">
+                            <span class="nom">{{Personne.nomPers}}</span>
+                            <span class="pnom">{{Personne.pnomPers}}</span>
+                            <span class="ville">{{Personne.villePers}}</span>
+                            <span class="code">{{Personne.cpPers}}</span>
+                            <span class="tel">{{ Personne.telPers }}</span>
+                    <button><a href="/client/{{ Personne.id }}">Animaux</a></button>
+                </span></li>
 
-{% block title %}Hello PersonneController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/working/fran0124/sae-developpement-application/src/Controller/PersonneController.php'|file_link(0) }}">src/Controller/PersonneController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/working/fran0124/sae-developpement-application/templates/personne/index.html.twig'|file_link(0) }}">templates/personne/index.html.twig</a></code></li>
+        {% endfor %}
     </ul>
 </div>
-{% endblock %}

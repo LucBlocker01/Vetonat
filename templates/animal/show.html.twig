@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ animal.nomAnimal }}
+{% endblock %}
+
+{% block body %}
+    <h1>Voici les informations concernant {{ animal.nomAnimal }}</h1>
+        <ul>
+            <li>Nom : {{ animal.nomAnimal }}</li>
+            <li>espece : {{ animal.especeAnimal }}</li>
+    {%  if animal.stereliser == false %}
+            <li>Stéréliser : Non</li>
+    {% else %}
+            <li>Stéréliser : Oui</li>
+    {% endif %}
+            <li>Age : {{ animal.ageAnimal }}</li>
+            <li>Poids : {{ animal.poidsAnimal }}</li>
+            <li>Description : {{ animal.descriptionAnimal }}</li>
+            <li>Dernière consultation :</li>
+            {%for consultation in lstConsult %}
+                <p> {{ consultation.consultationDesc }}</p>
+                <p> {{ consultation.motifConsultation }}</p>
+            {% endfor %}
+        <ul>
+{% endblock %}
