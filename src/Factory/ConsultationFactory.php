@@ -39,12 +39,13 @@ final class ConsultationFactory extends ModelFactory
     protected function getDefaults(): array
     {
         $date = self::faker()->dateTime();
+        $motif = json_decode(file_get_contents('src/DataFixtures/data/Motif.json'), true);
 
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'consultationDesc' => self::faker()->sentence(15),
             'dateConsultation' => $date,
-            'motifConsultation' => self::faker()->sentence(3),
+            'motifConsultation' => self::faker()->randomElement($motif)['name'],
             'clinique' => self::faker()->boolean(),
             'urgente' => self::faker()->boolean(),
         ];
