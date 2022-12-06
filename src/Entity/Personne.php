@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\PersonneRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @method string getUserIdentifier()
+ */
 #[ORM\Entity(repositoryClass: PersonneRepository::class)]
-class Personne
+class Personne implements UserInterface,PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -36,6 +41,9 @@ class Personne
 
     #[ORM\Column(length: 255)]
     private ?string $adrPers = null;
+
+    #[ORM\Column]
+    private array $roles = [];
 
     #[ORM\OneToOne(mappedBy: 'personne', cascade: ['persist', 'remove'])]
     private ?Client $client = null;
@@ -176,5 +184,42 @@ class Personne
         $this->veterinaire = $veterinaire;
 
         return $this;
+    }
+
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->mdpPers;
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getUsername() : string
+    {
+        return (string) $this->loginPers;
+    }
+
+    public function __call(string $name, array $arguments)
+    {
+        // TODO: Implement @method string getUserIdentifier()
     }
 }
