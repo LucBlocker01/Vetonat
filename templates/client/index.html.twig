@@ -1,4 +1,4 @@
-{% extends 'base.html.twirer les émojis et les autocollants au bot de Snowsgg' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Hello ClientController!{% endblock %}
 
@@ -17,4 +17,6 @@
         <li>Your template at <code><a href="{{ '/working/fran0124/sae-developpement-application/templates/client/index.html.twig'|file_link(0) }}">templates/client/index.html.twig</a></code></li>
     </ul>
 </div>
+{{ include('client/_navbar.html.twig') }}
+
 {% endblock %}

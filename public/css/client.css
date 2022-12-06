@@ -1,0 +1,50 @@
+.navbar_client {
+    border: 1px solid purple; /*contour*/
+    background-color: rgb(44, 43, 43);html, body, nav {
+                                          padding:0;
+                                          margin:0;
+                                      }
+
+nav {
+    width:100vw;
+    height:auto;
+    position:relative;
+    border:solid 1px black;
+    margin:25px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+ul, li {
+    list-style-type:none;
+}
+
+li {
+    width:auto;
+    margin:0 25px;
+}
+
+.one ul {
+    display:inline-flex;
+    justify-content:flex-end;
+}
+
+.logo {
+    background:red;
+}
+
+.logo-one {
+    height:50px;
+    width:50px;
+}
+
+.logo-two {
+    height:100px;
+    width:100px;
+}
+
+.logo-three {
+    height:200px;
+    width:200px;
+}

@@ -1,0 +1,50 @@
+<style>
+    nav {
+        height:auto;
+        position:relative;
+        border: 2px solid red; /*contour*/
+        background-color: rgb(44, 43, 43);
+        display:flex;
+        align-items:center;
+        justify-content:space-around;
+        text-align: center;
+        padding: 10px; /*largeur*/
+    }
+
+    ul, li {
+        list-style-type:none;
+    }
+
+    .list_navbar {
+        display: flex;
+        width:auto;
+        margin: 0 30px;
+        text-decoration: none;
+    }
+
+    .list_navbar a {
+        color: white;
+    }
+
+    a:hover {
+        background-color: white;
+    }
+
+    .navbar_client ul {
+        display:flex;
+        border: 1px solid purple;
+        background-color: rgb(28, 201, 151);
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+
+<nav class="navbar_client">
+    <ul class="navbar_client_infos">
+        <li class="list_navbar"><a href="#">Mes Rendez-Vous</a></li>
+        <li class="list_navbar"><a href="#">Consultation urgente</a></li>
+        <li class="list_navbar"><a href="#">Contacter votre vétérinaire</a></li>
+        <li class="list_navbar"><a href="#">FAQ</a></li>
+        <li class="list_navbar"><a href="#">Se Déconnecter</a></li>
+    </ul>
+</nav>
