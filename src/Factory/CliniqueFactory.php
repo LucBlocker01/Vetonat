@@ -41,7 +41,7 @@ final class CliniqueFactory extends ModelFactory
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'nomClinique' => 'Vétonat',
-            'CPClinique' => self::faker()->postcode(),
+            'CPClinique' => '51420',
             'villeClinique' => self::faker()->city(),
             'telClinique' => '0326458912',
             'adrClinique' => self::faker()->streetAddress(),
