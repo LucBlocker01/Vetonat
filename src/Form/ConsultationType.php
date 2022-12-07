@@ -17,9 +17,9 @@ class ConsultationType extends AbstractType
             ->add('motifConsultation')
             ->add('clinique')
             ->add('urgente')
-            ->add('animal')
-            ->add('traitement')
-            ->add('veterinaire')
+            //->add('animal')
+            //->add('traitement')
+            //->add('veterinaire')
         ;
     }
 
