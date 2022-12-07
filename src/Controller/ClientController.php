@@ -3,22 +3,15 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ClientController extends AbstractController
 {
-    #[Route('/', name: 'app_client')]
+    #[Route('/acceuilClient', name: 'app_client')]
     public function index(): Response
     {
         return $this->render('client/index.html.twig', [
-            'controller_name' => 'ClientController',
-        ]);
-    }
-
-    #[Route('/acceuilClient/rdv', name: 'app_client_rendezvous')]
-    public function indexRdv(): Response
-    {
-        return $this->render('client/index_rdv.html.twig', [
-            'controller_name' => 'ClientController',
         ]);
     }
 
@@ -26,7 +19,7 @@ class ClientController extends AbstractController
     public function indexUrgence(): Response
     {
         return $this->render('client/index_urgence.html.twig', [
-            'controller_name' => 'ClientController',
+
         ]);
     }
 
@@ -34,7 +27,7 @@ class ClientController extends AbstractController
     public function indexContact(): Response
     {
         return $this->render('client/index_contact.html.twig', [
-            'controller_name' => 'ClientController',
+
         ]);
     }
 

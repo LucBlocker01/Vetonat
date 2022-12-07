@@ -21,7 +21,7 @@
         padding: 10px;
     }
 
-    a:hover {
+    a:hover, a.{{ current_page}}  {
         background-color: white;
         color: black;
     }
@@ -35,10 +35,10 @@
 
 <nav class="navbar_client">
     <ul class="navbar_client_infos">
-        <li class="list_navbar"><a href="#">Mes Rendez-Vous</a></li>
-        <li class="list_navbar"><a href="#">Consultation urgente</a></li>
-        <li class="list_navbar"><a href="#">Contacter votre vétérinaire</a></li>
-        <li class="list_navbar"><a href="#">FAQ</a></li>
+        <li class="list_navbar"><a href="{{ path('app_client')}}" class="rdv">Mes Rendez-Vous</a></li>
+        <li class="list_navbar"><a href={{path('app_client_urgence')}} class="consult">Consultation urgente</a></li>
+        <li class="list_navbar"><a href={{ path('app_client_contact')}} class="contact">Contacter votre vétérinaire</a></li>
+        <li class="list_navbar"><a href={{ path('app_client_faq') }} class="faq">FAQ</a></li>
         <li class="list_navbar"><a href="#">Se Déconnecter</a></li>
     </ul>
 </nav>
