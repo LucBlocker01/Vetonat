@@ -1,30 +1,32 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/lst_client.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1
+/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 {% endblock %}
 {% block body %}
 <table class="global">
     <thead class="tete">
         <tr class="tete_nav">
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>ville</th>
-            <th>code postal</th>
-            <th>telephone</th>
-            <th><form class="d-flex" role="search" method="get" action="">
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">ville</th>
+            <th scope="col">code postal</th>
+            <th scope="col">telephone</th>
+            <th scope="col"><form class="d-flex" role="search" method="get" action="">
                 <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="boutton" type="submit">Search </button>
             </form></th>
         </tr>
     </thead>
     <tbody class="Personne">
         {% for  Personne in lstContact %}
             <tr class="contact">
-                            <td class="nom">{{Personne.nomPers}}</td>
+                            <th scope="row" class="nom">{{Personne.nomPers}}</th>
                             <td class="pnom">{{Personne.pnomPers}}</td>
                             <td class="ville">{{Personne.villePers}}</td>
                             <td class="code">{{Personne.cpPers}}</td>
                             <td class="tel">{{ Personne.telPers }}</td>
-                    <td><button><a href="/client/{{ Personne.id }}">Animaux</a></button></td>
+                    <td class="center"><button class="boutton"><a href="/client/{{ Personne.id }}">Animaux</a></button></td>
             </tr>
 
         {% endfor %}
