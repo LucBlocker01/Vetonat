@@ -1,38 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .tete {
     height:auto;
     position:relative;
     background-color: #23ADA5;
-    display:flex;
-    align-items:center;
     justify-content: space-between;
     text-align: center;
 }
 
-.tete_nav li {
-    display: flex;
-    width:auto;
-    margin: 0 30px;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-}
 
 
 .tete_nav{
-    display:flex;
-    flex-direction: row;
+
 }
 
 .global{
-    display: contents;
+    border-collapse: collapse;
+    width: 100%;
+
 }
 
 .contact{
-    height:auto;
-    position:relative;
-    background-color: #23ADA5;
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    text-align: center;
+    border: #AAAAAA;
+    margin: 10px;
+    padding: 10px;
+}
+
+th{
+    color: white ;
+}
+.contact:hover {
+    background:#EA6200;
+}
+form {
+    margin: 10px;
 }

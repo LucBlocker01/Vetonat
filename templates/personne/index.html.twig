@@ -2,31 +2,32 @@
     <link rel="stylesheet" href="{{ asset('css/lst_client.css') }}">
 {% endblock %}
 {% block body %}
-<div class="global">
-    <div class="tete">
-        <ul class="tete_nav">
-            <li>Nom</li>
-            <li>Prénom</li>
-            <li>ville</li>
-            <li>code postal</li>
-            <li><form class="d-flex" role="search" method="get" action="">
+<table class="global">
+    <thead class="tete">
+        <tr class="tete_nav">
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>ville</th>
+            <th>code postal</th>
+            <th>telephone</th>
+            <th><form class="d-flex" role="search" method="get" action="">
                 <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-            </form></li>
-        </ul>
-    </div>
-    <ul class="Personne">
+            </form></th>
+        </tr>
+    </thead>
+    <tbody class="Personne">
         {% for  Personne in lstContact %}
-            <div class="contact">
-                            <span class="nom">{{Personne.nomPers}}</span>
-                            <span class="pnom">{{Personne.pnomPers}}</span>
-                            <span class="ville">{{Personne.villePers}}</span>
-                            <span class="code">{{Personne.cpPers}}</span>
-                            <span class="tel">{{ Personne.telPers }}</span>
-                    <button><a href="/client/{{ Personne.id }}">Animaux</a></button>
-            </div>
+            <tr class="contact">
+                            <td class="nom">{{Personne.nomPers}}</td>
+                            <td class="pnom">{{Personne.pnomPers}}</td>
+                            <td class="ville">{{Personne.villePers}}</td>
+                            <td class="code">{{Personne.cpPers}}</td>
+                            <td class="tel">{{ Personne.telPers }}</td>
+                    <td><button><a href="/client/{{ Personne.id }}">Animaux</a></button></td>
+            </tr>
 
         {% endfor %}
-    </ul>
-</div>
+    </tbody>
+</table>
 {% endblock %}
