@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CliniqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,15 +20,16 @@ class ClientController extends AbstractController
     public function indexUrgence(): Response
     {
         return $this->render('client/index_urgence.html.twig', [
-
         ]);
     }
 
     #[Route('/acceuilClient/contact', name: 'app_client_contact')]
-    public function indexContact(): Response
+    public function indexContact(CliniqueRepository $cliniqueRepository): Response
     {
-        return $this->render('client/index_contact.html.twig', [
+        $clinique = $cliniqueRepository->findAll();
 
+        return $this->render('client/index_contact.html.twig', [
+            'clinique' => $clinique,
         ]);
     }
 
