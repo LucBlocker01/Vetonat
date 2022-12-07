@@ -4,13 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Animal;
 use App\Entity\Client;
-use App\Entity\Contact;
 use App\form\AnimalType;
-use App\Form\ContactType;
 use App\Repository\AnimalRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,6 +28,7 @@ class AnimalController extends AbstractController
 
         return $this->render('animal/index.html.twig', [
             'lstAnimal' => $listAnimal,
+            'clientId' => $clientId,
         ]);
     }
 
@@ -41,7 +41,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/client/{cli_id}/{id}/update', name: 'app_contact_update')]
+    #[Route('/animal/{id}/update', name: 'app_animal_update')]
     #[ParamConverter('animal', options: ['mapping' => ['id' => 'id']])]
     public function update(ManagerRegistry $doctrine, Animal $animal, Request $request)
     {
@@ -64,5 +64,58 @@ class AnimalController extends AbstractController
             'animal' => $animal,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/client/{id}/animal/create', name: 'app_animal_create', requirements: ['id' => '\d+'])]
+    public function create(ManagerRegistry $doctrineContact, Request $request, Client $client)
+    {
+        $animal = new Animal();
+        $animal->setClient($client);
+        $form = $this->createForm(AnimalType::class, $animal);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrineContact->getManager();
+            $entityManager->persist($animal);
+            /* @var Animal $editContact */
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_animal', ['clientId' => $client->getId()]);
+        }
+
+        return $this->renderForm('animal/create.html.twig', [
+            'animal' => $animal,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/animal/{id}/delete', name: 'app_animal_delete', requirements: ['id' => '\d+'])]
+    public function delete(Animal $animal, Request $request, ManagerRegistry $doctrine)
+    {
+        $form = $this->createFormBuilder($animal)
+            ->add('Supprimer', SubmitType::class, ['label' => 'Supprimer'])
+            ->add('Annuler', SubmitType::class, ['label' => 'Annuler'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('Supprimer')->isClicked()) {
+                $entityManager = $doctrine->getManager();
+                $entityManager->remove($animal);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_animal', ['clientId' => $animal->getClient()->getId()]);
+            } else {
+                return $this->redirectToRoute('app_animal_show', [
+                    'id' => $animal->getId(),
+                ]);
+            }
+        } else {
+            return $this->render('animal/delete.html.twig', [
+                'animal' => $animal,
+                'form' => $form->createView(),
+            ]);
+        }
     }
 }
