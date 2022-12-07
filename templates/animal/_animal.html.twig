@@ -1,0 +1,12 @@
+<ul class="contacts">
+    <button style = "float: right" onclick="window.location.href ='{{ path('app_animal_create', {'id': clientId }) }}';">Ajouter un animal</button>
+    {% for animal in lstAnimal %}
+        <li>
+            <a href="{{ path('app_animal_show', {'id': animal.id }) }}">
+                <span class="animal">
+                    <span class="nomAnimal">{{ animal.nomAnimal }} : </span>
+                    <span class="Espece">{{ animal.EspeceAnimal}}</span>
+                </span> </a>
+        </li>
+    {% endfor %}
+    <ul>

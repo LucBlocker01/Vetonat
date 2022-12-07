@@ -26,9 +26,8 @@
                             <td class="ville">{{Personne.villePers}}</td>
                             <td class="code">{{Personne.cpPers}}</td>
                             <td class="tel">{{ Personne.telPers }}</td>
-                    <td class="center"><button class="boutton"><a href="/client/{{ Personne.id }}">Animaux</a></button></td>
+                    <td class="center"><button class="boutton"><a href="{{ path('app_animal', {'clientId': Personne.id }) }}">Animaux</a></button></td>
             </tr>
-
         {% endfor %}
     </tbody>
 </table>

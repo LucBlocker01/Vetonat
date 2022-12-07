@@ -1,0 +1,19 @@
+{% extends 'client/_baseClient.html.twig' %}
+
+{% block title %}Acceuil Client
+{% endblock %}
+
+{% block footer %}
+    {{ include('client/_navbar.html.twig', { current_page: 'contact'}) }}
+    <div class="contact">
+        <div class="contact_clinique">
+            <h3>Contacter la clinique</h3>
+            <ul>
+                <li>{{ clinique.telephone }}</li>
+            </ul>
+        </div>
+        <div class="contact_veterinaire">
+
+        </div>
+    </div>
+{% endblock %}

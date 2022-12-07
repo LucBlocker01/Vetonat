@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Personne;
 use App\Repository\PersonneRepository;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -29,11 +30,13 @@ use Zenstruck\Foundry\Proxy;
  */
 final class PersonneFactory extends ModelFactory
 {
-    public function __construct()
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();
 
-        // TODO inject services if required (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services)
+        $this->passwordHasher = $passwordHasher;
     }
 
     protected function getDefaults(): array
@@ -54,7 +57,9 @@ final class PersonneFactory extends ModelFactory
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
         return $this
-            // ->afterInstantiate(function(Personne $personne): void {})
+            ->afterInstantiate(function (Personne $personne) {
+                $personne->setPassword($this->passwordHasher->hashPassword($personne, $personne->getPassword()));
+            })
         ;
     }
 

@@ -1,0 +1,44 @@
+<style>
+    nav {
+        height:auto;
+        position:relative;
+        background-color: #23ADA5;
+        display:flex;
+        align-items:center;
+        justify-content:space-around;
+        text-align: center;
+    }
+
+    .list_navbar {
+        display: flex;
+        width:auto;
+        margin: 0 30px;
+    }
+
+    .list_navbar a {
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+    }
+
+    a:hover, a.{{ current_page}}  {
+        background-color: white;
+        color: black;
+    }
+
+    .navbar_client_infos {
+        display:flex;
+        flex-direction: row;
+        text-align: center;
+    }
+</style>
+
+<nav class="navbar_client">
+    <ul class="navbar_client_infos">
+        <li class="list_navbar"><a href="{{ path('app_client')}}" class="rdv">Mes Rendez-Vous</a></li>
+        <li class="list_navbar"><a href={{path('app_client_urgence')}} class="consult">Consultation urgente</a></li>
+        <li class="list_navbar"><a href={{ path('app_client_contact')}} class="contact">Contacter votre vétérinaire</a></li>
+        <li class="list_navbar"><a href={{ path('app_client_faq') }} class="faq">FAQ</a></li>
+        <li class="list_navbar"><a href="/logout">Se Déconnecter</a></li>
+    </ul>
+</nav>

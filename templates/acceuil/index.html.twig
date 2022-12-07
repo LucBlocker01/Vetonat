@@ -12,18 +12,37 @@
         <p>Vetonat Votre vétérinaire à porter de clic </p>
         </div>
         <div class="espace">
-            <a href="#">
-                <div class="veto">
-                    <p>Espace véterinaire</p>
-                    <img src="/img/general/veto.png">
-                </div>
-            </a>
-            <a href="#">
-                <div class="client">
-                    <p>Espace client</p>
-                    <img src="/img/general/client.png">
-                </div>
-            </a>
+            {% if is_granted('ROLE_USER') %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_acceuil') }}">
+                        <div class="veto">
+                            <p>Bonjour Vétérinaire</p>
+                            <img src="/img/general/veto.png">
+                        </div>
+                    </a>
+                    <a href="/logout">Se Déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_client') }}">
+                        <div class="client">
+                            <p>Bonjour Client </p>
+                            <img src="/img/general/client.png">
+                        </div>
+                    </a>
+                {% endif %}
+            {% else %}
+                <a href="{{ path('app_login') }}">
+                    <div class="veto">
+                        <p>Espace véterinaire</p>
+                        <img src="/img/general/veto.png">
+                    </div>
+                </a>
+                <a href="{{ path('app_login') }}">
+                    <div class="client">
+                        <p>Espace client</p>
+                        <img src="/img/general/client.png">
+                    </div>
+                </a>
+            {% endif %}
         </div>
     </header>
     <div class="message">

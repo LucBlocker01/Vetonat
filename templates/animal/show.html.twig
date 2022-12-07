@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ animal.nomAnimal }}
+{% endblock %}
+
+{% block body %}
+    <button style = "float: right" onclick="window.location.href ='{{ path('app_animal_update', {'id': animal.id }) }}';">Modifier</button>
+    <button style = "float: right" onclick="window.location.href ='{{ path('app_animal_delete', {'id': animal.id }) }}';">Supprimer</button>
+    <h1>Voici les informations concernant {{ animal.nomAnimal }}</h1>
+        <ul>
+            <li>Nom : {{ animal.nomAnimal }}</li>
+            <li>espece : {{ animal.especeAnimal }}</li>
+    {%  if animal.stereliser == false %}
+            <li>Stéréliser : Non</li>
+    {% else %}
+            <li>Stéréliser : Oui</li>
+    {% endif %}
+            <li>Age : {{ animal.ageAnimal }}</li>
+            <li>Poids : {{ animal.poidsAnimal }}</li>
+            <li>Description : {{ animal.descriptionAnimal }}</li>
+            <li>Dernière consultation :</li>
+            {%for consultation in lstConsult %}
+                <p> Description : {{ consultation.consultationDesc }}</p>
+                <p> Motif : {{ consultation.motifConsultation }}</p>
+            {% endfor %}
+        <ul>
+{% endblock %}

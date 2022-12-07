@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une consultation{% endblock %}
+
+{% block body %}
+<h1> Création d'une consultation</h1>
+
+    {{ form_start(form, {method:'POST'}) }}
+    {{ form_row(form.motifConsultation, {label : 'Motif :'}) }}
+    {{ form_row(form.dateConsultation, {label : 'Date :'}) }}
+    {{ form_row(form.animal, {label: 'Animal :'}) }}
+    {{ form_row(form.consultationDesc, {label : 'Description :'}) }}
+    <button type="submit">Créer</button>
+
+{% endblock %}

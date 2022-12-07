@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_USER') %}
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/logout">Deconnexion </a>
+        </li>
+    {% else %}
+<form method="post">
+    {% if error %}
+        <div >{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.personne.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputLoginPers">Login Pers</label>
+    <input type="text" value="{{ last_username }}" name="loginPers" id="inputLoginPers" class="form-control" autocomplete="loginPers" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="mdpPers" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <button type="submit">
+        Sign in
+    </button>
+</form>
+    {% endif %}
+{% endblock %}
