@@ -33,7 +33,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
         return new Passport(
             new UserBadge($loginPers),
-            new PasswordCredentials($request->request->get('password', '')),
+            new PasswordCredentials($request->request->get('mdpPers', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
             ]
@@ -46,9 +46,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse('/');
     }
 
     protected function getLoginUrl(Request $request): string
