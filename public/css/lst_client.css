@@ -1,0 +1,57 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.tete {
+    height:auto;
+    position:relative;
+    background-color: #23ADA5;
+    justify-content: space-between;
+    text-align: center;
+}
+
+
+
+.tete_nav{
+
+}
+
+.global{
+    border-collapse: collapse;
+    position: center;
+    padding: 50px;
+    width: 100%;
+
+}
+
+.contact{
+    border: #AAAAAA;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+.tete_nav{
+    color: white ;
+}
+
+.contact:hover {
+    background:#EA6200;
+}
+form {
+    margin: 10px;
+}
+
+.boutton {
+    color: #EA6200;
+    border-color: #EA6200;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0px 10px 0px 10px;
+}
+
+
+.center{
+    text-align: center;
+}

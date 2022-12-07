@@ -1,25 +1,34 @@
-<div>
-    <span class="en-tete">
-        <p>Nom</p>
-        <p>Prénom</p>
-        <p>ville</p>
-        <p>code postal</p>
-        <form class="d-flex" role="search" method="get" action="">
-            <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </span>
-    <ul class="Personne">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/lst_client.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1
+/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% endblock %}
+{% block body %}
+<table class="global">
+    <thead class="tete">
+        <tr class="tete_nav">
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">ville</th>
+            <th scope="col">code postal</th>
+            <th scope="col">telephone</th>
+            <th scope="col"><form class="d-flex" role="search" method="get" action="">
+                <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
+                <button class="boutton" type="submit">Search </button>
+            </form></th>
+        </tr>
+    </thead>
+    <tbody class="Personne">
         {% for  Personne in lstContact %}
-            <li><span class="contact">
-                            <span class="nom">{{Personne.nomPers}}</span>
-                            <span class="pnom">{{Personne.pnomPers}}</span>
-                            <span class="ville">{{Personne.villePers}}</span>
-                            <span class="code">{{Personne.cpPers}}</span>
-                            <span class="tel">{{ Personne.telPers }}</span>
-                    <button><a href="{{ path('app_animal', {'clientId': Personne.id }) }}">Animaux</a></button>
-                </span></li>
-
+            <tr class="contact">
+                            <th scope="row" class="nom">{{Personne.nomPers}}</th>
+                            <td class="pnom">{{Personne.pnomPers}}</td>
+                            <td class="ville">{{Personne.villePers}}</td>
+                            <td class="code">{{Personne.cpPers}}</td>
+                            <td class="tel">{{ Personne.telPers }}</td>
+                    <td class="center"><button class="boutton"><a href="{{ path('app_animal', {'clientId': Personne.id }) }}">Animaux</a></button></td>
+            </tr>
         {% endfor %}
-    </ul>
-</div>
+    </tbody>
+</table>
+{% endblock %}
