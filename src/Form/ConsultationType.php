@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Animal;
 use App\Entity\Consultation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,10 +18,15 @@ class ConsultationType extends AbstractType
             ->add('motifConsultation')
             ->add('clinique')
             ->add('urgente')
-            //->add('animal')
-            //->add('traitement')
-            //->add('veterinaire')
+            /*->add('animal', Animal::class, [
+                'class' => Animal::class,
+                'choice_label' => 'name',
+                'required' => true,
+            ]) */
         ;
+
+        // ->add('traitement')
+        // ->add('veterinaire')
     }
 
     public function configureOptions(OptionsResolver $resolver): void
