@@ -1,4 +1,5 @@
 <ul class="contacts">
+    <button style = "float: right" onclick="window.location.href ='{{ path('app_animal_create', {'id': clientId }) }}';">Ajouter un animal</button>
     {% for animal in lstAnimal %}
         <li>
             <a href="{{ path('app_animal_show', {'id': animal.id }) }}">
