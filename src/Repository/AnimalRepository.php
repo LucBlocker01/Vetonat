@@ -38,6 +38,20 @@ class AnimalRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    /**
+     * @param int $clientId
+     * @return Animal[]
+     */
+    public function findByClient(int $clientId): array
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.client = :client')
+            ->setParameter('client', $clientId);
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
 //    /**
 //     * @return Animal[] Returns an array of Animal objects
 //     */
