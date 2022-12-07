@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    <button style = "float: right" onclick="window.location.href ='http://localhost:8000/client/{{ animal.client.id }}/{{  animal.id}}/update';">Modifier</button>
     <h1>Voici les informations concernant {{ animal.nomAnimal }}</h1>
         <ul>
             <li>Nom : {{ animal.nomAnimal }}</li>
@@ -19,8 +20,8 @@
             <li>Description : {{ animal.descriptionAnimal }}</li>
             <li>Dernière consultation :</li>
             {%for consultation in lstConsult %}
-                <p> {{ consultation.consultationDesc }}</p>
-                <p> {{ consultation.motifConsultation }}</p>
+                <p> Description : {{ consultation.consultationDesc }}</p>
+                <p> Motif : {{ consultation.motifConsultation }}</p>
             {% endfor %}
         <ul>
 {% endblock %}
