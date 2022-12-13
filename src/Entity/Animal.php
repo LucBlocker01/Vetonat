@@ -33,7 +33,7 @@ class Animal
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $descriptionAnimal = null;
 
-    #[ORM\ManyToOne(inversedBy: 'animal')]
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'], inversedBy: 'animal')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 

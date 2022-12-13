@@ -38,16 +38,19 @@ class PersonneRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
     /**
      * @return Personne[]
      */
     public function search(string $txt = ''): array
     {
         $qb = $this->createQueryBuilder('p')
-            ->where('p.pnomPers like :txt OR p.nomPers like :txt')
+            ->where('p.roles not like :role')
+            ->setParameter(':role', '%ROLE_ADMIN%')
+            ->AndWhere('p.pnomPers like :txt OR p.nomPers like :txt')
             ->setParameter(':txt', "%$txt%")
-            ->addOrderBy('p.pnomPers', 'ASC')
-            ->addOrderBy('p.nomPers', 'ASC');
+            ->addOrderBy('p.nomPers', 'ASC')
+            ->addOrderBy('p.pnomPers', 'ASC');
 
         $query = $qb->getQuery();
 
