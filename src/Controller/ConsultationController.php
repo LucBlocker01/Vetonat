@@ -23,7 +23,7 @@ class ConsultationController extends AbstractController
         ]);
     }
 
-    #[Route('/create/consultation', name: 'app_create_consultation')]
+    #[Route('consultation/create', name: 'app_create_consultation')]
     public function create(ManagerRegistry $doctrine, Request $requete): Response
     {
         $consultation = new Consultation();
@@ -37,5 +37,14 @@ class ConsultationController extends AbstractController
         }
 
         return $this->renderForm('consultation/create.html.twig', ['consultation' => $consultation, 'form' => $form]);
+    }
+
+    #[Route('/consultation/test', name: 'app_consultation_test')]
+    public function test(ConsultationRepository $repot): Response
+    {
+        $consultation = $repot->findBy([]);
+        return $this->render('consultation/test.html.twig', [
+            'consultations' => $consultation,
+        ]);
     }
 }

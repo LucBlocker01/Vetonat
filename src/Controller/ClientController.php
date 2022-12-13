@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Repository\CliniqueRepository;
+use src/Controller/ClientController.php
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\VeterinaireRepository;
+use src/Controller/ClientController.php
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,12 +32,14 @@ class ClientController extends AbstractController
     }
 
     #[Route('/acceuilClient/contact', name: 'app_client_contact')]
-    public function indexContact(CliniqueRepository $cliniqueRepository): Response
+    public function indexContact(CliniqueRepository $cliniqueRepository, VeterinaireRepository $veterinaireRepository): Response
     {
         $clinique = $cliniqueRepository->findAll();
+        $veterinaire = $veterinaireRepository->findAll();
 
         return $this->render('client/index_contact.html.twig', [
-            'clinique' => $clinique,
+            'cliniques' => $clinique,
+            'veterinaires' => $veterinaire,
         ]);
     }
 
