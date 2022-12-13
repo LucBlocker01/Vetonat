@@ -4,25 +4,37 @@
 {{ animal.nomAnimal }}
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/lst_client.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1
+/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('css/show_animal.css') }}">
+{% endblock %}
+
 {% block body %}
     <button style = "float: right" onclick="window.location.href ='{{ path('app_animal_update', {'id': animal.id }) }}';">Modifier</button>
     <button style = "float: right" onclick="window.location.href ='{{ path('app_animal_delete', {'id': animal.id }) }}';">Supprimer</button>
     <h1>Voici les informations concernant {{ animal.nomAnimal }}</h1>
-        <ul>
-            <li>Nom : {{ animal.nomAnimal }}</li>
-            <li>espece : {{ animal.especeAnimal }}</li>
+    <table class="global">
+    <thead class="tete">
+        <tr>
+            <th class="ele" scope="col">Nom : {{ animal.nomAnimal }}</th>
+            <th class="ele" scope="col">espece : {{ animal.especeAnimal }}</th>
     {%  if animal.stereliser == false %}
-            <li>Stéréliser : Non</li>
+            <th class="ele" scope="col">Stéréliser : Non</th>
     {% else %}
-            <li>Stéréliser : Oui</li>
+            <th class="ele" scope="col">Stéréliser : Oui</th>
     {% endif %}
-            <li>Age : {{ animal.ageAnimal }}</li>
-            <li>Poids : {{ animal.poidsAnimal }}</li>
-            <li>Description : {{ animal.descriptionAnimal }}</li>
-            <li>Dernière consultation :</li>
+            <th class="ele" scope="col">Age : {{ animal.ageAnimal }}</th>
+            <th class="ele" scope="col">Poids : {{ animal.poidsAnimal }} Kg</th>
+            <th class="ele">                                                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></th>
+        </tr>
+    </thead></table>
+            <div>Description : {{ animal.descriptionAnimal }}</div>
+            <div>Dernière consultation :</div>
             {%for consultation in lstConsult %}
                 <p> Description : {{ consultation.consultationDesc }}</p>
                 <p> Motif : {{ consultation.motifConsultation }}</p>
             {% endfor %}
-        <ul>
 {% endblock %}
