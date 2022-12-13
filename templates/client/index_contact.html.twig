@@ -9,11 +9,18 @@
         <div class="contact_clinique">
             <h3>Contacter la clinique</h3>
             <ul>
-                <li>{{ clinique.telephone }}</li>
+                {% for clinique in cliniques %}
+                <li>{{ clinique.telClinique }}</li>
+                {% endfor %}
             </ul>
         </div>
         <div class="contact_veterinaire">
-
+            <h3>Contacter les vétérinaires</h3>
+            <ul>
+                {% for veterinaire in veterinaires %}
+                    <li>{{ veterinaire.personne.telPers }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}
