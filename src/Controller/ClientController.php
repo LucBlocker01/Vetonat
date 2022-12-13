@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CliniqueRepository;
+use App\Repository\VeterinaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,12 +25,14 @@ class ClientController extends AbstractController
     }
 
     #[Route('/acceuilClient/contact', name: 'app_client_contact')]
-    public function indexContact(CliniqueRepository $cliniqueRepository): Response
+    public function indexContact(CliniqueRepository $cliniqueRepository, VeterinaireRepository $veterinaireRepository): Response
     {
         $clinique = $cliniqueRepository->findAll();
+        $veterinaire = $veterinaireRepository->findAll();
 
         return $this->render('client/index_contact.html.twig', [
-            'clinique' => $clinique,
+            'cliniques' => $clinique,
+            'veterinaires' => $veterinaire,
         ]);
     }
 
