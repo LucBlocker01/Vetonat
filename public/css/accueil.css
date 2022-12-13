@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+header {
+    flex: 1;
+    border-style: solid;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.presentation {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.espace {
+    flex:1;
+    justify-content: flex-end;
+    display: flex;
+}
+
+
+
+.logo {
+    width : 100px;
+    height : 100px;
+}
+
+.loginlinkcli {
+    background-color: lightskyblue;
+    margin: 25px;
+    width: 200px;
+    height: 50px;
+}
+.client {
+    width: 50%;
+    margin: auto;
+
+}
+
+.cliimg {
+    width: 25px;
+    height: 25px;
+}
+
+.textclient {
+    flex:1;
+    text-align: center;
+    margin: 15px;
+}
+
+.loginlinkvet {
+    background-color: orange;
+    margin: 25px;
+    width: 200px;
+    height: 50px;
+}
+.client {
+    width: 50%;
+    margin: auto;
+
+}
+
+.vetimg {
+    width: 25px;
+    height: 25px;
+}
+
+.textvet {
+    flex:1;
+    text-align: center;
+    margin: 15px;
+}
