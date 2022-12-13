@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Animal;
 use App\Entity\Client;
-use App\form\AnimalType;
+use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -42,7 +42,6 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/animal/{id}/update', name: 'app_animal_update')]
-    #[ParamConverter('animal', options: ['mapping' => ['id' => 'id']])]
     public function update(ManagerRegistry $doctrine, Animal $animal, Request $request)
     {
         $form = $this->createForm(AnimalType::class, $animal);

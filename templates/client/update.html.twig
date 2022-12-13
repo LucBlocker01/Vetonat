@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Édition de {{ personne.nomPers}} {{ personne.pnomPers }}
+{% endblock %}
+
+{% block body %}
+    <h1>Édition de {{ personne.nomPers}} {{ personne.pnomPers }}</h1>
+    {{ include('client/_formUpdate.html.twig', {form : form, label_submit: 'Modifier'},  with_context = false) }}
+{% endblock %}
