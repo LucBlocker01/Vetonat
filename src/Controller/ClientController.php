@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CliniqueRepository;
+use App\Repository\ConsultationRepository;
 use App\Repository\VeterinaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,8 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ClientController extends AbstractController
 {
     #[Route('/acceuilClient', name: 'app_client')]
-    public function index(): Response
+    public function index(ConsultationRepository $consultationRepository): Response
     {
+        $consultation = $consultationRepository->findBy(['clientId' => app.user.id ]);
         return $this->render('client/index.html.twig', [
         ]);
     }
