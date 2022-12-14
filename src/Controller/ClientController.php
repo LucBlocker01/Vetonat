@@ -4,11 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Repository\CliniqueRepository;
-use src/Controller/ClientController.php
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\VeterinaireRepository;
-use src/Controller/ClientController.php
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
