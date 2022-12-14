@@ -15,6 +15,7 @@
             <th scope="col"><form class="d-flex" role="search" method="get" action="">
                 <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
                 <button class="boutton" type="submit">Search </button>
+                    <button class="boutton"><a href = {{ path('app_client_create') }}>Ajouter</a></button>
             </form></th>
         </tr>
     </thead>
@@ -26,7 +27,9 @@
                             <td class="ville">{{Personne.villePers}}</td>
                             <td class="code">{{Personne.cpPers}}</td>
                             <td class="tel">{{ Personne.telPers }}</td>
-                    <td class="center"><button class="boutton"><a href="{{ path('app_animal', {'clientId': Personne.id }) }}">Animaux</a></button></td>
+                    <td class="center"><button class="boutton"><a href="{{ path('app_animal', {'clientId': Personne.client.id }) }}">Animaux</a></button>
+                        <button class="boutton"><a href = {{ path('app_client_update', {'id': Personne.id }) }}>Modifier</a></button>
+                        <button class="boutton"><a href = {{ path('app_client_delete', {'id': Personne.id }) }}>Supprimer</a></button></td>
             </tr>
         {% endfor %}
     </tbody>

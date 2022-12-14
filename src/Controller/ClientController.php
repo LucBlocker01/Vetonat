@@ -7,14 +7,18 @@ use App\Repository\AnimalRepository;
 use App\Repository\CliniqueRepository;
 use App\Repository\ConsultationRepository;
 use App\Repository\PersonneRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\VeterinaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
 class ClientController extends AbstractController
 {
+
     #[Route('/acceuilClient', name: 'app_client')]
     public function index(Security $security, AnimalRepository $animalRepository, PersonneRepository $PersonneRepository, ConsultationRepository $consultationRepository): Response
     {

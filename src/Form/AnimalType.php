@@ -1,11 +1,8 @@
 <?php
 
-namespace App\form;
+namespace App\Form;
 
 use App\Entity\Animal;
-use App\Entity\Client;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,7 +22,6 @@ class AnimalType extends AbstractType
                 'empty_data' => '', ])
             ->add('poidsAnimal', null, [
                 'empty_data' => '', ])
-
             ->add('descriptionAnimal', null, [
                 'empty_data' => '', ]);
     }

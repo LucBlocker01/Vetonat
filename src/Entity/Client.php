@@ -15,7 +15,7 @@ class Client
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Animal::class)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Animal::class, cascade: ['persist', 'remove'])]
     private Collection $animal;
 
     #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'])]
