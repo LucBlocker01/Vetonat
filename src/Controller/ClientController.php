@@ -34,6 +34,7 @@ class ClientController extends AbstractController
         return $this->render('client/index.html.twig', [
             'user' => $personne,
             'animaux' => $animaux,
+            'consultations' => $lstConsult,
         ]);
     }
 
