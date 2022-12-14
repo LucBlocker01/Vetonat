@@ -1,0 +1,23 @@
+.other {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.header_planning {
+    margin: 35px;
+    height: 60px;
+    width: 95%;
+    background-color: rgba(100%,40%,0%,100%);
+    border-top-left-radius: 110px;  /* 100px of height + 10px of border */
+    border-top-right-radius: 110px; /* 100px of height + 10px of border */
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    text-align: center;
+}
+
+.cons_jour {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 30px;
+}
