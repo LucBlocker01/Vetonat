@@ -1,0 +1,40 @@
+
+<link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+<header class="head">
+    <div class="logo">
+        <a href="{{ path('app_acceuil') }}"><img alt="" class="logo" src="/img/general/veto_logo.png"></a></div>
+    <div class="presentation">
+        <div>Vetonat</div><div>Votre vétérinaire à </div><div>porter de clic </div></div>
+
+    <div class="espace">
+        {% if is_granted('ROLE_USER') %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_acceuil') }}">
+                    <div class="veto">
+                        <p>Bonjour Vétérinaire</p>
+                        <img alt = "" src="/img/general/veto.png">
+                    </div>
+                </a>
+                <a href="/logout">Se Déconnecter</a>
+            {% else %}
+                <a href="{{ path('app_client') }}">
+                    <div class="client">
+                        <p>Bonjour Client </p>
+                        <img alt="" src="/img/general/client.png">
+                    </div>
+                </a>
+            {% endif %}
+        {% else %}
+            <a class = "loginlinkvet" href="{{ path('app_login') }}">
+                <div class="veto">
+                    <p class="textvet"><img alt="" class= vetimg src="/img/general/veto.png">Espace véterinaire</p>
+                </div>
+            </a>
+            <a class = "loginlinkcli" href="{{ path('app_login') }}">
+                <div class="client"><p class="textclient"><img alt="" class = "cliimg" src="/img/general/client.png"> Espace client</p>
+
+                </div>
+            </a>
+        {% endif %}
+    </div>
+</header>
