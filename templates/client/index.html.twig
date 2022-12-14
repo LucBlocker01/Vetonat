@@ -1,7 +1,6 @@
 {% extends 'client/_baseClient.html.twig' %}
 
 {% block footer %}
-
-{{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
-
+    {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
+    Nom : {{ user.nomPers }}, Prenom : {{ user.pnomPers }}
 {% endblock %}
