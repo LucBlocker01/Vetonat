@@ -25,10 +25,16 @@ class ClientController extends AbstractController
         $user = $security->getUser();
         $personne = $PersonneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
         $animaux = $personne->getClient()->getAnimal();
+        $lstConsult = [];
+        foreach ($animaux as $animal) {
+            $consultations = $consultationRepository->findBy(['id' => $animal->getId()]);
+            array_push($lstConsult, $consultations);
+        }
 
         return $this->render('client/index.html.twig', [
             'user' => $personne,
             'animaux' => $animaux,
+            'consultations' => $lstConsult,
         ]);
     }
 

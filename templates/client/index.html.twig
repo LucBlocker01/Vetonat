@@ -3,4 +3,7 @@
 {% block footer %}
     {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
     Nom : {{ user.nomPers }}, Prenom : {{ user.pnomPers }}
+    {% for consult in consultations %}
+        {{ consult[0]. }}
+    {% endfor %}
 {% endblock %}
