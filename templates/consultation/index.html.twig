@@ -35,10 +35,23 @@
             <li> <h3 class="main">Motif : {{cons.motifConsultation}}</h3> {% if cons.urgente??true %} <div class="urgente">URGENT!</div>{% endif %}</li>
                 <p class="desc">Description : {{ cons.consultationDesc }}</p>
 
-            <p class="date">Date de rendez-vous :  {{ cons.dateConsultation|date() }}</p>
+            <p class="date">
+                            Start : {{ cons.start|date() }}<br>
+                            End : {{ cons.end|date() }}<br>
+                            Allday :   {% if cons.allday %}
+                                            Yes
+                                        {% else %}
+                                            No
+                                        {% endif %}<br>
+                            Clinique : {% if cons.clinique %}
+                                            Yes
+                                        {% else %}
+                                            No
+                                        {% endif %}
+            </p>
             <button><a href="/client/{{ cons.animal.client.id }}/{{ cons.animal.id }}">Animal Concerné</a></button>
             <br>
 
-{% endfor %}
+        {% endfor %}
     </ul>
 {% endblock %}

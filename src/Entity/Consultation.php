@@ -17,9 +17,6 @@ class Consultation
     #[ORM\Column(length: 255)]
     private ?string $consultationDesc = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTime $dateConsultation = null;
-
     #[ORM\Column(length: 255)]
     private ?string $motifConsultation = null;
 
@@ -38,6 +35,18 @@ class Consultation
     #[ORM\ManyToOne(inversedBy: 'consultations')]
     private ?Veterinaire $veterinaire = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $start = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $end = null;
+
+    #[ORM\Column]
+    private ?bool $allday = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $backgroundColor = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,18 +60,6 @@ class Consultation
     public function setConsultationDesc(string $consultationDesc): self
     {
         $this->consultationDesc = $consultationDesc;
-
-        return $this;
-    }
-
-    public function getDateConsultation(): ?\DateTime
-    {
-        return $this->dateConsultation;
-    }
-
-    public function setDateConsultation(\DateTime $dateConsultation): self
-    {
-        $this->dateConsultation = $dateConsultation;
 
         return $this;
     }
@@ -135,6 +132,54 @@ class Consultation
     public function setVeterinaire(?Veterinaire $veterinaire): self
     {
         $this->veterinaire = $veterinaire;
+
+        return $this;
+    }
+
+    public function getStart(): ?\DateTimeInterface
+    {
+        return $this->start;
+    }
+
+    public function setStart(\DateTimeInterface $start): self
+    {
+        $this->start = $start;
+
+        return $this;
+    }
+
+    public function getEnd(): ?\DateTimeInterface
+    {
+        return $this->end;
+    }
+
+    public function setEnd(\DateTimeInterface $end): self
+    {
+        $this->end = $end;
+
+        return $this;
+    }
+
+    public function getAllday(): ?bool
+    {
+        return $this->allday;
+    }
+
+    public function setAllday(bool $allday): self
+    {
+        $this->allday = $allday;
+
+        return $this;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->backgroundColor;
+    }
+
+    public function setBackgroundColor(?string $backgroundColor): self
+    {
+        $this->backgroundColor = $backgroundColor;
 
         return $this;
     }

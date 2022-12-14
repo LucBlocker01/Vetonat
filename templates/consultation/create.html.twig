@@ -7,9 +7,13 @@
 
     {{ form_start(form, {method:'POST'}) }}
     {{ form_row(form.motifConsultation, {label : 'Motif :'}) }}
-    {{ form_row(form.dateConsultation, {label : 'Date :'}) }}
     {{ form_row(form.animal, {label: 'Animal :'}) }}
     {{ form_row(form.consultationDesc, {label : 'Description :'}) }}
+    {{ form_row(form.start, {label : 'Start :'}) }}
+    {{ form_row(form.end, {label : 'End :'}) }}
+    {{ form_row(form.allday, {label : 'Allday :'}) }}
+    {{ form_row(form.backgroundColor, {label : 'backgroundColor :'}) }}
     <button type="submit">Créer</button>
+    {{ form_end(form) }}
 
 {% endblock %}

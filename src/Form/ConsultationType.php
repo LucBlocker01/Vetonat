@@ -7,6 +7,7 @@ use App\Entity\Consultation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,6 @@ class ConsultationType extends AbstractType
     {
         $builder
             ->add('consultationDesc')
-            ->add('dateConsultation')
             ->add('motifConsultation')
             ->add('clinique')
             ->add('urgente')
@@ -27,10 +27,18 @@ class ConsultationType extends AbstractType
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('c')
                         ->orderBy('c.nomAnimal', 'ASC');
-                }, ]);
+                }, ])
 
         // ->add('traitement')
         // ->add('veterinaire')
+            ->add('start',DateTimeType::class, [
+                'date_widget' => 'single_text',
+        ])
+            ->add('end',DateTimeType::class, [
+                'date_widget' => 'single_text',
+            ])
+            ->add('allday')
+            ->add('backgroundColor');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

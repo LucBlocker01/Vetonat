@@ -27,10 +27,10 @@ class ConsultationController extends AbstractController
     public function create(ManagerRegistry $doctrine, Request $requete): Response
     {
         $consultation = new Consultation();
-        $entityManager = $doctrine->getManager();
         $form = $this->createForm(ConsultationType::class, $consultation);
         $form->handleRequest($requete);
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
             $entityManager->persist($consultation);
             $entityManager->flush();
             return $this->redirectToRoute('app_consultation');
@@ -42,9 +42,22 @@ class ConsultationController extends AbstractController
     #[Route('/consultation/test', name: 'app_consultation_test')]
     public function test(ConsultationRepository $repot): Response
     {
-        $consultation = $repot->findBy([]);
-        return $this->render('consultation/test.html.twig', [
-            'consultations' => $consultation,
-        ]);
+
+        $event = $repot->findAll();
+        $rdvs =[];
+        foreach ($event as $ev){
+            $rdvs[] = [
+                'id' => $ev->getId(),
+                'start' => $ev->getStart()->format('Y-m-d H:i:s'),
+                'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
+                'title' => $ev->getMotifConsultation(),
+                'description' => $ev->getConsultationDesc(),
+                'allDay' => $ev->getAllDay(),
+                'backgroundColor' => $ev->getBackgroundColor(),
+            ];
+        }
+
+        $data = json_encode($rdvs);
+        return $this->render('consultation/test.html.twig',compact('data'));
     }
 }
