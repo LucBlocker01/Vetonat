@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AnimalController extends AbstractController
 {
-    #[Route('/client/{clientId}/animal', name: 'app_animal')]
+    #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['contactId'=>'\d+'])]
     public function index(AnimalRepository $AnimalRepository, int $clientId): Response
     {
         $listAnimal = $AnimalRepository->findByClient($clientId);
