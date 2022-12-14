@@ -1,0 +1,38 @@
+.tete {
+    height:auto;
+    position:relative;
+    background-color: #23ADA5;
+    justify-content: space-between;
+    text-align: center;
+}
+.global {
+    border-collapse: collapse;
+    position: center;
+    padding: 50px;
+    width: 100%;
+}
+
+.ele {
+    text-align: inherit;
+    color: whitesmoke;
+    padding: 0.5em;
+    border: 30px solid #E2F2F3;
+}
+
+
+.desc {
+    padding-top: 0em;
+}
+.consultation{
+    background-color: #23ADA5;
+    color: whitesmoke;
+}
+html body{
+    background-color: #E4E4E4;
+}
+small{
+    margin: 1em;
+}
+.info{
+    margin-top: 3em;
+}

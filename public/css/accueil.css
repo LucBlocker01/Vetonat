@@ -6,7 +6,6 @@ body {
 
 header {
     flex: 1;
-    border-style: solid;
     display: flex;
     justify-content: flex-start;
 }
@@ -31,16 +30,12 @@ header {
 }
 
 .loginlinkcli {
-    background-color: lightskyblue;
+    background-color: rgba(0%,82%,78%,100%);
     margin: 25px;
     width: 200px;
     height: 50px;
 }
-.client {
-    width: 50%;
-    margin: auto;
 
-}
 
 .cliimg {
     width: 25px;
@@ -49,20 +44,19 @@ header {
 
 .textclient {
     flex:1;
+    color: white;
+    position: sticky;
     text-align: center;
-    margin: 15px;
+    vertical-align: middle;
+    line-height: 50px;
+
 }
 
 .loginlinkvet {
-    background-color: orange;
+    background-color: rgba(100%,40%,0%,100%);
     margin: 25px;
     width: 200px;
     height: 50px;
-}
-.client {
-    width: 50%;
-    margin: auto;
-
 }
 
 .vetimg {
@@ -70,8 +64,78 @@ header {
     height: 25px;
 }
 
+a {
+    text-decoration: none;
+}
 .textvet {
     flex:1;
+    color: white;
+    position: sticky;
     text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+.cat {
+    width: 100%;
+}
+
+.rdv {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 65px;
+}
+
+.légende {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    text-align: center;
+    padding: 95px;
+    top: 50%;
+    color: white;
+    width: 100%;
+}
+
+.rdv a {
+    color: rgba(100%,40%,0%,100%);
+}
+
+.message2 {
+    text-align: center;
+    color: rgba(0%,82%,78%,100%);
+}
+
+footer {
+    background-color: rgba(0,0,0,0.2);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.title_foot {
+    height: 125px;
+}
+
+.lst_inf {
+    width: 100%;
+    height : 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.info {
+    position: sticky;
+    background-color: white;
+    width: 25%;
+    height: 100%;
+}
+
+.info h3 {
+    color: rgba(0%,82%,78%,100%);
+    margin: 15px;
+}
+
+.info p {
     margin: 15px;
 }
