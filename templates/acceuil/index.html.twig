@@ -11,7 +11,7 @@
         <div class="logo">
             <a href="{{ path('app_acceuil') }}"><img alt="" class="logo" src="/img/general/veto_logo.png"></a></div>
         <div class="presentation">
-        <div>Vetonat</div><div>Votre vétérinaire à </div><div>porter de clic </div></div>
+        <div>Vetonat</div><div>Votre vétérinaire à </div><div>porté de clic </div></div>
 
         <div class="espace">
             {% if is_granted('ROLE_USER') %}
@@ -34,37 +34,34 @@
             {% else %}
                 <a class = "loginlinkvet" href="{{ path('app_login') }}">
                     <div class="veto">
-                        <p class="textvet"><img alt="" class= vetimg src="/img/general/veto.png">Espace véterinaire</p>
+                        <p class="textvet"><img alt="" class= vetimg src="/img/general/veto.png">Espace vétérinaire</p>
                     </div>
                 </a>
                 <a class = "loginlinkcli" href="{{ path('app_login') }}">
-                    <div class="client"><p class="textclient"><img alt="" class = "cliimg" src="/img/general/client.png"> Espace client</p>
-
-                    </div>
+                    <p class="textclient"><img alt="" class = "cliimg" src="/img/general/client.png"> Espace client</p>
                 </a>
             {% endif %}
         </div>
     </header>
     <div class="message">
-        <img  alt="" src="/img/acceuil/chat_acceuil.png">
-        <h1 class="rdv">Prenez <a href="#" style="color: orange">rendez vous en ligne</a> chez votre vétérinaire </h1>
+        <img  class="cat" alt="" src="/img/acceuil/chat_acceuil.png">
+        <div class="légende"><h1 class="rdv">Prenez <a href="#" >rendez-vous en ligne</a> chez votre vétérinaire </h1></div>
     </div>
-
     <footer>
-        <h2>Comment prendre rendez vous chez votre vétérinaire en ligne </h2>
+        <div class="title_foot"><h2 class="message2">Comment prendre rendez vous chez votre vétérinaire en ligne </h2></div>
         <div class = "lst_inf">
             <div class = "info">
-                <h3>Connecter vous à votre compte client</h3>
-                <p>Accéder a votre espace personel en vous connectant sur votre compte client afin de retrouver toutes les informations vous concernant.</p>
+                <h3>Connectez-vous à votre compte client</h3>
+                <p>Accédez à votre espace personnel en vous connectant sur votre compte client afin de retrouver toutes les informations vous conçernant.</p>
             </div>
 
             <div class = "info">
                 <h3>Choisissez un créneau</h3>
-                <p>Accéder au calendrier des vétérinaire en temps réel et choisissez la date et l’heure qui vous convinnent Remplissez ensuite les informations utiles et nécessaire à la consultation</p>
+                <p>Accédez au calendrier des vétérinaires en temps réel et choisissez la date et l’heure qui vous conviennent. Remplissez ensuite les informations utiles et nécessaire à la consultation</p>
             </div>
 
             <div class = "info">
-                <h3>Votre rendez est confirmé !</h3>
+                <h3>Votre rendez-vous est confirmé !</h3>
                 <p>Le vétérinaire est informé et vous n’avez plus qu’a vous rendre chez votre vétérinaire. </p>
             </div>
         </div>
