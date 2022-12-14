@@ -2,17 +2,23 @@
 
 namespace App\Controller;
 
+use App\Repository\VeterinaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class VeterinaireController extends AbstractController
 {
     #[Route('/veterinaire', name: 'app_veterinaire')]
-    public function index(): Response
+    public function index(Security $security, VeterinaireRepository $repository): Response
     {
+        $user = $security->getUser();
+        $veterinaire = $repository->findOneBy(['personne' => $user->getId()]);
+
         return $this->render('veterinaire/index.html.twig', [
-            'current_page' => '',
+            'consultations' => $veterinaire->getConsultations(),
+            'current_page' => 'app_veterinaire',
         ]);
     }
 
