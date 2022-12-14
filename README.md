@@ -11,6 +11,13 @@
 <br>
 -> Qui lance le serveur web symfony avec la commande composer start
 </p>
+<p>
+"stop" : [ <br>
+            "symfony server:stop" <br>
+        ],
+<br>
+-> Qui stoppe le serveur web symfony avec la commande composer stop (pas besoin de l'exécuter en temps normal)
+</p>
 <p>      
 "fix:cs": [ <br>
             "php-cs-fixer fix" <br>
