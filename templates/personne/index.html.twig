@@ -2,6 +2,8 @@
     <link rel="stylesheet" href="{{ asset('css/lst_client.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1
 /css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 {% endblock %}
 {% block body %}
 <table class="global">
@@ -14,8 +16,7 @@
             <th scope="col">telephone</th>
             <th scope="col"><form class="d-flex" role="search" method="get" action="">
                 <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
-                <button class="boutton" type="submit">Search </button>
-                    <button class="boutton"><a href = {{ path('app_client_create') }}>Ajouter</a></button>
+                    <button class="boutton btn btn-light "><a href = {{ path('app_client_create') }}>Ajouter</a></button>
             </form></th>
         </tr>
     </thead>
@@ -27,9 +28,9 @@
                             <td class="ville">{{Personne.villePers}}</td>
                             <td class="code">{{Personne.cpPers}}</td>
                             <td class="tel">{{ Personne.telPers }}</td>
-                    <td class="center"><button class="boutton"><a href="{{ path('app_animal', {'clientId': Personne.client.id }) }}">Animaux</a></button>
-                        <button class="boutton"><a href = {{ path('app_client_update', {'id': Personne.id }) }}>Modifier</a></button>
-                        <button class="boutton"><a href = {{ path('app_client_delete', {'id': Personne.id }) }}>Supprimer</a></button></td>
+                    <td class="center"><button class="boutton btn btn-light"><a href="{{ path('app_animal', {'clientId': Personne.client.id }) }}">Animaux</a></button>
+                        <button class="boutton btn btn-light"><a href = {{ path('app_client_update', {'id': Personne.id }) }}><span class="material-symbols-outlined">edit</span></a></button>
+                        <button class="boutton btn btn-light"><a href = {{ path('app_client_delete', {'id': Personne.id }) }}><span class="material-symbols-outlined">delete</span></a></button></td>
             </tr>
         {% endfor %}
     </tbody>

@@ -57,3 +57,7 @@ form {
 .center{
     text-align: center;
 }
+
+.btn-light{
+    margin: 10px;
+}
