@@ -4,13 +4,15 @@ namespace App\Entity;
 
 use App\Repository\PersonneRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\PasswordHasher\Hasher\PasswordHasherAwareInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
 #[ORM\Entity(repositoryClass: PersonneRepository::class)]
-class Personne implements UserInterface,PasswordAuthenticatedUserInterface
+class Personne implements UserInterface, PasswordAuthenticatedUserInterface, PasswordHasherAwareInterface
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -240,6 +242,7 @@ class Personne implements UserInterface,PasswordAuthenticatedUserInterface
     public function setPassword(string $mdpPers): self
     {
         $this->mdpPers = $mdpPers;
+
         return $this;
     }
 
@@ -261,5 +264,11 @@ class Personne implements UserInterface,PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPasswordHasherName(): ?string
+    {
+        return null;
+        // TODO: Implement getPasswordHasherName() method.
     }
 }
