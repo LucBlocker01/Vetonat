@@ -2,20 +2,29 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
+use App\Repository\AnimalRepository;
 use App\Repository\CliniqueRepository;
 use App\Repository\ConsultationRepository;
+use App\Repository\PersonneRepository;
 use App\Repository\VeterinaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class ClientController extends AbstractController
 {
     #[Route('/acceuilClient', name: 'app_client')]
-    public function index(ConsultationRepository $consultationRepository): Response
+    public function index(Security $security, AnimalRepository $animalRepository, PersonneRepository $PersonneRepository, ConsultationRepository $consultationRepository): Response
     {
-        $consultation = $consultationRepository->findBy(['clientId' => app.user.id ]);
+        $user = $security->getUser();
+        $personne = $PersonneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
+        $animaux = $personne->getClient()->getAnimal();
+
         return $this->render('client/index.html.twig', [
+            'user' => $personne,
+            'animaux' => $animaux,
         ]);
     }
 
@@ -29,12 +38,12 @@ class ClientController extends AbstractController
     #[Route('/acceuilClient/contact', name: 'app_client_contact')]
     public function indexContact(CliniqueRepository $cliniqueRepository, VeterinaireRepository $veterinaireRepository): Response
     {
-        $clinique = $cliniqueRepository->findAll();
-        $veterinaire = $veterinaireRepository->findAll();
+        $cliniques = $cliniqueRepository->findAll();
+        $veterinaires = $veterinaireRepository->findAll();
 
         return $this->render('client/index_contact.html.twig', [
-            'cliniques' => $clinique,
-            'veterinaires' => $veterinaire,
+            'cliniques' => $cliniques,
+            'veterinaires' => $veterinaires,
         ]);
     }
 
