@@ -45,9 +45,9 @@ class VeterinaireController extends AbstractController
     }
 
     #[Route('/veterinaire/infos', name: 'app_veterinaire_infos')]
-    public function indexInfos(): Response
+    public function indexInfos(Security $security): Response
     {
-        return $this->render('veterinaire/index_infos.html.twig', [
+        return $this->render('veterinaire/index_infos.html.twig', ['veterinaire' => $security->getUser(),
         ]);
     }
 }
