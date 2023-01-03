@@ -1,0 +1,22 @@
+.form{
+    background: white;
+    color: #2DCAC0;
+}
+.global{
+    background: #EFEFEF;
+}
+.card-header{
+    background: #2DCAC0;
+
+}
+.champs{
+    margin: 0.8em 0em 0.8em 0em ;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    background-color:#2DCAC0 ;
+}
+
+.droite{
+    text-align: left;
+}
