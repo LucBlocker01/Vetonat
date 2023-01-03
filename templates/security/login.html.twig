@@ -34,10 +34,10 @@
     <div class = "form col-10 align-middle">
     <div class="card-header">CONNEXION</div>
     <div class="card-body">
-    <input type="text" value="{{ last_username }}" name="loginPers" id="inputLoginPers" class="form-control champs" autocomplete="loginPers" required autofocus placeholder="user-code">
-    <input  type="password" name="mdpPers" id="inputPassword" class="form-control champs" autocomplete="current-password" placeholder="Mot de passe" required>
+    <input type="text" value="{{ last_username }}" name="loginPers" id="inputLoginPers" class="form-control form1" autocomplete="loginPers" required autofocus placeholder="user-code">
+    <input type="password" name="mdpPers" id="inputPassword" class="form-control form1" autocomplete="current-password" placeholder="Mot de passe" required>
     <button class="btn btn-primary col-md-6 " type="button" data-toggle="collapse" data-target="#zone1" aria-expanded="false" aria-controls="zone1"><small>mot de passe oublié ?</small></button>
-    <div class="col champs">
+    <div class="col form1">
         <div class="collapse multi-collapse" id="zone1">
             <div class="card card-body">
                 envoyer un mail à l'addresse: veto@gmail.com
@@ -52,7 +52,7 @@
             Sign in
         </button>
     </br>
-        <small class="champs ">Pas encore de compte ? <a href="{{ path ('app_client_create')}}"> Je crée mon compte client juste ici !</a> </small>
+        <small class="form1 ">Pas encore de compte ? <a href="{{ path ('app_client_create')}}"> Je crée mon compte client juste ici !</a> </small>
 
 
     </div>
