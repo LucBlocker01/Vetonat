@@ -1,9 +1,17 @@
-{% extends 'client/_baseClient.html.twig' %}
+{% extends '/client/_baseClient.html.twig' %}
 
-{% block footer %}
-    {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
-    Nom : {{ user.nomPers }}, Prenom : {{ user.pnomPers }}
-    {% for consult in consultations %}
-        {{ consult[0]. }}
-    {% endfor %}
+{% block body %}
+{% if is_granted('ROLE_USER') %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {% block veto %}
+            {{ include('veterinaire/_navbar.html.twig', { current_page: 'rdv'}) }}
+            Bonjour {{ user.nomPers }} {{ user.pnomPers }}
+        {% endblock %}
+    {% else %}
+        {% block footer %}
+            {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
+            Bonjour {{ user.nomPers }} {{ user.pnomPers }}
+        {% endblock %}
+    {% endif %}
+{% endif %}
 {% endblock %}
