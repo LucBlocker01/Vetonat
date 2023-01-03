@@ -3,7 +3,7 @@
 }
 
 .header_planning {
-    margin: 35px;
+    margin: 35px 35px 0 35px;
     height: 60px;
     width: 95%;
     background-color: rgba(100%,40%,0%,100%);
@@ -11,7 +11,6 @@
     border-top-right-radius: 110px; /* 100px of height + 10px of border */
     display: flex;
     justify-content: center;
-    border-style: solid;
     text-align: center;
 }
 
@@ -20,4 +19,48 @@
     vertical-align: middle;
     line-height: 50px;
     font-size: 30px;
+}
+.cons_block {
+    background-color: #4C403B;
+    margin: 0 35px 0 35px;
+    width: 95%;
+    display: flex;
+}
+
+.urgente_block {
+    background-color: rgba(100%,40%,0%,100%);
+    margin: 0 35px 0 35px;
+    width: 95%;
+    display: flex;
+}
+
+.trans_block {
+    background-color: white;
+    margin: 0 35px 0 35px;
+    width: 95%;
+    height: 15px;
+}
+
+.icon {
+    width : 40px;
+    height : 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    color: white;
+}
+
+.cons_block_motif {
+    color: white;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
+    width: 10%;
+}
+
+.cons_block_header {
+    width: 25%;
 }
