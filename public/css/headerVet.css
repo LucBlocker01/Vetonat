@@ -1,0 +1,46 @@
+header {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgba(100%,40%,0%,100%);
+}
+
+.presentation {
+    margin-left: 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.presentation div {
+    text-align: center;
+    color: white;
+}
+
+.espace {
+    flex:1;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.veto {
+    background-color: rgba(100%,40%,0%,100%);
+    margin: 25px;
+    width: 200px;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    display: flex;
+    color: white;
+}
+
+.veto img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.logo {
+    width : 100px;
+    height : 100px;
+}

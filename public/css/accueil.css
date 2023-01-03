@@ -4,31 +4,6 @@ body {
 }
 
 
-header {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.presentation {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.espace {
-    flex:1;
-    justify-content: flex-end;
-    display: flex;
-}
-
-
-
-.logo {
-    width : 100px;
-    height : 100px;
-}
-
 .loginlinkcli {
     background-color: rgba(0%,82%,78%,100%);
     margin: 25px;
