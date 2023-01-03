@@ -4,6 +4,11 @@
 }
 .global{
     background: #EFEFEF;
+    border-collapse: collapse;
+    position: center;
+    padding: 50px;
+    width: 100%;
+
 }
 .card-header{
     background: #2DCAC0;
@@ -19,4 +24,8 @@
 
 .droite{
     text-align: left;
+}
+html, body {
+    margin: 0;
+    padding: 0;
 }
