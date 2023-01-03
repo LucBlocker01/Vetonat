@@ -7,6 +7,7 @@ use App\Entity\Consultation;
 use App\Form\ConsultationType;
 use App\Repository\ConsultationRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,7 +44,7 @@ class ConsultationController extends AbstractController
     public function test(ConsultationRepository $repot): Response
     {
 
-        $event = $repot->findAll();
+        $event = $repot->findById(1);
         $rdvs =[];
         foreach ($event as $ev){
             $rdvs[] = [

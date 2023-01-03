@@ -38,7 +38,8 @@ class ConsultationType extends AbstractType
                 'date_widget' => 'single_text',
             ])
             ->add('allday')
-            ->add('backgroundColor');
+            ->add('clinique')
+            ->add('urgente');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
