@@ -11,6 +11,21 @@
         {% block footer %}
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
             Bonjour {{ user.nomPers }} {{ user.pnomPers }}
+
+            {% if consultations is defined %}
+                {%for consultation in consultations %}
+                <div class="list-group-item flex-column align-items-start consultation">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="desc"> Consultation : {{ consultation.consultationDesc }}</h5>
+                        <small>{{consultation.start| date("m/d/Y")}}</small>
+                        <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
+                    </div>
+                    <p> Motif : {{ consultation.motifConsultation }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucune consultation récente</p>
+            {% endif %}
         {% endblock %}
     {% endif %}
 {% endif %}
