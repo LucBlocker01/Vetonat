@@ -45,8 +45,9 @@
                     {%for consultation in lstConsult %}
                         <div class="list-group-item flex-column align-items-start consultation">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="desc"> consultation : {{ consultation.consultationDesc }}</h5>
-                                <small>{{consultation.dateConsultation| date("m/d/Y g:i:sA")}}</small>
+                                <h5 class="desc"> Consultation : {{ consultation.consultationDesc }}</h5>
+                                <small>{{consultation.start| date("m/d/Y")}}</small>
+                                <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
                             </div>
                             <p> Motif : {{ consultation.motifConsultation }}</p>
                         </div>
