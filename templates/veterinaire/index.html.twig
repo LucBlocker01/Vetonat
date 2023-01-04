@@ -8,12 +8,22 @@
     {{ include('veterinaire/_navbar.html.twig') }}
     <div class="other">
     <link rel="stylesheet" href="{{ asset('css/veto.css') }}">
+        <div class="liste">
     <div class="header_planning"><p class="cons_jour">Consultation du Jour</p></div>
         {%  for cons in consultations %}
-        <div class="cons_block">
-            <div><img alt="" src = "{{ asset('icone/user.png') }}"><img alt="" src = "{{ asset('icone/location.png') }}"></div>
-            <div>Motif: {{ cons.motifConsultation }}</div>
+            {%  if cons.urgente %}
+        <div class="urgente_block">
+            <div class="cons_block_header"><img class="icon" alt="" src = "{{ asset('icone/user.png') }}"><p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}</p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}"><p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}</p></div>
+            <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
+            </div>
+            {% else %}
+            <div class="cons_block">
+            <div class="cons_block_header"><img class="icon" alt="" src = "{{ asset('icone/user.png') }}"><p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}</p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}"><p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}</p></div>
+            <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
+                {%  endif %}
         </div>
+            <div class="trans_block"></div>
         {% endfor %}
+    </div>
     </div>
 {% endblock %}
