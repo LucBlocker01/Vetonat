@@ -20,17 +20,15 @@
             </th>
         </tr>
         </thead>
-        <tbody class="animal">
+        <tbody class="animaux">
         {% for animal in lstAnimal %}
             <tr class="animal">
-                <a href="{{ path('app_animal_show', {'id': animal.id }) }}">
-                <span class="animal">
                     <th scope="row" class="nomAnimal">{{ animal.nomAnimal }} : </th>
                     <td class="Espece">{{ animal.EspeceAnimal}}</td>
                     <td class="Espece">{{ animal.AgeAnimal}}</td>
                     <td class="Espece">{{ animal.poidsAnimal}} Kilos</td>
-
-                </span> </a>
+                <td><button class="boutton btn btn-light"><a href="{{ path('app_animal_show', {'id': animal.id }) }}">plus d'informations</a></button></td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
