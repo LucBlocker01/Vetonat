@@ -1,0 +1,35 @@
+.form{
+    background: white;
+    color: #2DCAC0;
+}
+.global{
+    background: #EFEFEF;
+    border-collapse: collapse;
+    position: center;
+    padding: 50px;
+    width: 100%;
+
+}
+.card-header{
+    background: #2DCAC0;
+
+}
+.form1{
+    margin: 0.8em 0em 0.8em 0em ;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    background-color:#2DCAC0 ;
+}
+
+.droite{
+    text-align: left;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.form2{
+    margin: 0.2em 0em 0.2em 0em ;
+}
