@@ -20,7 +20,6 @@
                         <img alt = "" src="/img/general/veto.png">
                     </div>
                 </a>
-                <a href="/logout">Se Déconnecter</a>
             {% else %}
                 <a href="{{ path('app_client') }}">
                     <div class="client">
@@ -28,7 +27,6 @@
                         <img alt="" src="/img/general/client.png">
                     </div>
                 </a>
-                <a href="/logout">Se Déconnecter</a>
             {% endif %}
         {% else %}
             <a class = "loginlinkvet" href="{{ path('app_login') }}">
