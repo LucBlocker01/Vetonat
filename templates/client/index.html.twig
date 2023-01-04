@@ -3,20 +3,7 @@
 {% block body %}
 {% if is_granted('ROLE_USER') %}
     {% if is_granted('ROLE_ADMIN') %}
-        {% block veto %}
-        {% include '_header.html.twig' %}
-        {{ include('veterinaire/_navbar.html.twig') }}
-    <div class="other">
-        <link rel="stylesheet" href="{{ asset('css/veto.css') }}">
-        <div class="header_planning"><p class="cons_jour">Consultation du Jour</p></div>
-        {%  for cons in consultations %}
-            <div class="cons_block">
-                <div><img alt="" src = "{{ asset('icone/user.png') }}"><img alt="" src = "{{ asset('icone/location.png') }}"></div>
-                <div>Motif: {{ cons.motifConsultation }}</div>
-            </div>
-        {% endfor %}
-    </div>
-{% endblock %}
+        {{ include('veterinaire/index.html.twig')}}
     {% else %}
         {% block footer %}
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}

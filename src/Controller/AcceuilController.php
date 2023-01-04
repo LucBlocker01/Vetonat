@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Repository\AnimalRepository;
 use App\Repository\ConsultationRepository;
 use App\Repository\PersonneRepository;
+use App\Repository\VeterinaireRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,6 +20,7 @@ class AcceuilController extends AbstractController
         return $this->render('acceuil/index.html.twig', []);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/acceuilConnecté', name: 'app_client')]
     public function acceuilCo(Security $security, AnimalRepository $animalRepository, PersonneRepository $PersonneRepository, ConsultationRepository $consultationRepository): Response
     {
@@ -47,5 +50,18 @@ class AcceuilController extends AbstractController
                 'user' => $personne,
             ]);
         }
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/acceuilConnecté', name: 'app_client')]
+    public function acceuilCoVeto(Security $security, VeterinaireRepository $repository): Response
+    {
+        $user = $security->getUser();
+        $veterinaire = $repository->findOneBy(['personne' => $user->getId()]);
+
+        return $this->render('veterinaire/index.html.twig', [
+            'consultations' => $veterinaire->getConsultations(),
+            'current_page' => 'app_veterinaire',
+        ]);
     }
 }
