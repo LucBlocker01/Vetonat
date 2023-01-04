@@ -27,8 +27,7 @@ class AcceuilController extends AbstractController
             $animaux = $personne->getClient()->getAnimal();
             $lstConsult = [];
             foreach ($animaux as $animal) {
-                $consultations = $consultationRepository->findBy(['id' => $animal->getId()]);
-                $lstConsult[] = $consultations;
+                $lstConsult = array_merge($lstConsult, $animal->getConsultation()->toArray());
             }
 
             return $this->render('client/index.html.twig', [
