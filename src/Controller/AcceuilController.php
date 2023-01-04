@@ -27,7 +27,14 @@ class AcceuilController extends AbstractController
             $animaux = $personne->getClient()->getAnimal();
             $lstConsult = [];
             foreach ($animaux as $animal) {
-                $lstConsult = array_merge($lstConsult, $animal->getConsultation()->toArray());
+                $valid = [];
+                $animalConsultation = $animal->getConsultation();
+                foreach ($animalConsultation as $consult) {
+                    if ($consult->getStart() < new \DateTime()) {
+                        $valid[] = $consult;
+                    }
+                }
+                $lstConsult = array_merge($lstConsult, $valid);
             }
 
             return $this->render('client/index.html.twig', [
