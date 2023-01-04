@@ -4,13 +4,38 @@
 {% if is_granted('ROLE_USER') %}
     {% if is_granted('ROLE_ADMIN') %}
         {% block veto %}
-            {{ include('veterinaire/_navbar.html.twig', { current_page: 'rdv'}) }}
-            Bonjour {{ user.nomPers }} {{ user.pnomPers }}
-        {% endblock %}
+        {% include '_header.html.twig' %}
+        {{ include('veterinaire/_navbar.html.twig') }}
+    <div class="other">
+        <link rel="stylesheet" href="{{ asset('css/veto.css') }}">
+        <div class="header_planning"><p class="cons_jour">Consultation du Jour</p></div>
+        {%  for cons in consultations %}
+            <div class="cons_block">
+                <div><img alt="" src = "{{ asset('icone/user.png') }}"><img alt="" src = "{{ asset('icone/location.png') }}"></div>
+                <div>Motif: {{ cons.motifConsultation }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
     {% else %}
         {% block footer %}
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
             Bonjour {{ user.nomPers }} {{ user.pnomPers }}
+
+            {% if consultations is empty %}
+                <p>Aucune consultation récente</p>
+            {% else %}
+                {%for consultation in consultations %}
+                <div class="list-group-item flex-column align-items-start consultation">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="desc"> Consultation : {{ consultation.consultationDesc }}</h5>
+                        <small>{{consultation.start| date("m/d/Y")}}</small>
+                        <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
+                    </div>
+                    <p> Motif : {{ consultation.motifConsultation }}</p>
+                </div>
+                {% endfor %}
+            {% endif %}
         {% endblock %}
     {% endif %}
 {% endif %}
