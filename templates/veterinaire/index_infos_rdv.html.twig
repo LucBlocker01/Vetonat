@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Vétérinaire - RDV
+{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+    {{ include('_header.html.twig') }}
+    {{ include('veterinaire/_navbar.html.twig', { current_page: 'rdv'}) }}
+    {% endif %}
+{% endblock %}
+
