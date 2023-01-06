@@ -42,17 +42,18 @@
         </thead>
     </table>
 
-    <div class="info row">
-        <div class="col-sm-6">
-            <h5 class=" card card-body">Description : {{ animal.descriptionAnimal }}</h5>
+        <div class="card">
+            <h5 class="card-title">Description : </h5>
+            <p class=" card card-body">{{ animal.descriptionAnimal }}</p>
         </div>
-        <div class="col-sm-6">
+        <div class="card">
             <div class=" card card-body list-group-item flex-column align-items-start consultations">
                 <h5>Dernière consultation :
                     {%for consultation in lstConsult %}
                         <div class="list-group-item flex-column align-items-start consultation">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="desc"> Consultation : {{ consultation.consultationDesc }}</h5>
+                                <h5 class="card-title desc"> Consultation :{{ consultation.consultationDesc }} </h5>
+
                                 <small>{{consultation.start| date("m/d/Y")}}</small>
                                 <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
                             </div>
@@ -62,5 +63,7 @@
                 </h5>
             </div>
         </div>
+
     </div>
+
 {% endblock %}
