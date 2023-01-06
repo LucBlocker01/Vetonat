@@ -19,11 +19,11 @@
         <thead class="tete">
         <tr>
             <th class="ele" scope="col">Nom : {{ animal.nomAnimal }}</th>
-            <th class="ele" scope="col">espece : {{ animal.especeAnimal }}</th>
+            <th class="ele" scope="col">Espèce : {{ animal.especeAnimal }}</th>
             {%  if animal.stereliser == false %}
-                <th class="ele" scope="col">Stéréliser : Non</th>
+                <th class="ele" scope="col">Stérilisé : Non</th>
             {% else %}
-                <th class="ele" scope="col">Stéréliser : Oui</th>
+                <th class="ele" scope="col">Stérilisé : Oui</th>
             {% endif %}
             <th class="ele" scope="col">Age : {{ animal.ageAnimal }}</th>
             <th class="ele" scope="col">Poids : {{ animal.poidsAnimal }} Kg</th>
