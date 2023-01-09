@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
-    {{ include('_header.html.twig') }}
     {% if is_granted('ROLE_USER') %}
+        {{ include('_header.html.twig') }}
         {% if is_granted('ROLE_ADMIN') %}
             {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
         {% else %}
