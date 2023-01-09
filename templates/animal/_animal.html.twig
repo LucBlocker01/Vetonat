@@ -13,7 +13,7 @@
             <th scope="col">Age</th>
             <th scope="col">Poids</th>
             <th scope="col"><form class="d-flex" role="search" method="get" action="">
-                    <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
+                    <input class="form-control me-2" type="search" name="search" placeholder="Rechercher animal" aria-label="search" value="{{search | default ("")}}">
                     <button style = "float: right" class="boutton btn btn-light " onclick="window.location.href ='{{ path('app_animal_create', {'id': clientId }) }}';">Ajouter</button>
                 </form>
             </th>
