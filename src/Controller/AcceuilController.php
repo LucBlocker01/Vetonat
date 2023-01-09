@@ -26,6 +26,16 @@ class AcceuilController extends AbstractController
     {
         $user = $security->getUser();
         $personne = $PersonneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
+        // si c'est un véto
+        if ($personne->getVeterinaire()) {
+            $veterinaire = $personne->getVeterinaire();
+
+            return $this->render('veterinaire/index.html.twig', [
+                'consultations' => $veterinaire->getConsultations(),
+                'current_page' => 'app_veterinaire',
+            ]);
+        }
+        // Si c'est un client
         if ($personne->getClient()) {
             $animaux = $personne->getClient()->getAnimal();
             $lstConsult = [];
@@ -50,18 +60,5 @@ class AcceuilController extends AbstractController
                 'user' => $personne,
             ]);
         }
-    }
-
-    #[IsGranted('ROLE_ADMIN')]
-    #[Route('/acceuilConnecté', name: 'app_client')]
-    public function acceuilCoVeto(Security $security, VeterinaireRepository $repository): Response
-    {
-        $user = $security->getUser();
-        $veterinaire = $repository->findOneBy(['personne' => $user->getId()]);
-
-        return $this->render('veterinaire/index.html.twig', [
-            'consultations' => $veterinaire->getConsultations(),
-            'current_page' => 'app_veterinaire',
-        ]);
     }
 }

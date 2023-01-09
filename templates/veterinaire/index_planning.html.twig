@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ include('_header.html.twig') }}
     {{ include('veterinaire/_navbar.html.twig', { current_page: 'planning'}) }}{% endblock %}
 
 {% block title %}
