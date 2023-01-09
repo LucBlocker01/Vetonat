@@ -10,6 +10,10 @@
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
             Bonjour {{ user.nomPers }} {{ user.pnomPers }}
 
+
+            <button type="button" class="btn btn-secondary">
+                <a href="{{ path('app_create_consultation') }}">Prendre un rendez vous !</a>
+            </button>
             {% if consultations is empty %}
                 <p>Aucune consultation récente</p>
             {% else %}
