@@ -78,6 +78,8 @@ p {
 
 .cons_block_options button {
     height: 15%;
+    color: white;
+    background-color: rgba(0%,82%,78%,100%);
 }
 
 .modif-suppr {
@@ -90,4 +92,11 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cons_block_clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }

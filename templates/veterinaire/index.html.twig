@@ -17,6 +17,7 @@
             <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
             <div class="cons_block_options"><button>Plus d'informations</button><div class="modif-suppr"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}><img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}></div></div>
             <div class="cons_block_clock"><img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
+            <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
         </div>
             {% else %}
             <div class="cons_block">
@@ -24,6 +25,7 @@
             <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
             <div class="cons_block_options"><button>Plus d'informations</button><div class="modif-suppr"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}><img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}></div></div>
             <div class="cons_block_clock"><img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
+            <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
                 {%  endif %}
         </div>
             <div class="trans_block"></div>
