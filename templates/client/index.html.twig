@@ -6,6 +6,7 @@
         {{ include('veterinaire/index.html.twig')}}
     {% else %}
         {% block footer %}
+            {{ include('_header.html.twig') }}
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
             Bonjour {{ user.nomPers }} {{ user.pnomPers }}
 
