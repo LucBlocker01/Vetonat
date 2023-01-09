@@ -58,17 +58,19 @@ p {
     text-align: center;
     vertical-align: middle;
     line-height: 250px;
-    width: 10%;
+    width: 20%;
+    margin-right: 0;
+    font-size: 22px;
 }
 
 .cons_block_header {
-    width: 25%;
+    width: 20%;
     margin: 45px 0 15px 15px;
     font-size: 20px;
 }
 
 .cons_block_options {
-    width: 25%;
+    width: 35%;
     margin: 0 0 15px 15px;
     font-size: 20px;
     display: flex;
@@ -76,7 +78,7 @@ p {
     align-items: center;
 }
 
-.cons_block_options button {
+.infosbouton {
     height: 15%;
     color: white;
     background-color: rgba(0%,82%,78%,100%);
@@ -88,14 +90,23 @@ p {
     justify-content: space-between;
 }
 
+.bouton {
+    background-color: transparent;
+    border-style: none;
+    margin-top: 15px;
+}
+
 .cons_block_clock {
+    width: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.cons_block_clock {
+.cons_block_time {
+    width: 15%;
     display: flex;
+    font-size: 20px;
     justify-content: center;
     align-items: center;
     color: white;
