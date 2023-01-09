@@ -33,6 +33,19 @@ html body{
 small{
     margin: 1em;
 }
-.info{
-    margin-top: 3em;
+
+.info {
+    position: sticky;
+    background-color: white;
+    margin: 50px;
+
+
+}
+
+.card-body {
+    margin: 1em;
+}
+
+.card {
+    margin: 1em;
 }

@@ -5,5 +5,13 @@
 {% endblock %}
 
 {% block body %}
+    {{ include('_header.html.twig') }}
+    {% if is_granted('ROLE_USER') %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
+        {% else %}
+            {{ include('client/_navbar.html.twig', {current_page: 'animaux'}) }}
+        {% endif %}
+    {% endif %}
     {{ include('animal/_animal.html.twig') }}
 {% endblock %}
