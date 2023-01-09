@@ -12,8 +12,8 @@
         <tr class="tete_nav">
             <th scope="col">Nom</th>
             <th scope="col">Type</th>
-            <th scope="col">age</th>
-            <th scope="col">poid</th>
+            <th scope="col">Age</th>
+            <th scope="col">Poids</th>
             <th scope="col"><form class="d-flex" role="search" method="get" action="">
                     <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
                     <button style = "float: right" class="boutton btn btn-light " onclick="window.location.href ='{{ path('app_animal_create', {'id': clientId }) }}';">Ajouter</button>
@@ -28,7 +28,7 @@
                     <td class="Espece">{{ animal.EspeceAnimal}}</td>
                     <td class="Espece">{{ animal.AgeAnimal}}</td>
                     <td class="Espece">{{ animal.poidsAnimal}} Kilos</td>
-                <td><button class="boutton btn btn-light"><a href="{{ path('app_animal_show', {'id': animal.id }) }}">plus d'informations</a></button></td>
+                <td><button class="boutton btn btn-light"><a href="{{ path('app_animal_show', {'id': animal.id }) }}">Plus d'informations</a></button></td>
             </tr>
         {% endfor %}
         </tbody>
