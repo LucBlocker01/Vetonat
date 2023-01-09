@@ -91,6 +91,13 @@ p {
     margin-top: 15px;
 }
 
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
 .cons_block_clock {
     width: 5%;
     display: flex;
