@@ -13,12 +13,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class AnimalController extends AbstractController
 {
     #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['contactId'=>'\d+'])]
-    public function index(AnimalRepository $AnimalRepository, int $clientId): Response
+    public function index(Security $security, AnimalRepository $AnimalRepository, int $clientId): Response
     {
+        $user = $security->getUser();
         $listAnimal = $AnimalRepository->findByClient($clientId);
         /*$search = $animal->getClient()->getId();
         if (null == $search) {
@@ -29,6 +31,7 @@ class AnimalController extends AbstractController
         return $this->render('animal/index.html.twig', [
             'lstAnimal' => $listAnimal,
             'clientId' => $clientId,
+            'user' => $user,
         ]);
     }
 
