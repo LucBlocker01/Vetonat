@@ -11,11 +11,11 @@
         <tr class="tete_nav">
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
-            <th scope="col">ville</th>
-            <th scope="col">code postal</th>
-            <th scope="col">telephone</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Code postal</th>
+            <th scope="col">Téléphone</th>
             <th scope="col"><form class="d-flex" role="search" method="get" action="">
-                <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
+                <input class="form-control me-2" type="search" name="search" placeholder="Rechercher client" aria-label="search" value="{{search | default ("")}}">
                     <button class="boutton btn btn-light "><a href = {{ path('app_client_create') }}>Ajouter</a></button>
             </form></th>
         </tr>
