@@ -78,11 +78,6 @@ p {
     align-items: center;
 }
 
-.infosbouton {
-    height: 15%;
-    color: white;
-    background-color: rgba(0%,82%,78%,100%);
-}
 
 .modif-suppr {
     display: flex;
