@@ -13,15 +13,13 @@
     {% else %}
         {% block footer %}
             {{ include('_header.html.twig') }}
-            <div class="contour card text-white mb-3">
-            <button type="button" class="boutton btn btn-light btn-lg btn-block ">
-                <a href="{{ path('app_consultation_planning_cacher') }}">Prendre un rendez vous !</a>
-            </button>
-            </div>
 
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
-
-
+            <div class="contour card text-white mb-3">
+                <button type="button" class="boutton btn btn-light btn-lg btn-block ">
+                    <a href="{{ path('app_consultation_planning_cacher') }}">Prendre un rendez vous !</a>
+                </button>
+            </div>
             {% if consultations is empty %}
                 <p class="card">Aucune consultation récente</p>
             {% else %}
@@ -31,8 +29,8 @@
                         <h5 class="card-title"> Consultation : {{ consultation.consultationDesc }}</h5>
                         <small>{{consultation.start| date("m/d/Y")}}</small>
                         <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
-                        <small>                    <button class="boutton btn btn-light"><a href = #><span class="material-symbols-outlined">edit</span></a></button>
-                            <button class="boutton btn btn-light"><a href = #><span class="material-symbols-outlined">delete</span></a></button></small>
+                        <small>                    <button class="boutton btn btn-light"><a href = "consultation/{{ consultation.id }}/update"><span class="material-symbols-outlined">edit</span></a></button>
+                            <button class="boutton btn btn-light"><a href = "consultation/{{ consultation.id }}/delete"><span class="material-symbols-outlined">delete</span></a></button></small>
                     </div>
                     <p> Motif : {{ consultation.motifConsultation }}</p>
 

@@ -3,7 +3,8 @@
     margin: 1em;
 }
 .ele{
-    padding: 0.8em;
+    padding: 0.9em;
+
 }
 
 body{
@@ -12,4 +13,11 @@ body{
 .boutton{
     margin: 0.5em;
 
+}
+
+body{
+    background-color: #E4E4E4;
+}
+.global{
+    background-color: #E4E4E4;
 }
