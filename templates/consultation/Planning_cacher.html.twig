@@ -12,7 +12,14 @@
 {% endblock %}
 
 {% block body %}
-    {% include '_header.html.twig' %}
+    {% if is_granted('ROLE_USER') %}
+        {{ include('_header.html.twig') }}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
+        {% else %}
+            {{ include('client/_navbar.html.twig', {current_page: 'animaux'}) }}
+        {% endif %}
+    {% endif %}
     <div class="btn btn-secondary">
         Voici les horaires où nous sommes disponible :
     </div>
