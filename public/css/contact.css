@@ -1,0 +1,15 @@
+
+.card-body {
+    margin: 1em;
+}
+
+.card {
+    margin: 5em;
+    padding: 5em;
+}
+.global {
+    border-collapse: collapse;
+    position: center;
+    padding: 50px;
+    width: 100%;
+}
