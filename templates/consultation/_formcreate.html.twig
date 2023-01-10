@@ -1,11 +1,29 @@
-{{ form_start(form, {method:'POST'}) }}
-    {{ form_row(form.motifConsultation, {label : 'Motif :'}) }}
-    {{ form_row(form.animal, {label: 'Animal :'}) }}
-    {{ form_row(form.consultationDesc, {label : 'Description :'}) }}
-    {{ form_row(form.start, {label : 'Start :'}) }}
-    {{ form_row(form.end, {label : 'End :'}) }}
-    {{ form_row(form.allday, {label : 'Allday :'}) }}
-    {{ form_row(form.clinique, {label : 'Clinique :'}) }}
-    {{ form_row(form.urgente, {label : 'Urgente :'}) }}
-<button type="submit">Créer</button>
-{{ form_end(form) }}
+
+<div class="card">
+    {{ form_start(form, { 'method':'POST'}) }}
+    <ul class="list-group list-group-flush">
+        <li class="ele list-group-item">Motif : {{ form_widget(form.motifConsultation, {label : 'Motif :'}) }}</li>
+        <li class="ele list-group-item">Animal : {{ form_widget(form.animal, {label: 'Animal :'}) }}</li>
+        <li class="ele list-group-item">Description : {{ form_widget(form.consultationDesc, {label : 'Description :'}) }}</li>
+        <li class="ele list-group-item">Start : {{ form_widget(form.start, {label : 'Start :'}) }}</li>
+        <li class="ele list-group-item">End : {{ form_widget(form.end, {label : 'End :'}) }}</li>
+        <li class="ele list-group-item">Alldays : {{ form_widget(form.allday, {label : 'Allday :'}) }}</li>
+        <li class="ele list-group-item">Clinique : {{ form_widget(form.clinique, {label : 'Clinique :'}) }}</li>
+        <li class="ele list-group-item">Consultation Urgente : {{ form_widget(form.urgente, {label : 'Urgente :'}) }}</li>
+        <li class="ele list-group-item"><button type="submit" class="btn btn-secondary">Créer</button></li>
+    </ul>
+    {{ form_end(form) }}
+</div>
+
+{#
+<ul class="list-group list-group-flush">
+    <li class="ele list-group-item">Nom : {{ form_widget(form.nomAnimal, {'attr': {'class': 'nomAnimal'}}) }}</li>
+    <li class="ele list-group-item">Espèce : {{ form_widget(form.EspeceAnimal, {'attr': {'class': 'EspeceAnimal'}}) }} </li>
+    <li class="ele list-group-item">Stérilisé : {{ form_widget(form.stereliser, {'attr': {'class': 'stereliser'}}) }} </li>
+    <li class="ele list-group-item">Age : {{ form_widget(form.ageAnimal, {'attr': {'class': 'ageAnimal'}}) }} </li>
+    <li class="ele list-group-item">Poids : {{ form_widget(form.poidsAnimal, {'attr': {'class': 'poidsAnimal'}}) }} </li>
+    <li class="ele list-group-item">Description : {{ form_widget(form.descriptionAnimal, {'attr': {'class': 'descriptionAnimal'}}) }} </li>
+    <li class="ele list-group-item"><button type="submit" class="btn btn-secondary">Ajouter</button></li>
+
+</ul>
+#}
