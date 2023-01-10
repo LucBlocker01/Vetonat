@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Factory\PersonneFactory;
 use App\Entity\Client;
 use App\Entity\Personne;
 use App\Form\PersonneType;
@@ -36,7 +35,7 @@ class PersonneController extends AbstractController
             return $this->redirectToRoute('app_personne');
         }
 
-        return $this->renderForm('client/updateconsul.html.twig', [
+        return $this->renderForm('client/update.html.twig', [
             'personne' => $Personne,
             'form' => $form,
         ]);
@@ -70,9 +69,9 @@ class PersonneController extends AbstractController
 
     #[Route('/client/{id}/delete', name: 'app_client_delete')]
     #[IsGranted('ROLE_ADMIN')]
-    public function delete(Personne $Personne, Request $request, ManagerRegistry $doctrine)
+    public function delete(Personne $personne, Request $request, ManagerRegistry $doctrine)
     {
-        $form = $this->createFormBuilder($Personne)
+        $form = $this->createFormBuilder($personne)
             ->add('Supprimer', SubmitType::class, ['label' => 'Supprimer'])
             ->add('Annuler', SubmitType::class, ['label' => 'Annuler'])
             ->getForm();
@@ -82,14 +81,16 @@ class PersonneController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('Supprimer')->isClicked()) {
                 $entityManager = $doctrine->getManager();
-                $entityManager->remove($Personne);
+                $entityManager->remove($personne);
                 $entityManager->flush();
 
+                return $this->redirectToRoute('app_personne');
+            } elseif ($form->get('Annuler')->isClicked()) {
                 return $this->redirectToRoute('app_personne');
             }
         } else {
             return $this->render('client/delete.html.twig', [
-                'Personne' => $Personne,
+                'Personne' => $personne,
                 'form' => $form->createView(),
             ]);
         }
