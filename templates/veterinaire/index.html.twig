@@ -32,11 +32,13 @@
                                 </button>
                             </a>
                             <div class="modif-suppr">
-                                <button class="bouton"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}>
-                                </button>
-                                <button class="bouton">
-                                    <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
-                                </button>
+                                <a href="consultation/{{ cons.id }}/update"><button class="bouton">
+                                        <img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button>
+                                </a>
+                                <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                                        <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                         <div class="cons_block_clock">
@@ -59,11 +61,13 @@
                             </button>
                         </a>
                         <div class="modif-suppr">
-                            <a href="consultation/{{ cons.id }}/update"><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button>
+                            <a href="consultation/{{ cons.id }}/update"><button class="bouton">
+                                    <img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button>
                             </a>
-                            <button class="bouton">
+                            <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
                                 <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
                             </button>
+                            </a>
                         </div>
                     </div>
                     <div class="cons_block_clock">
