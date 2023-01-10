@@ -11,6 +11,16 @@
     justify-content: center;
 }
 
+.client {
+    margin: 25px 25px 25px 65px;
+    width: 200px;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    display: flex;
+    color: black;
+}
+
 .espace {
     flex:1;
     justify-content: flex-end;
