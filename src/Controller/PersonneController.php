@@ -36,7 +36,7 @@ class PersonneController extends AbstractController
             return $this->redirectToRoute('app_personne');
         }
 
-        return $this->renderForm('client/updateconsul.html.twig', [
+        return $this->renderForm('client/update.html.twig', [
             'personne' => $Personne,
             'form' => $form,
         ]);
