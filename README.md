@@ -1,4 +1,4 @@
-<h1> TP symfony </h1>
+<h1> SAE Symfony : Développement d'un site pour vétérinaire : "Vétonat" </h1>
 <h2> Auteur : François Axel (fran0138), Franck Tony (fran0124), Legros Enzo (legr0109), Becker Chloé (Beck0018), Hureaux Lucas (Hure0006)</h2>
 <br>
 <h2> Installation / Configuration</h2>
