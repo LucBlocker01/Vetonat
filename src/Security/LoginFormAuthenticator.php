@@ -46,7 +46,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse('acceuilConnecté');
+        return new RedirectResponse('accueuil');
     }
 
     protected function getLoginUrl(Request $request): string

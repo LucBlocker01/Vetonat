@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Repository\ConsultationRepository;
 use App\Repository\PersonneRepository;
 use App\Repository\VeterinaireRepository;
@@ -45,8 +44,9 @@ class VeterinaireController extends AbstractController
         }
 
         $data = json_encode($rdvs);
-        return $this->render('/veterinaire/index_planning.html.twig', compact('data'));
 
+        return $this->render('/veterinaire/index_planning.html.twig', compact('data'));
+    }
 
     #[Route('/veterinaire/rdv', name: 'app_veterinaire_rdv')]
     public function indexRdv(Security $security): Response
