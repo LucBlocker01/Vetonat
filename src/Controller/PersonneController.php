@@ -84,9 +84,9 @@ class PersonneController extends AbstractController
                 $entityManager->remove($personne);
                 $entityManager->flush();
 
-                return $this->redirectToRoute('app_personne');
+                return $this->redirectToRoute('app_veterinaire_clients');
             } elseif ($form->get('Annuler')->isClicked()) {
-                return $this->redirectToRoute('app_personne');
+                return $this->redirectToRoute('app_veterinaire_clients');
             }
         } else {
             return $this->render('client/delete.html.twig', [
