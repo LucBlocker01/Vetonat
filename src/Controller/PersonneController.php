@@ -43,7 +43,6 @@ class PersonneController extends AbstractController
     }
 
     #[Route('/client/create', name: 'app_client_create')]
-    #[IsGranted('ROLE_ADMIN')]
     public function create(ManagerRegistry $doctrineContact, Request $request, UserPasswordHasherInterface $passwordHasher)
     {
         $Personne = new Personne();

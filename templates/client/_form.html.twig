@@ -1,14 +1,15 @@
 
-
-<h1>Création d'un nouveau Client</h1>
-{{ form_start(form, {'method': 'POST'}) }}
-<div class="form-control from2">Prénom : {{ form_widget(form.pnomPers, {'attr': {'class': 'pnomPers'}}) }}</div> <br>
-<div class="form-control form2">Nom : {{ form_widget(form.nomPers, {'attr': {'class': 'nomPers'}}) }}</div> <br>
-<div class="form-control form2">Ville : {{ form_widget(form.villePers, {'attr': {'class': 'villePers'}}) }} </div><br>
-<div class="form-control form2">Code Postal : {{ form_widget(form.CPPers, {'attr': {'class': 'CPPers'}}) }} </div><br>
-<div class="form-control form2">Adresse : {{ form_widget(form.adrPers, {'attr': {'class': 'adrPers'}}) }} </div><br>
-<div class="form-control form2">Téléphone : {{ form_widget(form.telPers, {'attr': {'class': 'telPers'}}) }} </div><br>
-<div class="form-control form2">Login : {{ form_widget(form.loginPers, {'attr': {'class': 'loginPers'}}) }}</div> <br>
-<div class="form-control form2">Mot de passe : {{ form_widget(form.mdpPers, {'attr': {'class': 'mdpPers'}}) }} </div><br>
-<button type="submit" >{{ label_submit }}</button>
-{{ form_end(form) }}
+<div class="card">
+    {{ form_start(form, {'method': 'POST'}) }}
+    <ul class="list-group list-group-flush">
+        <li class="ele list-group-item">Prénom : {{ form_widget(form.pnomPers, {'attr': {'class': 'pnomPers'}}) }}</li>
+        <li class="ele list-group-item">Nom : {{ form_widget(form.nomPers, {'attr': {'class': 'nomPers'}}) }}</li>
+        <li class="ele list-group-item">Ville : {{ form_widget(form.villePers, {'attr': {'class': 'villePers'}}) }} </li>
+        <li class="ele list-group-item">Code Postal : {{ form_widget(form.CPPers, {'attr': {'class': 'CPPers'}}) }} </li>
+        <li class="ele list-group-item">Adresse : {{ form_widget(form.adrPers, {'attr': {'class': 'adrPers'}}) }} </li>
+        <li class="ele list-group-item">Téléphone : {{ form_widget(form.telPers, {'attr': {'class': 'telPers'}}) }} </li>
+        <li class="ele list-group-item">Login : {{ form_widget(form.loginPers, {'attr': {'class': 'loginPers'}}) }}</li>
+        <li class="ele list-group-item">Mot de passe : {{ form_widget(form.mdpPers, {'attr': {'class': 'mdpPers'}}) }} </li>
+    </ul>
+    {{ form_end(form) }}
+</div>
