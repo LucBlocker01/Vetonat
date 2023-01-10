@@ -35,7 +35,7 @@ class ConsultationController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($consultation);
             $entityManager->flush();
-            return $this->redirectToRoute('app_consultation');
+            return $this->redirectToRoute('app_client');
         }
 
         return $this->renderForm('consultation/create.html.twig', ['consultation' => $consultation, 'form' => $form]);
