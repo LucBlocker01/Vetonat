@@ -13,19 +13,6 @@ use Symfony\Component\Security\Core\Security;
 
 class VeterinaireController extends AbstractController
 {
-    #[Route('/veterinaire', name: 'app_veterinaire')]
-    public function index(Security $security, VeterinaireRepository $repository): Response
-    {
-        $user = $security->getUser();
-        $veterinaire = $repository->findOneBy(['personne' => $user->getId()]);
-
-        return $this->render('veterinaire/index.html.twig', [
-            'consultations' => $veterinaire->getConsultations(),
-            'current_page' => 'app_veterinaire',
-            'user' => $user,
-        ]);
-    }
-
     #[Route('/veterinaire/planning', name: 'app_veterinaire_planning')]
     public function indexPlanning(ConsultationRepository $repot): Response
     {
@@ -73,10 +60,14 @@ class VeterinaireController extends AbstractController
         ]);
     }
 
-    #[Route('/veterinaire/infos_rdv', name: 'app_veterinaire_infos_rdv')]
-    public function indexInfosRdv(Security $security): Response
+    #[Route('/veterinaire/{id}/infos_rdv', name: 'app_veterinaire_infos_rdv')]
+    public function indexInfosRdv(Security $security, int $id, ConsultationRepository $consultationRepository): Response
     {
-        return $this->render('veterinaire/index_infos_rdv.html.twig', ['veterinaire' => $security->getUser(),
+        $consult = $consultationRepository->findOneBy(['id' => $id]);
+        $client = $consult->getAnimal()->getClient()->getPersonne();
+        $animal = $consult->getAnimal();
+
+        return $this->render('veterinaire/index_infos_rdv.html.twig', ['veterinaire' => $security->getUser(), 'consultation' => $consult, 'client' => $client, 'animal' => $animal,
         ]);
     }
 

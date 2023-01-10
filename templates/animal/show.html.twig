@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/show_animal.css') }}">
 {% endblock %}
 
+
 {% block body %}
     {{ include('_header.html.twig') }}
     {% if is_granted('ROLE_USER') %}
@@ -63,7 +64,4 @@
                 </h5>
             </div>
         </div>
-
-    </div>
-
 {% endblock %}

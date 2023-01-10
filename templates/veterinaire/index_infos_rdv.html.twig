@@ -7,7 +7,7 @@
 {% block body %}
     {% if is_granted('ROLE_ADMIN') %}
     {{ include('_header.html.twig') }}
-    {{ include('veterinaire/_navbar.html.twig',{ current_page: ''}) }}
+    {{ include('veterinaire/_navbar.html.twig',{ current_page: 'rdv'}) }}
         <link rel="stylesheet" href="{{ asset('css/info_rdv.css') }}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1
             /css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -25,9 +25,8 @@
 
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">adresse</li>
-                                <li class="list-group-item">Ville</li>
-                                <li class="list-group-item">autre</li>
+                                <li class="list-group-item">Adresse : {{ client.adrPers }} </li>
+                                <li class="list-group-item">Ville : {{ client.villePers }}</li>
                             </ul>
                     </div>
                 </div>
@@ -38,9 +37,9 @@
 
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Nom</li>
-                        <li class="list-group-item">Race</li>
-                        <li class="list-group-item">Poid</li>
+                        <li class="list-group-item">Nom : {{ animal.nomAnimal }}</li>
+                        <li class="list-group-item">Race : {{ animal.EspeceAnimal }}</li>
+                        <li class="list-group-item">Poid : {{ animal.poidsAnimal }} kg</li>
                     </ul>
                 </div>
                 </div>
@@ -52,16 +51,15 @@
                 </h5>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">adresse</li>
-                        <li class="list-group-item">Ville</li>
-                        <li class="list-group-item">autre</li>
+                        <li class="list-group-item">Adresse : {{ client.adrPers }} </li>
+                        <li class="list-group-item">Ville : {{ client.villePers }}</li>
                     </ul>
-                    <form action="http://maps.google.com/maps" method="get">
+                    <form action="http://maps.google.com/maps" target="_blank" method="get">
                         <br>
-                        <h6 class="card-title ">entrez votre adresse de départ :</h6>
+                        <h6 class="card-title ">Entrez votre adresse de départ :</h6>
                         <input name="saddr" type="text">
-                        <input name="daddr" type="hidden" value="854 Deerfield Rd, Allen, TX">
-                        <input type="submit" class="btn btn-primary" value="Trajet">
+                        <input name="daddr" type="hidden" value="58 Rue Gambetta, 51100 Reims">
+                        <input type="submit" class="btn btn-secondary" value="Trajet">
                     </form>
                 </div>
             </div>

@@ -17,9 +17,7 @@
     <div class="global">
 
     {% if is_granted('ROLE_USER') %}
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/logout">Deconnexion </a>
-        </li>
+        <a class="nav-link active" aria-current="page" href="/logout">Déconnexion </a>
     {% else %}
 <form method="post">
     {% if error %}
@@ -40,7 +38,7 @@
     <div class="col form1">
         <div class="collapse multi-collapse" id="zone1">
             <div class="card card-body">
-                envoyer un mail à l'addresse: veto@gmail.com
+                Envoyez un mail à l'adresse: veto@gmail.com
             </div>
         </div>
     </div>

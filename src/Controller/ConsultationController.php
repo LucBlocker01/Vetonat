@@ -2,12 +2,10 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Consultation;
 use App\Form\ConsultationType;
 use App\Repository\ConsultationRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +18,7 @@ class ConsultationController extends AbstractController
     public function index(ConsultationRepository $repot): Response
     {
         $consultation = $repot->findBy([]);
+
         return $this->render('consultation/index.html.twig', [
             'consultations' => $consultation,
         ]);

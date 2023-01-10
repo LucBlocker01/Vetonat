@@ -14,4 +14,16 @@
     <h1> Création d'une consultation</h1>
     {{ include('consultation/_formcreate.html.twig', {form : form,label_submit: 'Supprimer'}, with_context = false) }}
 
+    {{ form_start(form, {method:'POST'}) }}
+    {{ form_row(form.motifConsultation, {label : 'Motif :'}) }}
+    {{ form_row(form.animal, {label: 'Animal :'}) }}
+    {{ form_row(form.consultationDesc, {label : 'Description :'}) }}
+    {{ form_row(form.start, {label : 'Start :'}) }}
+    {{ form_row(form.end, {label : 'End :'}) }}
+    {{ form_row(form.allday, {label : 'Allday :'}) }}
+    {{ form_row(form.clinique, {label : 'En clinique :'}) }}
+    {{ form_row(form.urgente, {label : 'Consultation Urgente :'}) }}
+    <button type="submit">Créer</button>
+    {{ form_end(form) }}
+
 {% endblock %}
