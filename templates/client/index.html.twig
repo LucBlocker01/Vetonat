@@ -15,16 +15,13 @@
             {{ include('_header.html.twig') }}
             <div class="contour card text-white mb-3">
             <button type="button" class="boutton btn btn-light btn-lg btn-block ">
-                <a href="{{ path('app_create_consultation') }}">Prendre un rendez vous !</a>
+                <a href="{{ path('app_consultation_planning_cacher') }}">Prendre un rendez vous !</a>
             </button>
             </div>
 
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
 
 
-            <button type="button" class="btn btn-secondary">
-                <a href="{{ path('app_consultation_planning_cacher') }}">Prendre un rendez vous !</a>
-            </button>
             {% if consultations is empty %}
                 <p class="card">Aucune consultation récente</p>
             {% else %}
