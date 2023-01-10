@@ -1,10 +1,13 @@
+<div class="card">
 {{ form_start(form, {'method': 'POST'}) }}
-Nom : {{ form_widget(form.nomAnimal, {'attr': {'class': 'nomAnimal'}}) }} <br>
-Espece : {{ form_widget(form.EspeceAnimal, {'attr': {'class': 'EspeceAnimal'}}) }} <br>
-Stérélisé : {{ form_widget(form.stereliser, {'attr': {'class': 'stereliser'}}) }} <br>
-Age : {{ form_widget(form.ageAnimal, {'attr': {'class': 'ageAnimal'}}) }} <br>
-Poids : {{ form_widget(form.poidsAnimal, {'attr': {'class': 'poidsAnimal'}}) }} <br>
-Description : {{ form_widget(form.descriptionAnimal, {'attr': {'class': 'descriptionAnimal'}}) }} <br>
-<button type="submit" class="btn btn-primary">Modifier</button>
+    <ul class="list-group list-group-flush">
+        <li class="ele list-group-item">Nom : {{ form_widget(form.nomAnimal, {'attr': {'class': 'nomAnimal'}}) }}</li>
+        <li class="ele list-group-item">Espèce : {{ form_widget(form.EspeceAnimal, {'attr': {'class': 'EspeceAnimal'}}) }}</li>
+        <li class="ele list-group-item">Stérilisé : {{ form_widget(form.stereliser, {'attr': {'class': 'stereliser'}}) }}</li>
+        <li class="ele list-group-item">Age : {{ form_widget(form.ageAnimal, {'attr': {'class': 'ageAnimal'}}) }}</li>
+        <li class="ele list-group-item">Poids : {{ form_widget(form.poidsAnimal, {'attr': {'class': 'poidsAnimal'}}) }}</li>
+        <li class="ele list-group-item">Description : {{ form_widget(form.descriptionAnimal, {'attr': {'class': 'descriptionAnimal'}}) }}</li>
+        <li class="ele list-group-item"><button type="submit" class="btn btn-secondary">Modifier</button></li>
+    </ul>
 {{ form_end(form) }}
-
+</div>
