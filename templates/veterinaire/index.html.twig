@@ -6,10 +6,11 @@
 {% block body %}
     {% include '_header.html.twig' %}
     {{ include('veterinaire/_navbar.html.twig') }}
-    <div class="other">
+    <section class="other">
     <link rel="stylesheet" href="{{ asset('css/veto.css') }}">
-        <div class="liste">
-    <div class="header_planning"><p class="cons_jour">Consultation du Jour</p></div>
+    <section class="liste">
+        <div class="header_planning"><p class="cons_jour">Consultations du Jour</p></div>
+        <div class="trans_block"></div>
         {%  for cons in consultations %}
             {%  if cons.urgente %}
         <div class="urgente_block">
@@ -28,8 +29,9 @@
             <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
                 {%  endif %}
         </div>
-            <div class="trans_block"></div>
+        <div class="trans_block"></div>
         {% endfor %}
-    </div>
-    </div>
+        <div class="foot_planning"><p class="cons_jour">Fin de Journée</p></div>
+    </section>
+    </section>
 {% endblock %}

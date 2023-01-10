@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Security;
 class VeterinaireController extends AbstractController
 {
     #[Route('/veterinaire', name: 'app_veterinaire')]
-    public function index(Security $security, VeterinaireRepository $repository): Response
+    public function index(Security $security, VeterinaireRepository $repository, ConsultationRepository $repocons): Response
     {
         $user = $security->getUser();
         $veterinaire = $repository->findOneBy(['personne' => $user->getId()]);
