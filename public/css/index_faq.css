@@ -2,3 +2,20 @@
     text-align: center;
     margin: 1em;
 }
+
+.contact{
+
+    margin-top: 1em;
+}
+
+footer{
+    padding: 1em;
+    margin: 0.5em;
+}
+body{
+    background-color: #E4E4E4;
+}
+.card{
+    margin: 0.5em;
+    border-radius: 8px;
+}

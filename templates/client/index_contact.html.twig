@@ -14,7 +14,8 @@
 {% block footer %}
     {{ include('client/_navbar.html.twig', { current_page: 'contact'}) }}
     {% set u = 0 %}
-    <br>
+
+
     <div class="contact">
         <div class="card contact_clinique">
             <h3 class="card-title">Contacter la clinique</h3>
@@ -50,4 +51,6 @@
         </div>
     </div>
     <footer>En cas de consultation d’urgence un jour où la clinique est fermée merci de contacter directement le vétérinaire</footer>
-{% endblock %}
+
+        {% endblock %}
+

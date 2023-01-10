@@ -1,0 +1,20 @@
+.btn:not(:disabled):not(.disabled) {
+    background-color:#2DCAC0 ;
+}
+.global{
+    background: #E4E4E4;
+    border-collapse: collapse;
+    position: center;
+    padding: 50px;
+    width: 100%;
+
+}
+
+.boutton
+{
+    margin: 5em;
+}
+
+.pad{
+    padding: 0.5em;
+}
