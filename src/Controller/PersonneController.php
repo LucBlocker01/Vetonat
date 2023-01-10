@@ -106,7 +106,7 @@ class PersonneController extends AbstractController
         return $this->render('personne/index.html.twig', ['lstContact' => $tableau, 'search' => $recherche]);
     }
 
-    #[Route('/client')]
+    #[Route('/clientListe')]
     public function show(Personne $personne): Response
     {
         return $this->render('personne/index.html.twig', ['Personne' => $personne]);

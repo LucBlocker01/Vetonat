@@ -18,14 +18,14 @@ use Symfony\Component\Security\Core\Security;
 
 class ClientController extends AbstractController
 {
-    #[Route('/acceuilClient/urgence', name: 'app_client_urgence')]
+    #[Route('/client/urgence', name: 'app_client_urgence')]
     public function indexUrgence(Security $security): Response
     {
         return $this->render('client/index_urgence.html.twig', ['user' => $security->getUser(),
         ]);
     }
 
-    #[Route('/acceuilClient/contact', name: 'app_client_contact')]
+    #[Route('/client/contact', name: 'app_client_contact')]
     public function indexContact(Security $security, CliniqueRepository $cliniqueRepository, VeterinaireRepository $veterinaireRepository): Response
     {
         $cliniques = $cliniqueRepository->findAll();
@@ -38,7 +38,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('/acceuilClient/faq', name: 'app_client_faq')]
+    #[Route('/client/faq', name: 'app_client_faq')]
     public function indexFaq(Security $security): Response
     {
         return $this->render('client/index_faq.html.twig', [
