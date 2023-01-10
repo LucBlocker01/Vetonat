@@ -14,13 +14,14 @@ use Symfony\Component\Security\Core\Security;
 class VeterinaireController extends AbstractController
 {
     #[Route('/veterinaire', name: 'app_veterinaire')]
-    public function index(Security $security, VeterinaireRepository $repository): Response
+    public function index(Security $security, VeterinaireRepository $repository, ConsultationRepository $repocons): Response
     {
         $user = $security->getUser();
         $veterinaire = $repository->findOneBy(['personne' => $user->getId()]);
+        $consultation = $repocons->findBy(['veterinaire' => $veterinaire], ['start' => 'ASC']);
 
         return $this->render('veterinaire/index.html.twig', [
-            'consultations' => $veterinaire->getConsultations(),
+            'consultations' => $consultation,
             'current_page' => 'app_veterinaire',
             'user' => $user,
         ]);
