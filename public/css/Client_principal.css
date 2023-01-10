@@ -1,0 +1,18 @@
+.contour {
+    padding: 3em;
+    background-color: #2DCAC0 !important;
+}
+
+body{
+    background: #E4E4E4 !important;
+}
+.button {
+    background-color: white;
+}
+.boutton:hover{
+    background-color: #e3edfa !important;
+}
+.consultation{
+    padding: 1em;
+    margin: 1em;
+}
