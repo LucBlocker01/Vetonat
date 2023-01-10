@@ -7,7 +7,7 @@
 {% block body %}
     {% if is_granted('ROLE_ADMIN') %}
     {{ include('_header.html.twig') }}
-    {{ include('veterinaire/_navbar.html.twig',{ current_page: 'rdv'}) }}
+    {{ include('veterinaire/_navbar.html.twig',{ current_page: ''}) }}
         <link rel="stylesheet" href="{{ asset('css/info_rdv.css') }}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1
             /css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
