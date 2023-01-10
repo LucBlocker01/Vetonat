@@ -21,7 +21,7 @@ class AcceuilController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/acceuilConnecté', name: 'app_client')]
+    #[Route('/client', name: 'app_client')]
     public function acceuilCo(Security $security, AnimalRepository $animalRepository, PersonneRepository $PersonneRepository, ConsultationRepository $consultationRepository): Response
     {
         $user = $security->getUser();
