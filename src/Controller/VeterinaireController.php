@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+
+use App\Repository\ConsultationRepository;
 use App\Repository\PersonneRepository;
 use App\Repository\VeterinaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,13 +28,25 @@ class VeterinaireController extends AbstractController
     }
 
     #[Route('/veterinaire/planning', name: 'app_veterinaire_planning')]
-    public function indexPlanning(Security $security): Response
+    public function indexPlanning(ConsultationRepository $repot): Response
     {
-        return $this->render('veterinaire/index_planning.html.twig', [
-            'current_page' => 'planning',
-            'user' => $security->getUser(),
-        ]);
-    }
+        $event = $repot->findAll();
+        $rdvs = [];
+        foreach ($event as $ev) {
+            $rdvs[] = [
+                'id' => $ev->getId(),
+                'start' => $ev->getStart()->format('Y-m-d H:i:s'),
+                'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
+                'title' => $ev->getMotifConsultation(),
+                'description' => $ev->getConsultationDesc(),
+                'allDay' => $ev->getAllDay(),
+                'backgroundColor' => $ev->getBackgroundColor(),
+            ];
+        }
+
+        $data = json_encode($rdvs);
+        return $this->render('/veterinaire/index_planning.html.twig', compact('data'));
+
 
     #[Route('/veterinaire/rdv', name: 'app_veterinaire_rdv')]
     public function indexRdv(Security $security): Response

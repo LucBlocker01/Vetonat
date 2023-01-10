@@ -7,6 +7,7 @@ use App\Entity\Consultation;
 use App\Form\ConsultationType;
 use App\Repository\ConsultationRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,22 +43,21 @@ class ConsultationController extends AbstractController
     #[Route('/consultation/test', name: 'app_consultation_test')]
     public function test(ConsultationRepository $repot): Response
     {
+            $event = $repot->findAll();
+            $rdvs = [];
+            foreach ($event as $ev) {
+                $rdvs[] = [
+                    'id' => $ev->getId(),
+                    'start' => $ev->getStart()->format('Y-m-d H:i:s'),
+                    'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
+                    'title' => $ev->getMotifConsultation(),
+                    'description' => $ev->getConsultationDesc(),
+                    'allDay' => $ev->getAllDay(),
+                    'backgroundColor' => $ev->getBackgroundColor(),
+                ];
+            }
 
-        $event = $repot->findAll();
-        $rdvs =[];
-        foreach ($event as $ev){
-            $rdvs[] = [
-                'id' => $ev->getId(),
-                'start' => $ev->getStart()->format('Y-m-d H:i:s'),
-                'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
-                'title' => $ev->getMotifConsultation(),
-                'description' => $ev->getConsultationDesc(),
-                'allDay' => $ev->getAllDay(),
-                'backgroundColor' => $ev->getBackgroundColor(),
-            ];
-        }
-
-        $data = json_encode($rdvs);
-        return $this->render('consultation/test.html.twig',compact('data'));
+            $data = json_encode($rdvs);
+            return $this->render('consultation/test.html.twig', compact('data'));
     }
 }
