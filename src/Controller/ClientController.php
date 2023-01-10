@@ -18,35 +18,15 @@ use Symfony\Component\Security\Core\Security;
 
 class ClientController extends AbstractController
 {
-
-    #[Route('/acceuilClient', name: 'app_client')]
-    public function index(Security $security, AnimalRepository $animalRepository, PersonneRepository $PersonneRepository, ConsultationRepository $consultationRepository): Response
-    {
-        $user = $security->getUser();
-        $personne = $PersonneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
-        $animaux = $personne->getClient()->getAnimal();
-        $lstConsult = [];
-        foreach ($animaux as $animal) {
-            $consultations = $consultationRepository->findBy(['id' => $animal->getId()]);
-            array_push($lstConsult, $consultations);
-        }
-
-        return $this->render('client/index.html.twig', [
-            'user' => $personne,
-            'animaux' => $animaux,
-            'consultations' => $lstConsult,
-        ]);
-    }
-
     #[Route('/acceuilClient/urgence', name: 'app_client_urgence')]
-    public function indexUrgence(): Response
+    public function indexUrgence(Security $security): Response
     {
-        return $this->render('client/index_urgence.html.twig', [
+        return $this->render('client/index_urgence.html.twig', ['user' => $security->getUser(),
         ]);
     }
 
     #[Route('/acceuilClient/contact', name: 'app_client_contact')]
-    public function indexContact(CliniqueRepository $cliniqueRepository, VeterinaireRepository $veterinaireRepository): Response
+    public function indexContact(Security $security, CliniqueRepository $cliniqueRepository, VeterinaireRepository $veterinaireRepository): Response
     {
         $cliniques = $cliniqueRepository->findAll();
         $veterinaires = $veterinaireRepository->findAll();
@@ -54,14 +34,15 @@ class ClientController extends AbstractController
         return $this->render('client/index_contact.html.twig', [
             'cliniques' => $cliniques,
             'veterinaires' => $veterinaires,
+            'user' => $security->getUser(),
         ]);
     }
 
     #[Route('/acceuilClient/faq', name: 'app_client_faq')]
-    public function indexFaq(): Response
+    public function indexFaq(Security $security): Response
     {
         return $this->render('client/index_faq.html.twig', [
-            'controller_name' => 'ClientController',
+            'user' => $security->getUser(),
         ]);
     }
 }

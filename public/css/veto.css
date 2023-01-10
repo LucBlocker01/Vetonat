@@ -3,7 +3,7 @@
 }
 
 .header_planning {
-    margin: 35px;
+    margin: 35px 35px 0 35px;
     height: 60px;
     width: 95%;
     background-color: rgba(100%,40%,0%,100%);
@@ -11,7 +11,6 @@
     border-top-right-radius: 110px; /* 100px of height + 10px of border */
     display: flex;
     justify-content: center;
-    border-style: solid;
     text-align: center;
 }
 
@@ -20,4 +19,95 @@
     vertical-align: middle;
     line-height: 50px;
     font-size: 30px;
+}
+.cons_block {
+    background-color: #4C403B;
+    margin: 0 35px 0 35px;
+    width: 95%;
+    display: flex;
+}
+
+.urgente_block {
+    background-color: rgba(100%,40%,0%,100%);
+    margin: 0 35px 0 35px;
+    width: 95%;
+    display: flex;
+}
+
+.trans_block {
+    background-color: white;
+    margin: 0 35px 0 35px;
+    width: 95%;
+    height: 15px;
+}
+
+.icon {
+    width : 40px;
+    height : 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    color: white;
+}
+
+.cons_block_motif {
+    color: white;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 250px;
+    width: 20%;
+    margin-right: 0;
+    font-size: 22px;
+}
+
+.cons_block_header {
+    width: 20%;
+    margin: 45px 0 15px 15px;
+    font-size: 20px;
+}
+
+.cons_block_options {
+    width: 35%;
+    margin: 0 0 15px 15px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.infosbouton {
+    height: 15%;
+    color: white;
+    background-color: rgba(0%,82%,78%,100%);
+}
+
+.modif-suppr {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bouton {
+    background-color: transparent;
+    border-style: none;
+    margin-top: 15px;
+}
+
+.cons_block_clock {
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cons_block_time {
+    width: 15%;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }

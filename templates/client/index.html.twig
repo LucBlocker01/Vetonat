@@ -1,9 +1,34 @@
-{% extends 'client/_baseClient.html.twig' %}
+{% extends '/client/_baseClient.html.twig' %}
 
-{% block footer %}
-    {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
-    Nom : {{ user.nomPers }}, Prenom : {{ user.pnomPers }}
-    {% for consult in consultations %}
-        {{ consult[0]. }}
-    {% endfor %}
+{% block body %}
+{% if is_granted('ROLE_USER') %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('veterinaire/index.html.twig')}}
+    {% else %}
+        {% block footer %}
+            {{ include('_header.html.twig') }}
+            {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
+            Bonjour {{ user.nomPers }} {{ user.pnomPers }}
+
+
+            <button type="button" class="btn btn-secondary">
+                <a href="{{ path('app_create_consultation') }}">Prendre un rendez vous !</a>
+            </button>
+            {% if consultations is empty %}
+                <p>Aucune consultation récente</p>
+            {% else %}
+                {%for consultation in consultations %}
+                <div class="list-group-item flex-column align-items-start consultation">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="desc"> Consultation : {{ consultation.consultationDesc }}</h5>
+                        <small>{{consultation.start| date("m/d/Y")}}</small>
+                        <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
+                    </div>
+                    <p> Motif : {{ consultation.motifConsultation }}</p>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+    {% endif %}
+{% endif %}
 {% endblock %}

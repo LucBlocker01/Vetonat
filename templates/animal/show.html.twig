@@ -10,20 +10,27 @@
 /css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
     <link rel="stylesheet" href="{{ asset('css/show_animal.css') }}">
 {% endblock %}
 
 {% block body %}
+    {{ include('_header.html.twig') }}
+    {% if is_granted('ROLE_USER') %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
+        {% else %}
+            {{ include('client/_navbar.html.twig', {current_page: 'animaux'}) }}
+        {% endif %}
+    {% endif %}
     <table class="global">
         <thead class="tete">
         <tr>
             <th class="ele" scope="col">Nom : {{ animal.nomAnimal }}</th>
-            <th class="ele" scope="col">espece : {{ animal.especeAnimal }}</th>
+            <th class="ele" scope="col">Espèce : {{ animal.especeAnimal }}</th>
             {%  if animal.stereliser == false %}
-                <th class="ele" scope="col">Stéréliser : Non</th>
+                <th class="ele" scope="col">Stérilisé : Non</th>
             {% else %}
-                <th class="ele" scope="col">Stéréliser : Oui</th>
+                <th class="ele" scope="col">Stérilisé : Oui</th>
             {% endif %}
             <th class="ele" scope="col">Age : {{ animal.ageAnimal }}</th>
             <th class="ele" scope="col">Poids : {{ animal.poidsAnimal }} Kg</th>
@@ -35,18 +42,20 @@
         </thead>
     </table>
 
-    <div class="info row">
-        <div class="col-sm-6">
-            <h5 class=" card card-body">Description : {{ animal.descriptionAnimal }}</h5>
+        <div class="card">
+            <h5 class="card-title">Description : </h5>
+            <p class=" card card-body">{{ animal.descriptionAnimal }}</p>
         </div>
-        <div class="col-sm-6">
+        <div class="card">
             <div class=" card card-body list-group-item flex-column align-items-start consultations">
                 <h5>Dernière consultation :
                     {%for consultation in lstConsult %}
                         <div class="list-group-item flex-column align-items-start consultation">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="desc"> consultation : {{ consultation.consultationDesc }}</h5>
-                                <small>{{consultation.dateConsultation| date("m/d/Y g:i:sA")}}</small>
+                                <h5 class="card-title desc"> Consultation :{{ consultation.consultationDesc }} </h5>
+
+                                <small>{{consultation.start| date("m/d/Y")}}</small>
+                                <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
                             </div>
                             <p> Motif : {{ consultation.motifConsultation }}</p>
                         </div>
@@ -54,5 +63,7 @@
                 </h5>
             </div>
         </div>
+
     </div>
+
 {% endblock %}

@@ -1,10 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    {{ include('veterinaire/_navbar.html.twig', { current_page: 'infos'}) }}
+{% block title %}
+    Vétérinaire - Infos
 {% endblock %}
 
-{% block title %}
-Vétérinaire - Infos
+{% block body %}
+    {% include '_header.html.twig' %}
+    {{ include('veterinaire/_navbar.html.twig', { current_page: 'infos'}) }}
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+        .main {
+            background-color: rgba(0,0,0,0.1);
+        }
+        .info_section {
+            margin: 100px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+        span {
+            font-size: 2em;
+            margin: 15px 15px 50px;
+            color: rgba(0%,82%,78%,100%);
+        }
+        .champ {
+            border-style: solid;
+            border-color: rgba(0,0,0,0.1);
+            margin: 10px 10px 5px;
+        }
+        .validation {
+            border-style: none;
+            background-color: rgba(0%,82%,78%,100%);
+            color: white;
+            width: 50%;
+            text-align: center;
+            margin: 30px auto 80px;
+        }
+    </style>
+    <div class="main">
+        <div class="info_section">
+            <span>Mes informations</span>
+    <div class="champ">{{ user.nomPers }}</div>
+    <div class="champ">{{ user.pnomPers }}</div>
+    <div class="champ">{{ user.telPers }}</div>
+            <button class="validation">Valider</button>
+        </div>
+    </div>
 {% endblock %}
+
+
 

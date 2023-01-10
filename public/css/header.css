@@ -1,0 +1,24 @@
+.head {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.presentation {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.espace {
+    flex:1;
+    justify-content: flex-end;
+    display: flex;
+}
+
+
+
+.logo {
+    width : 100px;
+    height : 100px;
+}

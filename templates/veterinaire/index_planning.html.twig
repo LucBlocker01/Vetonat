@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}
     Vétérinaire - Planning
 {% endblock %}
 
 {% block body %}
-    {{ include('veterinaire/_navbar.html.twig', { current_page: 'planning'}) }}
+    {{ include('_header.html.twig') }}
+    {{ include('veterinaire/_navbar.html.twig', { current_page: 'planning'}) }}{% endblock %}
 
     <div id="calendrier">
     </div>

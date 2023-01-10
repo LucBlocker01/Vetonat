@@ -32,11 +32,19 @@ html, body {
     padding: 10px;
 
 }
+.animal{
+    border: #AAAAAA;
+    border-top:1px solid #eee ;
+    margin: 10px;
+    padding: 10px;
 
+}
 .tete_nav{
     color: white ;
 }
-
+.animal:hover{
+    background-color: #E4E4E4;
+}
 
 .contact:hover{
     background-color: #E4E4E4;
@@ -56,4 +64,8 @@ form {
 
 .center{
     text-align: center;
+}
+
+.btn-light{
+    margin: 10px;
 }
