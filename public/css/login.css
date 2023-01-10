@@ -33,3 +33,6 @@ html, body {
 .form2{
     margin: 0.2em 0em 0.2em 0em ;
 }
+.mdp{
+    width: fit-content;
+}
