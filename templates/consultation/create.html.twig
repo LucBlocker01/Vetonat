@@ -3,6 +3,7 @@
 {% block title %}Création d'une consultation{% endblock %}
 
 {% block body %}
+    {% include '_header.html.twig' %}
 <h1> Création d'une consultation</h1>
 
     {{ form_start(form, {method:'POST'}) }}

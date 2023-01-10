@@ -25,7 +25,7 @@ class ConsultationController extends AbstractController
     }
 
     #[Route('consultation/create', name: 'app_create_consultation')]
-    public function create(ManagerRegistry $doctrine, Request $requete): Response
+    public function create(ManagerRegistry $doctrine, Request $requete,ConsultationRepository $repot): Response
     {
         $consultation = new Consultation();
         $form = $this->createForm(ConsultationType::class, $consultation);
@@ -40,8 +40,8 @@ class ConsultationController extends AbstractController
         return $this->renderForm('consultation/create.html.twig', ['consultation' => $consultation, 'form' => $form]);
     }
 
-    #[Route('/consultation/test', name: 'app_consultation_test')]
-    public function test(ConsultationRepository $repot): Response
+    #[Route('/consultation/Planning_cacher', name: 'app_consultation_planning_cacher')]
+    public function PlanningCacher(ConsultationRepository $repot): Response
     {
             $event = $repot->findAll();
             $rdvs = [];
@@ -50,14 +50,14 @@ class ConsultationController extends AbstractController
                     'id' => $ev->getId(),
                     'start' => $ev->getStart()->format('Y-m-d H:i:s'),
                     'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
-                    'title' => $ev->getMotifConsultation(),
+                    'title' => 'Réserver',
                     'description' => $ev->getConsultationDesc(),
                     'allDay' => $ev->getAllDay(),
-                    'backgroundColor' => $ev->getBackgroundColor(),
+                    'backgroundColor' => '#000000',
                 ];
             }
 
             $data = json_encode($rdvs);
-            return $this->render('consultation/test.html.twig', compact('data'));
+            return $this->render('consultation/Planning_cacher.html.twig', compact('data'));
     }
 }

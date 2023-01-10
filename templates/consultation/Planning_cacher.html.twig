@@ -1,17 +1,24 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Calendrier{% endblock %}
 
-{% block title %}
-    Vétérinaire - Planning
+{% block stylesheets%}
+    <style>
+        #calendrier {
+            width: 80%;
+            margin: auto;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
-    {{ include('_header.html.twig') }}
-    {{ include('veterinaire/_navbar.html.twig', { current_page: 'planning'}) }}
+    {% include '_header.html.twig' %}
+    <div class="btn btn-secondary">
+        Voici les horaires où nous sommes disponible :
+    </div>
 
     <div id="calendrier">
     </div>
-{% endblock %}
 
 {% block javascripts%}
     <script>
@@ -27,12 +34,7 @@
                     center : 'title',
                     end : '',
                 },
-                eventClick: function(info) {
-                    alert('Event: ' + info.event.id);
-                    alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                    alert('View: ' + info.view.type);
 
-                },
                 events : {{ data|raw }},
                 editable : true,
 
@@ -41,6 +43,11 @@
 
             calendar.render();
         }
-
     </script>
+{% endblock  %}
+
+    <button type="button" >
+        <a href="{{ path('app_create_consultation') }}">Prendre un rendez vous !</a>
+    </button>
 {% endblock %}
+
