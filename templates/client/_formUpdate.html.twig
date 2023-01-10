@@ -1,9 +1,16 @@
-{{ form_start(form, {'method': 'POST'}) }}
-Prénom : {{ form_widget(form.pnomPers, {'attr': {'class': 'pnomPers'}}) }} <br>
-Nom : {{ form_widget(form.nomPers, {'attr': {'class': 'nomPers'}}) }} <br>
-Ville : {{ form_widget(form.villePers, {'attr': {'class': 'villePers'}}) }} <br>
-Code Postal : {{ form_widget(form.CPPers, {'attr': {'class': 'CPPers'}}) }} <br>
-Adresse : {{ form_widget(form.adrPers, {'attr': {'class': 'adrPers'}}) }} <br>
-Téléphone : {{ form_widget(form.telPers, {'attr': {'class': 'telPers'}}) }} <br>
-<button type="submit">Modifier</button>
-{{ form_end(form) }}
+
+
+<div class="card">
+    {{ form_start(form, {'method': 'POST'}) }}
+    <ul class="list-group list-group-flush">
+        <li class="ele list-group-item">Prénom : {{ form_widget(form.pnomPers, {'attr': {'class': 'pnomPers'}}) }}</li>
+        <li class="ele list-group-item">Nom : {{ form_widget(form.nomPers, {'attr': {'class': 'nomPers'}}) }}</li>
+        <li class="ele list-group-item">Ville : {{ form_widget(form.villePers, {'attr': {'class': 'villePers'}}) }}</li>
+        <li class="ele list-group-item">Code Postal : {{ form_widget(form.CPPers, {'attr': {'class': 'CPPers'}}) }}  </li>
+        <li class="ele list-group-item">Adresse : {{ form_widget(form.adrPers, {'attr': {'class': 'adrPers'}}) }} </li>
+        <li class="ele list-group-item">Téléphone : {{ form_widget(form.telPers, {'attr': {'class': 'telPers'}}) }}</li>
+        <li class="ele list-group-item"><button type="submit" class="btn btn-secondary">Modifier</button></li>
+    </ul>
+
+    {{ form_end(form) }}
+</div>
