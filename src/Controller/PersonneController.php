@@ -67,7 +67,7 @@ class PersonneController extends AbstractController
         ]);
     }
 
-    #[Route('/client/{id}/delete', name: 'app_client_delete')]
+    #[Route('/client/{id}/delete', name: 'app_client_delete', requirements: ['id' => '\d+'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Personne $personne, Request $request, ManagerRegistry $doctrine)
     {

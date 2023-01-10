@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Security;
 
 class AnimalController extends AbstractController
 {
-    #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['contactId'=>'\d+'])]
+    #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['clientId'=>'\d+'])]
     public function index(Security $security, AnimalRepository $AnimalRepository, int $clientId): Response
     {
         $user = $security->getUser();
@@ -35,7 +35,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/animal/{id}', name: 'app_animal_show')]
+    #[Route('/animal/{id}', name: 'app_animal_show', requirements: ['id'=>'\d+'])]
     public function show(Animal $animal): Response
     {
         return $this->render('animal/show.html.twig', [
@@ -44,7 +44,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/animal/{id}/update', name: 'app_animal_update')]
+    #[Route('/animal/{id}/update', name: 'app_animal_update', requirements: ['id'=>'\d+'])]
     public function update(ManagerRegistry $doctrine, Animal $animal, Request $request)
     {
         $form = $this->createForm(AnimalType::class, $animal);
