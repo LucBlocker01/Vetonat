@@ -13,21 +13,21 @@
         <div class="trans_block"></div>
         {%  for cons in consultations %}
             {%  if cons.urgente %}
-                <div class="urgente_block">
-                    <div class="cons_block_header"><img class="icon" alt="" src = "{{ asset('icone/user.png') }}"><p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}</p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}"><p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}</p></div>
-                    <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
-                    <div class="cons_block_options"><button class="infosbouton">Plus d'informations</button><div class="modif-suppr"><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}></button></div></div>
-                    <div class="cons_block_clock"><img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
-                    <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
-                </div>
+        <div class="urgente_block">
+            <div class="cons_block_header"><img class="icon" alt="" src = "{{ asset('icone/user.png') }}"><p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}</p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}"><p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}</p></div>
+            <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
+            <div class="cons_block_options"><button class="btn btn-primary col-md-6"><a  href="{{ path("app_veterinaire_infos_rdv", {'id': cons.id }) }}">Plus d'informations</a></button><div class="modif-suppr"><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}></button></div></div>
+            <div class="cons_block_clock"><img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
+            <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
+        </div>
             {% else %}
-                <div class="cons_block">
-                    <div class="cons_block_header"><img class="icon" alt="" src = "{{ asset('icone/user.png') }}"><p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}</p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}"><p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}</p></div>
-                    <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
-                    <div class="cons_block_options"><button class="infosbouton">Plus d'informations</button><div class="modif-suppr"><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}></button></div></div>
-                    <div class="cons_block_clock"><img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
-                    <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
-            {%  endif %}
+            <div class="cons_block">
+            <div class="cons_block_header"><img class="icon" alt="" src = "{{ asset('icone/user.png') }}"><p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}</p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}"><p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}</p></div>
+            <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
+            <div class="cons_block_options"><button class="btn btn-primary col-md-6"><a href="{{ path("app_veterinaire_infos_rdv", {'id': cons.id }) }}"">Plus d'informations</a></button><div class="modif-suppr"><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button><button class="bouton"><img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}></button></div></div>
+            <div class="cons_block_clock"><img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
+            <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
+                {%  endif %}
         </div>
         <div class="trans_block"></div>
         {% endfor %}

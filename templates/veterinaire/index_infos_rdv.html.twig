@@ -25,9 +25,8 @@
 
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">adresse</li>
-                                <li class="list-group-item">Ville</li>
-                                <li class="list-group-item">autre</li>
+                                <li class="list-group-item">Adresse : {{ client.adrPers }} </li>
+                                <li class="list-group-item">Ville : {{ client.villePers }}</li>
                             </ul>
                     </div>
                 </div>
@@ -38,9 +37,9 @@
 
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Nom</li>
-                        <li class="list-group-item">Race</li>
-                        <li class="list-group-item">Poid</li>
+                        <li class="list-group-item">Nom : {{ animal.nomAnimal }}</li>
+                        <li class="list-group-item">Race : {{ animal.EspeceAnimal }}</li>
+                        <li class="list-group-item">Poid : {{ animal.poidsAnimal }} kg</li>
                     </ul>
                 </div>
                 </div>
@@ -52,9 +51,8 @@
                 </h5>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">adresse</li>
-                        <li class="list-group-item">Ville</li>
-                        <li class="list-group-item">autre</li>
+                        <li class="list-group-item">Adresse : {{ client.adrPers }} </li>
+                        <li class="list-group-item">Ville : {{ client.villePers }}</li>
                     </ul>
                     <form action="http://maps.google.com/maps" target="_blank" method="get">
                         <br>

@@ -18,10 +18,10 @@ class VeterinaireController extends AbstractController
     {
         $user = $security->getUser();
         $veterinaire = $repository->findOneBy(['personne' => $user->getId()]);
-        $consultation = $repocons->findBy(['veterinaire' => $veterinaire], ['start' => 'ASC']);
+        $consultations = $veterinaire->getConsultations();
 
         return $this->render('veterinaire/index.html.twig', [
-            'consultations' => $consultation,
+            'consultations' => $consultations,
             'current_page' => 'app_veterinaire',
             'user' => $user,
         ]);
@@ -74,10 +74,13 @@ class VeterinaireController extends AbstractController
         ]);
     }
 
-    #[Route('/veterinaire/infos_rdv', name: 'app_veterinaire_infos_rdv')]
-    public function indexInfosRdv(Security $security): Response
+    #[Route('/veterinaire/{id}/infos_rdv', name: 'app_veterinaire_infos_rdv')]
+    public function indexInfosRdv(Security $security, int $id, ConsultationRepository $consultationRepository): Response
     {
-        return $this->render('veterinaire/index_infos_rdv.html.twig', ['veterinaire' => $security->getUser(),
+        $consult = $consultationRepository->findOneBy(['id' => $id]);
+        $client = $consult->getAnimal()->getClient()->getPersonne();
+        $animal = $consult->getAnimal();
+        return $this->render('veterinaire/index_infos_rdv.html.twig', ['veterinaire' => $security->getUser(), 'consultation' => $consult, 'client' => $client, 'animal' => $animal,
         ]);
     }
 
