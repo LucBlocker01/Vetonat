@@ -30,9 +30,7 @@ class ConsultationType extends AbstractType
             ->add('end',DateTimeType::class, [
                 'date_widget' => 'single_text',
             ])
-            ->add('allday')
-            ->add('clinique')
-            ->add('urgente');
+            ->add('allday');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -60,4 +60,28 @@ class ConsultationController extends AbstractController
             $data = json_encode($rdvs);
             return $this->render('consultation/Planning_cacher.html.twig', compact('data'));
     }
+
+    #[Route('/consultation/{id}/update', name: 'app_consultation_update')]
+    public function update(ManagerRegistry $doctrine, Consultation $consultation, Request $request)
+    {
+        $form = $this->createForm(ConsultationType::class, $consultation);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($consultation);
+            /** @var Consultation $editConsul */
+            $editContact = $form->getData();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_client', [
+                'id' => $editContact->getId(),
+            ]);
+        }
+
+        return $this->renderForm('consultation/updateconsul.html.twig', [
+            'animal' => $consultation,
+            'form' => $form,
+        ]);
+    }
 }
