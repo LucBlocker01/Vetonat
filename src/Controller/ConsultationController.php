@@ -9,6 +9,7 @@ use App\Repository\ConsultationRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -83,5 +84,33 @@ class ConsultationController extends AbstractController
             'animal' => $consultation,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/consultation/{id}/delete', name: 'app_consultation_delete', requirements: ['id' => '\d+'])]
+    public function delete(Consultation $consultation, Request $request, ManagerRegistry $doctrine)
+    {
+        $form = $this->createFormBuilder($consultation)
+            ->add('Supprimer', SubmitType::class, ['label' => 'Supprimer'])
+            ->add('Annuler', SubmitType::class, ['label' => 'Annuler'])
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('Supprimer')->isClicked()) {
+                $entityManager = $doctrine->getManager();
+                $entityManager->remove($consultation);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_client');
+            } else {
+                return $this->redirectToRoute('app_client', [
+                    'id' => $consultation->getId()
+                ]);
+            }
+        } else {
+            return $this->render('consultation/deleteconsul.html.twig', [
+                'consultation' => $consultation,
+                'form' => $form->createView(),
+            ]);
+        }
     }
 }
