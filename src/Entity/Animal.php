@@ -37,7 +37,7 @@ class Animal
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 
-    #[ORM\OneToMany(mappedBy: 'animal', targetEntity: Consultation::class)]
+    #[ORM\OneToMany(mappedBy: 'animal', targetEntity: Consultation::class, cascade: ['persist', 'remove'])]
     private Collection $consultation;
 
     public function __construct()
