@@ -3,11 +3,15 @@
 {% block title %}
     Vétérinaire
 {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/veto.css') }}">
+{% endblock %}
+
 {% block body %}
     {% include '_header.html.twig' %}
     {{ include('veterinaire/_navbar.html.twig') }}
     <section class="other">
-    <link rel="stylesheet" href="{{ asset('css/veto.css') }}">
     <section class="liste">
         <div class="header_planning"><p class="cons_jour">Consultations du Jour</p></div>
         <div class="trans_block"></div>
