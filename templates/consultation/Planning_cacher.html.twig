@@ -17,7 +17,7 @@
         {% if is_granted('ROLE_ADMIN') %}
             {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
         {% else %}
-            {{ include('client/_navbar.html.twig', {current_page: 'animaux'}) }}
+            {{ include('client/_navbar.html.twig', {current_page: ''}) }}
         {% endif %}
     {% endif %}
     <div class="btn btn-secondary">

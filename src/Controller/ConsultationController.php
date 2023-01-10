@@ -25,7 +25,7 @@ class ConsultationController extends AbstractController
     }
 
     #[Route('consultation/create', name: 'app_create_consultation')]
-    public function create(ManagerRegistry $doctrine, Request $requete,ConsultationRepository $repot): Response
+    public function create(ManagerRegistry $doctrine, Request $requete, ConsultationRepository $repot): Response
     {
         $consultation = new Consultation();
         $form = $this->createForm(ConsultationType::class, $consultation);
@@ -34,31 +34,33 @@ class ConsultationController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($consultation);
             $entityManager->flush();
+
             return $this->redirectToRoute('app_client');
         }
 
         return $this->renderForm('consultation/create.html.twig', ['consultation' => $consultation, 'form' => $form]);
     }
 
-    #[Route('/consultation/Planning_cacher', name: 'app_consultation_planning_cacher')]
-    public function PlanningCacher(ConsultationRepository $repot): Response
+    #[Route('/consultation/planning', name: 'app_consultation_planning_cacher')]
+    public function planningCacher(ConsultationRepository $repot): Response
     {
-            $event = $repot->findAll();
-            $rdvs = [];
-            foreach ($event as $ev) {
-                $rdvs[] = [
-                    'id' => $ev->getId(),
-                    'start' => $ev->getStart()->format('Y-m-d H:i:s'),
-                    'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
-                    'title' => 'Réserver',
-                    'description' => $ev->getConsultationDesc(),
-                    'allDay' => $ev->getAllDay(),
-                    'backgroundColor' => '#000000',
-                ];
-            }
+        $event = $repot->findAll();
+        $rdvs = [];
+        foreach ($event as $ev) {
+            $rdvs[] = [
+                'id' => $ev->getId(),
+                'start' => $ev->getStart()->format('Y-m-d H:i:s'),
+                'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
+                'title' => 'Réserver',
+                'description' => $ev->getConsultationDesc(),
+                'allDay' => $ev->getAllDay(),
+                'backgroundColor' => '#000000',
+            ];
+        }
 
-            $data = json_encode($rdvs);
-            return $this->render('consultation/Planning_cacher.html.twig', compact('data'));
+        $data = json_encode($rdvs);
+
+        return $this->render('consultation/Planning_cacher.html.twig', compact('data'));
     }
 
     #[Route('/consultation/{id}/update', name: 'app_consultation_update')]
@@ -102,7 +104,7 @@ class ConsultationController extends AbstractController
                 return $this->redirectToRoute('app_client');
             } else {
                 return $this->redirectToRoute('app_client', [
-                    'id' => $consultation->getId()
+                    'id' => $consultation->getId(),
                 ]);
             }
         } else {

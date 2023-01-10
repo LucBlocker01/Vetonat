@@ -6,9 +6,8 @@ use App\Entity\Animal;
 use App\Entity\Client;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
-use App\Repository\ClientRepository;
-use App\Repository\PersonneRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,17 +17,20 @@ use Symfony\Component\Security\Core\Security;
 
 class AnimalController extends AbstractController
 {
-    #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['contactId' => '\d+'])]
-    public function index(Security $security, AnimalRepository $AnimalRepository, PersonneRepository $personneRepository): Response
+    #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['contactId'=>'\d+'])]
+    public function index(Security $security, AnimalRepository $AnimalRepository, int $clientId): Response
     {
         $user = $security->getUser();
-        $personne = $personneRepository->findOneBy(array('loginPers' => $user->getUserIdentifier()));
-        $client = $personne->getClient();
-        $listAnimal = $AnimalRepository->findByClient($client->getId());
+        $listAnimal = $AnimalRepository->findByClient($clientId);
+        /*$search = $animal->getClient()->getId();
+        if (null == $search) {
+            $search = '';
+        }
+        $listAnimal = $AnimalRepository->search($search);*/
 
         return $this->render('animal/index.html.twig', [
             'lstAnimal' => $listAnimal,
-            'clientId' => $client->getId(),
+            'clientId' => $clientId,
             'user' => $user,
         ]);
     }
