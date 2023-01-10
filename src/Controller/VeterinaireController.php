@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Repository\ConsultationRepository;
 use App\Repository\PersonneRepository;
-use App\Repository\VeterinaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,7 +59,7 @@ class VeterinaireController extends AbstractController
         ]);
     }
 
-    #[Route('/veterinaire/{id}/infos_rdv', name: 'app_veterinaire_infos_rdv')]
+    #[Route('/veterinaire/{id}/infos_rdv', name: 'app_veterinaire_infos_rdv', requirements: ['id' => '\d+'])]
     public function indexInfosRdv(Security $security, int $id, ConsultationRepository $consultationRepository): Response
     {
         $consult = $consultationRepository->findOneBy(['id' => $id]);
@@ -69,11 +68,5 @@ class VeterinaireController extends AbstractController
 
         return $this->render('veterinaire/index_infos_rdv.html.twig', ['veterinaire' => $security->getUser(), 'consultation' => $consult, 'client' => $client, 'animal' => $animal,
         ]);
-    }
-
-    #[Route('/veterinaire/infos_trmts', name: 'app_veterinaire_traitements')]
-    public function infoTraitement(): Response
-    {
-        return $this->render('veterinaire/infos_trtmts.html.twig');
     }
 }

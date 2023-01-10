@@ -63,7 +63,7 @@ class ConsultationController extends AbstractController
         return $this->render('consultation/Planning_cacher.html.twig', compact('data'));
     }
 
-    #[Route('/consultation/{id}/update', name: 'app_consultation_update')]
+    #[Route('/consultation/{id}/update', name: 'app_consultation_update', requirements: ['id'=>'\d+'])]
     public function update(ManagerRegistry $doctrine, Consultation $consultation, Request $request)
     {
         $form = $this->createForm(ConsultationType::class, $consultation);
