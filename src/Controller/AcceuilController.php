@@ -14,14 +14,14 @@ use Symfony\Component\Security\Core\Security;
 
 class AcceuilController extends AbstractController
 {
-    #[Route('/acceuil', name: 'app_acceuil')]
+    #[Route('/accueuilConnecté', name: 'app_acceuil')]
     public function index(): Response
     {
         return $this->render('acceuil/index.html.twig', []);
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/client', name: 'app_client')]
+    #[Route('/accueuil', name: 'app_client')]
     public function acceuilCo(Security $security, AnimalRepository $animalRepository, PersonneRepository $PersonneRepository, ConsultationRepository $consultationRepository): Response
     {
         $user = $security->getUser();
