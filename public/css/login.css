@@ -3,7 +3,7 @@
     color: #2DCAC0;
 }
 .global{
-    background: #EFEFEF;
+    background: #E4E4E4;
     border-collapse: collapse;
     position: center;
     padding: 50px;
@@ -25,10 +25,7 @@
 .droite{
     text-align: left;
 }
-html, body {
-    margin: 0;
-    padding: 0;
-}
+
 
 .form2{
     margin: 0.2em 0em 0.2em 0em ;
@@ -37,3 +34,7 @@ html, body {
     width: fit-content;
 }
 
+html, body {
+    background-color: #E4E4E4;
+    width: 100%;
+}
