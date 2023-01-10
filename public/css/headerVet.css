@@ -33,7 +33,10 @@
     vertical-align: middle;
     line-height: 50px;
     display: flex;
-    color: white;
+}
+
+.vetpara {
+    font-family: 'Inter', serif;
 }
 
 .veto img {
