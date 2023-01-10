@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Animal;
 use App\Entity\Consultation;
+use App\Entity\Veterinaire;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -31,8 +32,10 @@ class ConsultationType extends AbstractType
                 'date_widget' => 'single_text',
             ])
             ->add('allday')
-            ->add('clinique')
-            ->add('urgente');
+            /*->add('veterinaire', EntityType::class, [
+            'class' => Veterinaire::class,
+            'choice_label' => 'id',
+            'required' => true])*/;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

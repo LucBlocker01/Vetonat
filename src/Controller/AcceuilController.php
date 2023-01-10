@@ -50,7 +50,7 @@ class AcceuilController extends AbstractController
                 $valid = [];
                 $animalConsultation = $animal->getConsultation();
                 foreach ($animalConsultation as $consult) {
-                    if ($consult->getStart() < new \DateTime()) {
+                    if ($consult->getStart() >= new \DateTime()) {
                         $valid[] = $consult;
                     }
                 }

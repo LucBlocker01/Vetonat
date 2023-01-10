@@ -1,0 +1,12 @@
+{{ form_start(form, {'method': 'POST'}) }}
+Description : {{ form_widget(form.consultationDesc, {'attr': {'class': 'consultationDesc'}}) }} <br>
+Motif : {{ form_widget(form.motifConsultation, {'attr': {'class': 'motifConsultation'}}) }} <br>
+En clinique : {{ form_widget(form.clinique, {'attr': {'class': 'clinique'}}) }}<br>
+Consultation Urgente : {{ form_widget(form.urgente, {'attr': {'class': 'urgente'}}) }} <br>
+Animal de la consultation : {{ form_widget(form.animal, {'attr': {'class': 'animal'}}) }} <br>
+Début de la consultation : {{ form_widget(form.start, {'attr': {'class': 'start'}}) }} <br>
+Fin de la consultation : {{ form_widget(form.end, {'attr': {'class': 'end'}}) }} <br>
+Consultation d'une journée ? : {{ form_widget(form.allday, {'attr': {'class': 'allday'}}) }} <br>
+<button type="submit" class="btn btn-primary">Modifier</button>
+{{ form_end(form) }}
+

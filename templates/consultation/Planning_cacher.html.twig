@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block stylesheets%}
+    <style>
+        #calendrier {
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_USER') %}
+        {{ include('_header.html.twig') }}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
+        {% else %}
+            {{ include('client/_navbar.html.twig', {current_page: 'animaux'}) }}
+        {% endif %}
+    {% endif %}
+    <div class="btn btn-secondary">
+        Voici les horaires où nous sommes disponible :
+    </div>
+
+    <div id="calendrier">
+    </div>
+
+{% block javascripts%}
+    <script>
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView : 'timeGridWeek',
+                locale : 'fr',
+                timeZone : 'Europe/Paris',
+                headerToolbar : {
+                    start: 'prev,next today',
+                    center : 'title',
+                    end : '',
+                },
+
+                events : {{ data|raw }},
+                editable : true,
+
+            })
+
+
+            calendar.render();
+        }
+    </script>
+{% endblock  %}
+
+    <button type="button" >
+        <a href="{{ path('app_create_consultation') }}">Prendre un rendez vous !</a>
+    </button>
+{% endblock %}
+

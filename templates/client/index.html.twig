@@ -22,7 +22,9 @@
             {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
 
 
-
+            <button type="button" class="btn btn-secondary">
+                <a href="{{ path('app_consultation_planning_cacher') }}">Prendre un rendez vous !</a>
+            </button>
             {% if consultations is empty %}
                 <p class="card">Aucune consultation récente</p>
             {% else %}

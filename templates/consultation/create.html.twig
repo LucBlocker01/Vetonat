@@ -3,7 +3,16 @@
 {% block title %}Création d'une consultation{% endblock %}
 
 {% block body %}
-<h1> Création d'une consultation</h1>
+    {% if is_granted('ROLE_USER') %}
+        {{ include('_header.html.twig') }}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
+        {% else %}
+            {{ include('client/_navbar.html.twig', {current_page: 'animaux'}) }}
+        {% endif %}
+    {% endif %}
+    <h1> Création d'une consultation</h1>
+    {{ include('consultation/_formcreate.html.twig', {form : form,label_submit: 'Supprimer'}, with_context = false) }}
 
     {{ form_start(form, {method:'POST'}) }}
     {{ form_row(form.motifConsultation, {label : 'Motif :'}) }}

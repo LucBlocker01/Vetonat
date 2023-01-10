@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Update de votre consultation
+{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_USER') %}
+        {{ include('_header.html.twig') }}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('veterinaire/_navbar.html.twig', {current_page: ''})}}
+        {% else %}
+            {{ include('client/_navbar.html.twig', {current_page: 'animaux'}) }}
+        {% endif %}
+    {% endif %}
+    <h1>Update de votre consultation</h1>
+    {{ include('consultation/_formupdate.html.twig', {form : form,label_submit: 'Supprimer'}, with_context = false) }}
+{% endblock %}
