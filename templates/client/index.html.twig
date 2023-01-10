@@ -1,5 +1,11 @@
 {% extends '/client/_baseClient.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/Client_principal.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1
+/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+{% endblock %}
 {% block body %}
 {% if is_granted('ROLE_USER') %}
     {% if is_granted('ROLE_ADMIN') %}
@@ -7,24 +13,30 @@
     {% else %}
         {% block footer %}
             {{ include('_header.html.twig') }}
-            {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
-            Bonjour {{ user.nomPers }} {{ user.pnomPers }}
-
-
-            <button type="button" class="btn btn-secondary">
+            <div class="contour card text-white mb-3">
+            <button type="button" class="boutton btn btn-light btn-lg btn-block ">
                 <a href="{{ path('app_create_consultation') }}">Prendre un rendez vous !</a>
             </button>
+            </div>
+
+            {{ include('client/_navbar.html.twig', { current_page: 'rdv'}) }}
+
+
+
             {% if consultations is empty %}
-                <p>Aucune consultation récente</p>
+                <p class="card">Aucune consultation récente</p>
             {% else %}
                 {%for consultation in consultations %}
-                <div class="list-group-item flex-column align-items-start consultation">
+                <div class="card consultation">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="desc"> Consultation : {{ consultation.consultationDesc }}</h5>
+                        <h5 class="card-title"> Consultation : {{ consultation.consultationDesc }}</h5>
                         <small>{{consultation.start| date("m/d/Y")}}</small>
                         <small>De {{ consultation.start| date("g:i:sA") }} à {{ consultation.end| date("g:i:sA") }}</small>
+                        <small>                    <button class="boutton btn btn-light"><a href = #><span class="material-symbols-outlined">edit</span></a></button>
+                            <button class="boutton btn btn-light"><a href = #><span class="material-symbols-outlined">delete</span></a></button></small>
                     </div>
                     <p> Motif : {{ consultation.motifConsultation }}</p>
+
                 </div>
                 {% endfor %}
             {% endif %}
