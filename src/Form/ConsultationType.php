@@ -23,14 +23,7 @@ class ConsultationType extends AbstractType
             ->add('animal', EntityType::class, [
                 'class' => Animal::class,
                 'choice_label' => 'nomAnimal',
-                'required' => true,
-                'query_builder' => function (EntityRepository $entityRepository) {
-                    return $entityRepository->createQueryBuilder('c')
-                        ->orderBy('c.nomAnimal', 'ASC');
-                }, ])
-
-        // ->add('traitement')
-        // ->add('veterinaire')
+                'required' => true])
             ->add('start',DateTimeType::class, [
                 'date_widget' => 'single_text',
         ])
@@ -38,7 +31,8 @@ class ConsultationType extends AbstractType
                 'date_widget' => 'single_text',
             ])
             ->add('allday')
-            ->add('backgroundColor');
+            ->add('clinique')
+            ->add('urgente');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

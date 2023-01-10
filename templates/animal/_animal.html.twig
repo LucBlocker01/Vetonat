@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 {% endblock %}
 {% block body %}
-    {{ include('_header.html.twig') }}
-    {{ include('veterinaire/_navbar.html.twig', { current_page: 'clients'}) }}
     <table class="global">
         <thead class="tete">
         <tr class="tete_nav">
@@ -15,8 +13,10 @@
             <th scope="col">Age</th>
             <th scope="col">Poids</th>
             <th scope="col"><form class="d-flex" role="search" method="get" action="">
-                    <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="search" value="{{search | default ("")}}">
-                    <button style = "float: right" class="boutton btn btn-light " onclick="window.location.href ='{{ path('app_animal_create', {'id': clientId }) }}';">Ajouter</button>
+                    <button class="boutton btn btn-light ">
+                        <a href ="{{ path('app_animal_create', {'id': clientId }) }}"> Ajouter
+                        </a>
+                    </button>
                 </form>
             </th>
         </tr>

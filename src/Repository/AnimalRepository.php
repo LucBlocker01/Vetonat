@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Animal;
+use App\Entity\Client;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -40,7 +41,6 @@ class AnimalRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param int $clientId
      * @return Animal[]
      */
     public function findByClient(int $clientId): array

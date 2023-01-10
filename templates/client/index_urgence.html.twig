@@ -5,5 +5,14 @@
 
 {% block footer %}
     {{ include('client/_navbar.html.twig', { current_page: 'consult'}) }}
+<div class="card";">
+    <div class="card-body">
+    <h5 class="card-title">Afin d'ajouter une consultations urgente cliquez sur le boutton suivant et remplissez le formulaire de prise de rendez vous</h5>
+    <p>Il faudra juste penser à cocher la boutton urgent !</p>
+    <button type="button" class="boutton btn btn-light ">
+        <a href="{{ path('app_create_consultation') }}">Prendre un rendez vous !</a>
+    </button>
+    </div>
+</div>
 {% endblock %}
 

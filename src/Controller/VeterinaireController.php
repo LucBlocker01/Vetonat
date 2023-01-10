@@ -28,18 +28,31 @@ class VeterinaireController extends AbstractController
     }
 
     #[Route('/veterinaire/planning', name: 'app_veterinaire_planning')]
-    public function indexPlanning(Security $security): Response
+    public function indexPlanning(ConsultationRepository $repot): Response
     {
-        return $this->render('veterinaire/index_planning.html.twig', [
-            'current_page' => 'planning',
-            'user' => $security->getUser(),
-        ]);
+        $event = $repot->findAll();
+        $rdvs = [];
+        foreach ($event as $ev) {
+            $rdvs[] = [
+                'id' => $ev->getId(),
+                'start' => $ev->getStart()->format('Y-m-d H:i:s'),
+                'end' => $ev->getEnd()->format('Y-m-d H:i:s'),
+                'title' => $ev->getMotifConsultation(),
+                'description' => $ev->getConsultationDesc(),
+                'allDay' => $ev->getAllDay(),
+                'backgroundColor' => $ev->getBackgroundColor(),
+            ];
+        }
+
+        $data = json_encode($rdvs);
+
+        return $this->render('/veterinaire/index_planning.html.twig', compact('data'));
     }
 
     #[Route('/veterinaire/rdv', name: 'app_veterinaire_rdv')]
     public function indexRdv(Security $security): Response
     {
-        return $this->render('veterinaire/index_rdv.html.twig', [
+        return $this->render('veterinaire/index_infos_rdv.html.twig', [
             'user' => $security->getUser(),
         ]);
     }
@@ -66,5 +79,11 @@ class VeterinaireController extends AbstractController
     {
         return $this->render('veterinaire/index_infos_rdv.html.twig', ['veterinaire' => $security->getUser(),
         ]);
+    }
+
+    #[Route('/veterinaire/infos_trmts', name: 'app_veterinaire_traitements')]
+    public function infoTraitement(): Response
+    {
+        return $this->render('veterinaire/infos_trtmts.html.twig');
     }
 }
