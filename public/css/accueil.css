@@ -29,6 +29,7 @@ a {
     text-align: center;
     vertical-align: middle;
     line-height: 50px;
+    font-family: 'Inter', serif;
 }
 .cat {
     width: 100%;
@@ -45,6 +46,7 @@ a {
     left: 50%;
     transform:translate(-50%);
     font-size: 80px;
+    font-family: 'Inter', serif;
 }
 
 
@@ -56,6 +58,7 @@ a {
 
 .message2 {
     text-align: center;
+    font-family: 'Inter', serif;
     color: rgba(0%,82%,78%,100%);
 }
 
@@ -68,10 +71,12 @@ footer {
 
 .title_foot {
     height: 125px;
+    font-family: 'Inter', serif;
 }
 
 .lst_inf {
     width: 100%;
+    font-family: 'Inter', serif;
     height : 250px;
     display: flex;
     align-items: center;
@@ -80,6 +85,7 @@ footer {
 
 .info {
     position: sticky;
+    font-family: 'Inter', serif;
     background-color: white;
     width: 30%;
     height: 100%;
@@ -109,6 +115,7 @@ footer {
         left: 50%;
         transform:translate(-50%);
         font-size: 50px;
+        font-family: 'Inter', serif;
     }
 }
 @media (max-width: 1000px) {
@@ -120,6 +127,7 @@ footer {
         width: 100%;
         position: relative;
         top: 40%;
+        font-family: 'Inter', serif;
         left: 50%;
         transform:translate(-50%);
         font-size: 30px;
@@ -131,10 +139,12 @@ footer {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        font-family: 'Inter', serif;
     }
 
     .info {
         position: sticky;
+        font-family: 'Inter', serif;
         background-color: white;
         width: 30%;
         height: 100%;
