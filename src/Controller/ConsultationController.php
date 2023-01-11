@@ -6,6 +6,7 @@ use App\Entity\Consultation;
 use App\Form\ConsultationType;
 use App\Repository\ConsultationRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConsultationController extends AbstractController
 {
     #[Route('/consultation', name: 'app_consultation')]
+    #[IsGranted('ROLE_USER')]
     public function index(ConsultationRepository $repot): Response
     {
         $consultation = $repot->findBy([]);
@@ -25,6 +27,7 @@ class ConsultationController extends AbstractController
     }
 
     #[Route('consultation/create', name: 'app_create_consultation')]
+    #[IsGranted('ROLE_USER')]
     public function create(ManagerRegistry $doctrine, Request $requete, ConsultationRepository $repot): Response
     {
         $consultation = new Consultation();
@@ -42,6 +45,7 @@ class ConsultationController extends AbstractController
     }
 
     #[Route('/consultation/planning', name: 'app_consultation_planning_cacher')]
+    #[IsGranted('ROLE_USER')]
     public function planningCacher(ConsultationRepository $repot): Response
     {
         $event = $repot->findAll();
@@ -64,6 +68,7 @@ class ConsultationController extends AbstractController
     }
 
     #[Route('/consultation/{id}/update', name: 'app_consultation_update', requirements: ['id'=>'\d+'])]
+    #[IsGranted('ROLE_USER')]
     public function update(ManagerRegistry $doctrine, Consultation $consultation, Request $request)
     {
         $form = $this->createForm(ConsultationType::class, $consultation);
@@ -88,6 +93,7 @@ class ConsultationController extends AbstractController
     }
 
     #[Route('/consultation/{id}/delete', name: 'app_consultation_delete', requirements: ['id' => '\d+'])]
+    #[IsGranted('ROLE_USER')]
     public function delete(Consultation $consultation, Request $request, ManagerRegistry $doctrine)
     {
         $form = $this->createFormBuilder($consultation)
