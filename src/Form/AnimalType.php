@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Animal;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -21,8 +22,10 @@ class AnimalType extends AbstractType
                 'empty_data' => '', ])
             ->add('EspeceAnimal', textType::class, [
                 'empty_data' => '', ])
-            ->add('stereliser', CheckboxType::class, [
-                'empty_data' => '', ])
+            ->add('stereliser', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => True,
+                    'Non' => False,]])
             ->add('ageAnimal', IntegerType::class, [
                 'empty_data' => '', ])
             ->add('poidsAnimal', NumberType::class, [

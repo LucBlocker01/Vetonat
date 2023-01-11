@@ -20,13 +20,18 @@ class AnimalController extends AbstractController
 {
     #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['clientId' => '\d+'])]
     #[IsGranted('ROLE_USER')]
-    public function index(Security $security, AnimalRepository $AnimalRepository, PersonneRepository $personneRepository): Response
+    public function index(Security $security, AnimalRepository $AnimalRepository, PersonneRepository $personneRepository, int $clientId = null): Response
     {
         $user = $security->getUser();
-        $personne = $personneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
-        $client = $personne->getClient();
-        $clientId = $client->getId();
-        $listAnimal = $AnimalRepository->findByClient($clientId);
+        $role = $user->getRoles();
+        if ($role[0] == 'ROLE_ADMIN'  ) {
+            $listAnimal = $AnimalRepository->findByClient($clientId);
+        } else {
+            $personne = $personneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
+            $client = $personne->getClient();
+            $clientId = $client->getId();
+            $listAnimal = $AnimalRepository->findByClient($clientId);
+        }
         /*$search = $animal->getClient()->getId();
         if (null == $search) {
             $search = '';

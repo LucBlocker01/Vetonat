@@ -35,11 +35,7 @@ class ConsultationType extends AbstractType
             ->add('end', DateTimeType::class, [
                 'date_widget' => 'single_text',
             ])
-            ->add('allday')
-            /*->add('veterinaire', EntityType::class, [
-            'class' => Veterinaire::class,
-            'choice_label' => 'id',
-            'required' => true])*/;
+            ->add('allday');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

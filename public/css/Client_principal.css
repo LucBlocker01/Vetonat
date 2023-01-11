@@ -9,10 +9,22 @@ body{
 .button {
     background-color: white;
 }
+
+.boutton .lien {
+    font-family: 'Inter', serif;
+}
+
+.lien:hover {
+    text-decoration: none;
+}
 .boutton:hover{
     background-color: #e3edfa !important;
 }
 .consultation{
     padding: 1em;
     margin: 1em;
+}
+
+.card {
+    font-family: 'Inter', serif;
 }

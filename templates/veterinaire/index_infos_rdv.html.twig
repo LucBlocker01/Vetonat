@@ -19,44 +19,44 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="card">
-                <h5 class="card-header">
+                <h5 class="entête card-header">
                     Propriétaire
                 </h5>
 
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Adresse : {{ client.adrPers }} </li>
-                                <li class="list-group-item">Ville : {{ client.villePers }}</li>
+                                <li class="item list-group-item">Adresse : {{ client.adrPers }} </li>
+                                <li class="item list-group-item">Ville : {{ client.villePers }}</li>
                             </ul>
                     </div>
                 </div>
                 <div class="card">
-                <h5 class="card-header">
+                <h5 class="entête card-header">
                     Animal
                 </h5>
 
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Nom : {{ animal.nomAnimal }}</li>
-                        <li class="list-group-item">Race : {{ animal.EspeceAnimal }}</li>
-                        <li class="list-group-item">Poid : {{ animal.poidsAnimal }} kg</li>
+                        <li class="item list-group-item">Nom : {{ animal.nomAnimal }}</li>
+                        <li class="item list-group-item">Race : {{ animal.EspeceAnimal }}</li>
+                        <li class="item list-group-item">Poid : {{ animal.poidsAnimal }} kg</li>
                     </ul>
                 </div>
                 </div>
             </div>
         <div class="col-sm-6">
             <div class="card">
-                <h5 class="card-header">
+                <h5 class="entête card-header">
                     Lieu
                 </h5>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Adresse : {{ client.adrPers }} </li>
-                        <li class="list-group-item">Ville : {{ client.villePers }}</li>
+                        <li class="item list-group-item">Adresse : {{ client.adrPers }} </li>
+                        <li class="item list-group-item">Ville : {{ client.villePers }}</li>
                     </ul>
                     <form action="http://maps.google.com/maps" target="_blank" method="get">
                         <br>
-                        <h6 class="card-title ">Entrez votre adresse de départ :</h6>
+                        <h6 class="item title card-title ">Entrez votre adresse de départ :</h6>
                         <input name="saddr" type="text">
                         <input name="daddr" type="hidden" value="58 Rue Gambetta, 51100 Reims">
                         <input type="submit" class="btn btn-secondary" value="Trajet">
@@ -66,6 +66,7 @@
         </div>
 
 
+    </div>
     </div>
 
 

@@ -54,8 +54,8 @@ final class ConsultationFactory extends ModelFactory
             'clinique' => self::faker()->boolean(),
             'urgente' => $urgent,
             'start' => $start,
-            'end' => $end,
-            'allday' => self::faker()->boolean(3),
+            'end' => $end ,
+            'allday' => 'false',
             'backgroundColor' => $BC,
         ];
     }
