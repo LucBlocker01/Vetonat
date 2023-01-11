@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Tests\Controller\Client;
-
 
 use App\Tests\Support\ControllerTester;
 
@@ -12,7 +10,7 @@ class CreateCest
     {
         $I->amOnPage('/client/create');
 
-        $I->seeInTitle("Création Client");
+        $I->seeInTitle('Création Client');
         $I->see("Création d'un nouveau Client", 'h3');
     }
 }
