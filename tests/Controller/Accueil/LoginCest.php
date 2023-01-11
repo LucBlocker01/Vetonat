@@ -1,8 +1,8 @@
 <?php
 
-
 namespace App\Tests\Controller\Accueil;
 
+use App\Factory\PersonneFactory;
 use App\Tests\Support\ControllerTester;
 
 class LoginCest
