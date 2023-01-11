@@ -13,8 +13,13 @@
 .boutton
 {
     margin: 5em;
+    width: 30%;
 }
 
 .pad{
     padding: 0.5em;
+}
+
+.lien {
+    text-align: center;
 }

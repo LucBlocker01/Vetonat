@@ -10,9 +10,12 @@ body{
     background-color: white;
 }
 
-.boutton a {
+.boutton .lien {
     font-family: 'Inter', serif;
+}
 
+.lien:hover {
+    text-decoration: none;
 }
 .boutton:hover{
     background-color: #e3edfa !important;
