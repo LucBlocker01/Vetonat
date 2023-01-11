@@ -1,12 +1,18 @@
 <?php
 
+
 namespace App\Tests\Controller\Veterinaire;
 
+use App\Factory\ConsultationFactory;
+use Codeception\PHPUnit\TestCase;
+use PHPUnit\Framework\IncompleteTestError;
 use App\Factory\PersonneFactory;
 use App\Tests\Support\ControllerTester;
 
-class ListClientCest
+class IndexCest
 {
+
+    // tests
     public function testIndexDefault(ControllerTester $I): void
     {
         $user = PersonneFactory::createOne([
