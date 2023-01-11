@@ -4,7 +4,6 @@ namespace App\Factory;
 
 use App\Entity\Consultation;
 use App\Repository\ConsultationRepository;
-use DateInterval;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -40,13 +39,14 @@ final class ConsultationFactory extends ModelFactory
     protected function getDefaults(): array
     {
         $start = self::faker()->dateTimeBetween('-2 week', '+2 week');
-        $end = (clone $start)->add(new DateInterval("PT2H"));
+        $end = (clone $start)->add(new \DateInterval('PT2H'));
         $motif = json_decode(file_get_contents('src/DataFixtures/data/Motif.json'), true);
         $urgent = self::faker()->boolean(10);
         $BC = '#00BFFF';
-        if ($urgent){
+        if ($urgent) {
             $BC = '#DC143C';
         }
+
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'consultationDesc' => self::faker()->sentence(15),

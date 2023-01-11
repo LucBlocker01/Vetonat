@@ -39,14 +39,16 @@ class ConsultationRepository extends ServiceEntityRepository
         }
     }
 
-    public function findById(int $id){
+    public function findById(int $id)
+    {
         $qb = $this->createQueryBuilder('con')
             ->select('con as consultation')
-            ->leftJoin('con.user','u')
+            ->leftJoin('con.user', 'u')
             ->orderBy('p.name', 'ASC')
             ->setParameter(':id', $id)
             ->groupBy('p');
         $query = $qb->getQuery();
+
         return $query->execute();
     }
 

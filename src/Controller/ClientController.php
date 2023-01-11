@@ -2,16 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Client;
-use App\Repository\AnimalRepository;
 use App\Repository\CliniqueRepository;
-use App\Repository\ConsultationRepository;
-use App\Repository\PersonneRepository;
-use Doctrine\Persistence\ManagerRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\VeterinaireRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
