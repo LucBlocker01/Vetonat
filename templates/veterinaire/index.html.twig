@@ -108,7 +108,7 @@
                         <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
                     </button>
                 </a>
-                <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                <a href={{ path('app_veterinaire_add_consultation', {'id': cons.id}) }}><button class="bouton">
                         <img class="icon" alt="" src = {{ asset('icone/check.png') }}>
                     </button>
                 </a>
@@ -141,7 +141,7 @@
                             <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
                         </button>
                     </a>
-                    <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                    <a href={{ path('app_veterinaire_add_consultation', {'id': cons.id}) }}><button class="bouton">
                             <img class="icon" alt="" src = {{ asset('icone/check.png') }}>
                         </button>
                     </a>
