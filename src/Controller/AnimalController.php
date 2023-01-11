@@ -23,12 +23,15 @@ class AnimalController extends AbstractController
     public function index(Security $security, AnimalRepository $AnimalRepository, PersonneRepository $personneRepository, int $clientId = null): Response
     {
         $user = $security->getUser();
-        if (($user->isGranted('ROLE_ADMIN'))) {
+        $role = $user->getRoles();
+        if ($role[0] == 'ROLE_ADMIN'  ) {
+            $listAnimal = $AnimalRepository->findByClient($clientId);
+        } else {
             $personne = $personneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
             $client = $personne->getClient();
             $clientId = $client->getId();
+            $listAnimal = $AnimalRepository->findByClient($clientId);
         }
-        $listAnimal = $AnimalRepository->findByClient($clientId);
         /*$search = $animal->getClient()->getId();
         if (null == $search) {
             $search = '';
