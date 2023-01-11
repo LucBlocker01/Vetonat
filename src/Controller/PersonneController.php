@@ -32,7 +32,7 @@ class PersonneController extends AbstractController
             $editContact = $form->getData();
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_personne');
+            return $this->redirectToRoute('app_veterinaire_clients');
         }
 
         return $this->renderForm('client/update.html.twig', [
@@ -58,7 +58,7 @@ class PersonneController extends AbstractController
             /* @var Personne $editContact */
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_veterinaire_clients');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->renderForm('client/create.html.twig', [
@@ -94,21 +94,5 @@ class PersonneController extends AbstractController
                 'form' => $form->createView(),
             ]);
         }
-    }
-
-    #[Route('/client', name: 'app_personne')]
-    public function index(Request $request, PersonneRepository $clientRepository): Response
-    {
-        $recherche = $request->query->get('search', '');
-
-        $tableau = $clientRepository->search($recherche);
-
-        return $this->render('personne/index.html.twig', ['lstContact' => $tableau, 'search' => $recherche]);
-    }
-
-    #[Route('/clientListe')]
-    public function show(Personne $personne): Response
-    {
-        return $this->render('personne/index.html.twig', ['Personne' => $personne]);
     }
 }
