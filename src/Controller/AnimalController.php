@@ -6,8 +6,8 @@ use App\Entity\Animal;
 use App\Entity\Client;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
+use App\Repository\PersonneRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,10 +17,13 @@ use Symfony\Component\Security\Core\Security;
 
 class AnimalController extends AbstractController
 {
-    #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['clientId'=>'\d+'])]
-    public function index(Security $security, AnimalRepository $AnimalRepository, int $clientId): Response
+    #[Route('/client/{clientId}/animal', name: 'app_animal', requirements: ['clientId' => '\d+'])]
+    public function index(Security $security, AnimalRepository $AnimalRepository, PersonneRepository $personneRepository): Response
     {
         $user = $security->getUser();
+        $personne = $personneRepository->findOneBy(['loginPers' => $user->getUserIdentifier()]);
+        $client = $personne->getClient();
+        $clientId = $client->getId();
         $listAnimal = $AnimalRepository->findByClient($clientId);
         /*$search = $animal->getClient()->getId();
         if (null == $search) {
@@ -35,7 +38,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/animal/{id}', name: 'app_animal_show', requirements: ['id'=>'\d+'])]
+    #[Route('/animal/{id}', name: 'app_animal_show', requirements: ['id' => '\d+'])]
     public function show(Animal $animal): Response
     {
         return $this->render('animal/show.html.twig', [
@@ -44,7 +47,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/animal/{id}/update', name: 'app_animal_update', requirements: ['id'=>'\d+'])]
+    #[Route('/animal/{id}/update', name: 'app_animal_update', requirements: ['id' => '\d+'])]
     public function update(ManagerRegistry $doctrine, Animal $animal, Request $request)
     {
         $form = $this->createForm(AnimalType::class, $animal);
