@@ -1,12 +1,16 @@
-{{ form_start(form, {'method': 'POST'}) }}
-Description : {{ form_widget(form.consultationDesc, {'attr': {'class': 'consultationDesc'}}) }} <br>
-Motif : {{ form_widget(form.motifConsultation, {'attr': {'class': 'motifConsultation'}}) }} <br>
-En clinique : {{ form_widget(form.clinique, {'attr': {'class': 'clinique'}}) }}<br>
-Consultation Urgente : {{ form_widget(form.urgente, {'attr': {'class': 'urgente'}}) }} <br>
-Animal de la consultation : {{ form_widget(form.animal, {'attr': {'class': 'animal'}}) }} <br>
-Début de la consultation : {{ form_widget(form.start, {'attr': {'class': 'start'}}) }} <br>
-Fin de la consultation : {{ form_widget(form.end, {'attr': {'class': 'end'}}) }} <br>
-Consultation d'une journée ? : {{ form_widget(form.allday, {'attr': {'class': 'allday'}}) }} <br>
-<button type="submit" class="btn btn-primary">Modifier</button>
-{{ form_end(form) }}
 
+<div class="card">
+    {{ form_start(form, {'method': 'POST'}) }}
+    <ul class="list-group list-group-flush">
+        <li class="ele list-group-item">Description : {{ form_widget(form.consultationDesc, {'attr': {'class': 'consultationDesc'}}) }} </li>
+        <li class="ele list-group-item">Motif : {{ form_widget(form.motifConsultation, {'attr': {'class': 'motifConsultation'}}) }} </li>
+        <li class="ele list-group-item">En clinique : {{ form_widget(form.clinique, {'attr': {'class': 'clinique'}}) }}</li>
+        <li class="ele list-group-item">Consultation Urgente : {{ form_widget(form.urgente, {'attr': {'class': 'urgente'}}) }} </li>
+        <li class="ele list-group-item">Animal de la consultation : {{ form_widget(form.animal, {'attr': {'class': 'animal'}}) }} </li>
+        <li class="ele list-group-item">Début de la consultation : {{ form_widget(form.start, {'attr': {'class': 'start'}}) }} </li>
+        <li class="ele list-group-item">Fin de la consultation : {{ form_widget(form.end, {'attr': {'class': 'end'}}) }} </li>
+        <li class="ele list-group-item">Consultation d'une journée ? : {{ form_widget(form.allday, {'attr': {'class': 'allday'}}) }} </li>
+        <li class="ele list-group-item"><button type="submit" class="btn btn-secondary">Modifier</button></li>
+    </ul>
+    {{ form_end(form) }}
+</div>

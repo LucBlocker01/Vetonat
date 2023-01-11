@@ -58,7 +58,7 @@ class PersonneController extends AbstractController
             /* @var Personne $editContact */
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_personne');
+            return $this->redirectToRoute('app_veterinaire_clients');
         }
 
         return $this->renderForm('client/create.html.twig', [
@@ -67,7 +67,7 @@ class PersonneController extends AbstractController
         ]);
     }
 
-    #[Route('/client/{id}/delete', name: 'app_client_delete')]
+    #[Route('/client/{id}/delete', name: 'app_client_delete', requirements: ['id' => '\d+'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Personne $personne, Request $request, ManagerRegistry $doctrine)
     {

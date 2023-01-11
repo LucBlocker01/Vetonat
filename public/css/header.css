@@ -9,8 +9,22 @@
     display:flex;
     flex-direction: column;
     justify-content: center;
+    font-family: 'Inter', serif;
 }
 
+.client {
+    margin: 25px 25px 25px 65px;
+    width: 200px;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    display: flex;
+    color: black;
+}
+
+.client p {
+    font-family: 'Inter', serif;
+}
 .espace {
     flex:1;
     justify-content: flex-end;

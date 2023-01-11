@@ -1,4 +1,8 @@
-{{ form_start(form, {'method': 'POST', 'attr': {'class':'btn d-flex'}}) }}
-{{ form_row(form.Supprimer, {'label': 'Supprimer', 'attr':{'class':'btn btn-primary'} }) }} <br>
-{{ form_row(form.Annuler, {'label': 'Annuler', 'attr':{'class':'btn btn-secondary'}}) }} <br>
-{{ form_end(form) }}
+{{ form_start(form, {'method': 'POST'}) }}
+<div class="card">
+    <div class="card-body">
+        <div class="boutton"> {{ form_row(form.Supprimer, {'label': 'Supprimer', 'attr':{'class':'btn btn-primary'} }) }} </div>
+        <div class="boutton"> {{ form_row(form.Annuler, {'label': 'Annuler', 'attr':{'class':'btn btn-secondary'}}) }} </div>
+    </div>
+    {{ form_end(form) }}
+</div>
