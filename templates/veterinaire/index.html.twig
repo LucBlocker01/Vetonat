@@ -160,7 +160,9 @@
         {%  endif %}
                 <div class="trans_block"></div>
         {% endfor %}
-            <div class="foot_planning"><p class="cons_jour">Consultations Disponibles</p></div>
+            {%  if clibre is not empty %}
+                <div class="foot_planning"><p class="cons_jour">Consultations Disponibles</p></div>
+            {% endif %}
     </section>
     </section>
 {% endblock %}
