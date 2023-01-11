@@ -58,7 +58,17 @@ class PersonneController extends AbstractController
             /* @var Personne $editContact */
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_login');
+            if ($this->getUser() != null) {
+                $user = $this->getUser();
+                $role = $user->getRoles();
+                if ($role[0] == 'ROLE_ADMIN'){
+                    return $this->redirectToRoute('app_veterinaire_clients');
+                }
+                return $this->redirectToRoute('app_acceuil');
+            }
+            else {
+                return $this->redirectToRoute('app_acceuil');
+            }
         }
 
         return $this->renderForm('client/create.html.twig', [

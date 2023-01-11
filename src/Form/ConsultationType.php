@@ -5,7 +5,7 @@ namespace App\Form;
 use App\Entity\Animal;
 use App\Entity\Consultation;
 use App\Entity\Veterinaire;
-use Doctrine\ORM\EntityRepository;
+use App\Repository\AnimalRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -24,18 +24,18 @@ class ConsultationType extends AbstractType
             ->add('animal', EntityType::class, [
                 'class' => Animal::class,
                 'choice_label' => 'nomAnimal',
-                'required' => true])
-            ->add('start',DateTimeType::class, [
+                'required' => true,
+                'query_builder' => function (AnimalRepository $animal) {
+                    return $animal->createQueryBuilder('a')
+                        ->orderBy('a.nomAnimal', 'ASC');
+                }, ])
+            ->add('start', DateTimeType::class, [
                 'date_widget' => 'single_text',
         ])
-            ->add('end',DateTimeType::class, [
+            ->add('end', DateTimeType::class, [
                 'date_widget' => 'single_text',
             ])
-            ->add('allday')
-            /*->add('veterinaire', EntityType::class, [
-            'class' => Veterinaire::class,
-            'choice_label' => 'id',
-            'required' => true])*/;
+            ->add('allday');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

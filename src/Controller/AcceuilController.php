@@ -36,9 +36,10 @@ class AcceuilController extends AbstractController
                     $consdujour[] = $conselement;
                 }
             }
-
+            $consulibres= $consultationRepository->findBy(['veterinaire' => null], ['start' => 'ASC']);
             return $this->render('veterinaire/index.html.twig', [
                 'consultations' => $consdujour,
+                'clibre' => $consulibres,
                 'current_page' => 'app_veterinaire',
             ]);
         }
