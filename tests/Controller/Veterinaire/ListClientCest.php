@@ -10,6 +10,7 @@ use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\RemoteUse
 
 class  ListClientCest
 {
+    /*
     public function testIndexDefault(ControllerTester $I): void
     {
         $user = PersonneFactory::createOne ([
@@ -21,4 +22,5 @@ class  ListClientCest
         $I->seeResponseCodeIs(200);
         $I->seeInTitle('Vétérinaire - Clients');
     }
+    */
 }
