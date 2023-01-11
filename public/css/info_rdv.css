@@ -2,3 +2,15 @@
     margin: 1em;
 }
 .boutton {margin-top: 1em; }
+
+.entête {
+    font-family: 'Inter', serif;
+}
+
+.item {
+    font-family: 'Inter', serif;
+}
+
+.title {
+    font-weight: bolder;
+}

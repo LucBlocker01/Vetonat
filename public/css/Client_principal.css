@@ -9,10 +9,19 @@ body{
 .button {
     background-color: white;
 }
+
+.boutton a {
+    font-family: 'Inter', serif;
+
+}
 .boutton:hover{
     background-color: #e3edfa !important;
 }
 .consultation{
     padding: 1em;
     margin: 1em;
+}
+
+.card {
+    font-family: 'Inter', serif;
 }

@@ -11,6 +11,7 @@
 footer{
     padding: 1em;
     margin: 0.5em;
+    font-family: 'Inter', serif;
 }
 body{
     background-color: #E4E4E4;
@@ -18,4 +19,8 @@ body{
 .card{
     margin: 0.5em;
     border-radius: 8px;
+}
+
+.quest {
+    font-family: 'Inter', serif;
 }
