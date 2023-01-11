@@ -10,7 +10,7 @@ body {
     margin: 35px 35px 0 35px;
     height: 60px;
     width: 95%;
-    background-color: rgba(100%,40%,0%,100%);
+    background-color: #EA6200;
     border-top-left-radius: 110px;
     border-top-right-radius: 110px;
     display: flex;
@@ -134,6 +134,10 @@ a:hover {
     justify-content: center;
     align-items: center;
     color: white;
+}
+
+html {
+    background-color: #E4E4E4;
     font-family: 'Gelasio', serif;
 }
 
