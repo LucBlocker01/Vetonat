@@ -76,8 +76,91 @@
                     </div>
                 {%  endif %}
                 <div class="trans_block"></div>
+
+                <div class="trans_block"></div>
             {% endfor %}
             <div class="foot_planning"><p class="cons_jour">Fin de Journée</p></div>
         </section>
+
+
+
+
+        <section class="list">
+            {%  if clibre is not empty %}
+                <div class="header_planning"><p class="cons_jour">Consultations Disponibles</p></div>
+                <div class="trans_block"></div>
+            {% endif %}
+            {%  for cons in clibre %}
+                {%  if cons.urgente %}
+                    <div class="urgente_block">
+        <div class="cons_block_header">
+            <img class="icon" alt="" src = "{{ asset('icone/user.png') }}">
+            <p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}
+            </p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}">
+            <p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}
+            </p>
+        </div>
+        <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
+        <div class="cons_block_options">
+            <a class="bouton2" href="{{ path("app_veterinaire_infos_rdv", {'id': cons.id }) }}">
+                <button class="btn btn-primary col-md-6" >Plus d'informations
+                </button>
+            </a>
+            <div class="modif-suppr">
+                <a href="consultation/{{ cons.id }}/update"><button class="bouton">
+                        <img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button>
+                </a>
+                <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                        <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
+                    </button>
+                </a>
+                <a href={{ path('app_veterinaire_add_consultation', {'id': cons.id}) }}><button class="bouton">
+                        <img class="icon" alt="" src = {{ asset('icone/check.png') }}>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="cons_block_clock">
+            <img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
+        <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
+        </div>
+        {% else %}
+            <div class="cons_block">
+                <div class="cons_block_header">
+                    <img class="icon" alt="" src = "{{ asset('icone/user.png') }}">
+                    <p>{{ cons.animal.client.personne.pnomPers }} {{ cons.animal.client.personne.nomPers|upper }}
+                    </p><img class="icon" alt="" src = "{{ asset('icone/location.png') }}">
+                    <p>{% if cons.clinique %} Clinique Vétérinaire {% else %} {{ cons.animal.client.personne.adrPers }}, {{ cons.animal.client.personne.villePers }} {{ cons.animal.client.personne.CPPers }} {% endif %}
+                    </p>
+                </div>
+                <div class="cons_block_motif">Motif: {{ cons.motifConsultation }}</div>
+                <div class="cons_block_options">
+                    <a class="bouton2" href="{{ path("app_veterinaire_infos_rdv", {'id': cons.id }) }}">
+                        <button class="btn btn-primary col-md-6" >Plus d'informations
+                        </button>
+                    </a>
+                <div class="modif-suppr">
+                    <a href="consultation/{{ cons.id }}/update"><button class="bouton">
+                            <img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button>
+                    </a>
+                    <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                            <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
+                        </button>
+                    </a>
+                    <a href={{ path('app_veterinaire_add_consultation', {'id': cons.id}) }}><button class="bouton">
+                            <img class="icon" alt="" src = {{ asset('icone/check.png') }}>
+                        </button>
+                    </a>
+                </div>
+                </div>
+                <div class="cons_block_clock">
+                    <img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
+                <div class="cons_block_time">{{ cons.start|date('H') }}h{{ cons.start|date('i') }}</div>
+            </div>
+        {%  endif %}
+                <div class="trans_block"></div>
+        {% endfor %}
+            <div class="foot_planning"><p class="cons_jour">Consultations Disponibles</p></div>
+    </section>
     </section>
 {% endblock %}

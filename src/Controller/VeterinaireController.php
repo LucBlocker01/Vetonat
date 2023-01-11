@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ConsultationRepository;
 use App\Repository\PersonneRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -74,5 +75,18 @@ class VeterinaireController extends AbstractController
 
         return $this->render('veterinaire/index_infos_rdv.html.twig', ['veterinaire' => $security->getUser(), 'consultation' => $consult, 'client' => $client, 'animal' => $animal,
         ]);
+    }
+
+    #[Route('veterinaire/{id}/add', name: 'app_veterinaire_add_consultation')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function addCons(int $id, ManagerRegistry $doctrine, ConsultationRepository $cons, Security $security): Response
+    {
+        $veto = $security->getUser()->getVeterinaire();
+        $consultation = $cons->findOneBy(['id' => $id]);
+        $consultation->setVeterinaire($veto);
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($consultation);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_client');
     }
 }
