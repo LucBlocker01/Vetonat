@@ -81,9 +81,15 @@
             {% endfor %}
             <div class="foot_planning"><p class="cons_jour">Fin de Journée</p></div>
         </section>
+
+
+
+
         <section class="list">
-            <div class="header_planning"><p class="cons_jour">Consultations Disponibles</p></div>
-            <div class="trans_block"></div>
+            {%  if clibre is not empty %}
+                <div class="header_planning"><p class="cons_jour">Consultations Disponibles</p></div>
+                <div class="trans_block"></div>
+            {% endif %}
             {%  for cons in clibre %}
                 {%  if cons.urgente %}
                     <div class="urgente_block">
@@ -154,6 +160,7 @@
         {%  endif %}
                 <div class="trans_block"></div>
         {% endfor %}
+            <div class="foot_planning"><p class="cons_jour">Consultations Disponibles</p></div>
     </section>
     </section>
 {% endblock %}
