@@ -46,7 +46,7 @@ final class AnimalFactory extends ModelFactory
             'nomAnimal' => self::faker()->firstName,
             'EspeceAnimal' => self::faker()->randomElement($instance)['name'],
             'Stereliser' => self::faker()->boolean(),
-            'ageAnimal'=>self::faker()->numberBetween(1, 15),
+            'ageAnimal' => self::faker()->numberBetween(1, 15),
             'poidsAnimal' => self::faker()->numberBetween(1, 50),
             'descriptionAnimal' => self::faker()->sentence(5),
         ];

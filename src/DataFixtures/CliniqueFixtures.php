@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Factory\AnimalFactory;
 use App\Factory\CliniqueFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -13,6 +12,5 @@ class CliniqueFixtures extends Fixture
     {
         CliniqueFactory::createOne();
         $manager->flush();
-
     }
 }

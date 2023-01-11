@@ -4,28 +4,28 @@ namespace App\Factory;
 
 use App\Entity\Traitement;
 use App\Repository\TraitementRepository;
-use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use Zenstruck\Foundry\RepositoryProxy;
 
 /**
  * @extends ModelFactory<Traitement>
  *
- * @method static Traitement|Proxy createOne(array $attributes = [])
- * @method static Traitement[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Traitement[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Traitement|Proxy find(object|array|mixed $criteria)
- * @method static Traitement|Proxy findOrCreate(array $attributes)
- * @method static Traitement|Proxy first(string $sortedField = 'id')
- * @method static Traitement|Proxy last(string $sortedField = 'id')
- * @method static Traitement|Proxy random(array $attributes = [])
- * @method static Traitement|Proxy randomOrCreate(array $attributes = [])
- * @method static Traitement[]|Proxy[] all()
- * @method static Traitement[]|Proxy[] findBy(array $attributes)
- * @method static Traitement[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Traitement[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static Traitement|Proxy                     createOne(array $attributes = [])
+ * @method static Traitement[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Traitement[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Traitement|Proxy                     find(object|array|mixed $criteria)
+ * @method static Traitement|Proxy                     findOrCreate(array $attributes)
+ * @method static Traitement|Proxy                     first(string $sortedField = 'id')
+ * @method static Traitement|Proxy                     last(string $sortedField = 'id')
+ * @method static Traitement|Proxy                     random(array $attributes = [])
+ * @method static Traitement|Proxy                     randomOrCreate(array $attributes = [])
+ * @method static Traitement[]|Proxy[]                 all()
+ * @method static Traitement[]|Proxy[]                 findBy(array $attributes)
+ * @method static Traitement[]|Proxy[]                 randomSet(int $number, array $attributes = [])
+ * @method static Traitement[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static TraitementRepository|RepositoryProxy repository()
- * @method Traitement|Proxy create(array|callable $attributes = [])
+ * @method        Traitement|Proxy                     create(array|callable $attributes = [])
  */
 final class TraitementFactory extends ModelFactory
 {
