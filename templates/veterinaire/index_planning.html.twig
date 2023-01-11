@@ -43,9 +43,7 @@
                     end : '',
                 },
                 eventClick: function(info) {
-                    alert('Event: ' + info.event.id);
-                    alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                    alert('View: ' + info.view.type);
+                    window.open('/veterinaire/'+info.event.id+"/infos_rdv");
 
                 },
                 events : {{ data|raw }},
