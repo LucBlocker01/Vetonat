@@ -108,6 +108,10 @@
                         <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
                     </button>
                 </a>
+                <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                        <img class="icon" alt="" src = {{ asset('icone/check.png') }}>
+                    </button>
+                </a>
             </div>
         </div>
         <div class="cons_block_clock">
@@ -129,15 +133,19 @@
                         <button class="btn btn-primary col-md-6" >Plus d'informations
                         </button>
                     </a>
-                    <div class="modif-suppr">
-                        <a href="consultation/{{ cons.id }}/update"><button class="bouton">
-                                <img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button>
-                        </a>
-                        <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
-                                <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
-                            </button>
-                        </a>
-                    </div>
+                <div class="modif-suppr">
+                    <a href="consultation/{{ cons.id }}/update"><button class="bouton">
+                            <img class="icon" alt="" src = {{ asset('icone/modifier.png') }}></button>
+                    </a>
+                    <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                            <img class="icon" alt="" src = {{ asset('icone/supprimer.png') }}>
+                        </button>
+                    </a>
+                    <a href="consultation/{{ cons.id }}/delete"><button class="bouton">
+                            <img class="icon" alt="" src = {{ asset('icone/check.png') }}>
+                        </button>
+                    </a>
+                </div>
                 </div>
                 <div class="cons_block_clock">
                     <img alt="" src = {{ asset('icone/bxs_time-five.png')}}></div>
